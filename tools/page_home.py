@@ -2,7 +2,7 @@ from build import head, nav, foot, PDF
 
 PATH = 'index.html'
 
-MARQ = '<span><b>✦</b> SIFT <em>让 AI 少问一点</em> <b>✦</b> PICTO <em>让人少聊一点</em> <b>✦</b> FOCENDA <em>让人少排一点</em></span>'
+MARQ = '<span><b>✦</b> SIFT <em>设计方向收敛 Agent</em> <b>✦</b> PICTO <em>异地情侣低打扰陪伴</em> <b>✦</b> FOCENDA <em>设计师动态日程</em></span>'
 
 CARDS = [
     ('s', 'projects/sift.html', 'logo-sift.png', 'SIFT', '设计前期的 AI 方向收敛 Agent', 'sift-hero.jpg', 'Web · 已上线'),
@@ -22,7 +22,7 @@ def render():
         <span class="pc-txt"><b>{name}</b><span>{line}</span></span>
         <span class="pc-go" aria-hidden="true">→</span>
       </a>'''
-    return head('梁宇森 Leyson — 交互设计作品集', '梁宇森 Leyson，广州美术学院工业设计（智能交互方向）。我做让人“少做一点”的交互。作品：SIFT、片刻 Picto、Focenda 专序。') + nav('home') + f'''
+    return head('梁宇森 Leyson — 交互设计作品集', '梁宇森 Leyson，广州美术学院工业设计（智能交互方向）。把复杂的判断，变成清楚的一步。作品：SIFT、片刻 Picto、Focenda 专序。') + nav('home') + f'''
 <main id="main">
 <section class="hero">
   <div class="wrap">
@@ -30,7 +30,7 @@ def render():
     <h1 class="rv d1" aria-label="Leyson.">Leyson<button type="button" class="mk mk-hero" data-dot data-follow aria-label="这个点是我的标志，点一下换个颜色"><span class="hint px" aria-hidden="true">Click me</span></button></h1>
     <div class="hero-grid">
       <div class="rv d2">
-        <p class="lede">我做让人<span class="hl">少做一点</span>的交互。</p>
+        <p class="lede">把复杂的判断，<br>变成<span class="hl">清楚的一步</span>。</p>
         <p class="sub">广州美术学院 工业设计（智能交互方向）本科。我习惯先把问题定义清楚，再用减法做取舍，最后借助 AI 编程工具把设计做成能跑的原型。</p>
         <div class="acts">
           <a class="btn btn-ink" href="work.html" data-magnetic>选一个项目 <span class="arr" aria-hidden="true">→</span></a>
@@ -48,7 +48,7 @@ def render():
           <dt>正在做</dt><dd>打磨作品集</dd>
           <dt>联系偏好</dt><dd>欢迎来聊</dd>
         </dl>
-        <div class="say"><a href="#contact">→ 开放实习机会</a><a class="fmt px" href="projects/picto.html" title="这张卡片沿用了 Picto 的状态格式">Picto style ↗</a></div>
+        <div class="say"><a href="#contact">→ 开放实习机会</a><a class="fmt px" href="work.html">See work ↗</a></div>
       </aside>
     </div>
   </div>
@@ -74,7 +74,7 @@ def render():
 
 <section class="sec sec-work" aria-labelledby="work-h">
   <div class="wrap">
-    <div class="sec-head rv"><div class="no px">02 · Selected work</div><h2 id="work-h">三种“少做一点”。</h2><a class="more" href="work.html">全部作品 <span aria-hidden="true">→</span></a></div>
+    <div class="sec-head rv"><div class="no px">02 · Selected work</div><h2 id="work-h">三个项目，三次取舍。</h2><a class="more" href="work.html">全部作品 <span aria-hidden="true">→</span></a></div>
     <div class="pcs">{cards}
     </div>
   </div>

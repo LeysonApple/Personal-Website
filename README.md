@@ -2,7 +2,7 @@
 
 梁宇森 Leyson · 广州美术学院 工业设计（智能交互方向）· 2023–2027
 
-> 我做让人“少做一点”的交互。
+> 把复杂的判断，变成清楚的一步。
 
 ## 页面
 | 页面 | 文件 |
@@ -38,7 +38,7 @@ python3 tools/build.py
 - 字体为 WOFF2 子集（Bricolage Grotesque 可变字体，Latin；Silkscreen 像素字体）。中文使用系统字体。
 
 ## 个人标志
-“Leyson.” 后面的那个点就是我的标志（也是“少做一点”的那一点）。主页上点击它可以换颜色，全站同步并记住选择。favicon 为 `assets/img/favicon.svg`。像素小狗只属于 Picto 项目本身。
+“Leyson.” 后面的那个点就是我的标志。主页上点击它可以换颜色，全站同步并记住选择。favicon 为 `assets/img/favicon.svg`。像素小狗只属于 Picto 项目本身。
 
 ## 部署（GitHub Pages）
 仓库根目录即站点根目录，已包含 `.nojekyll`。

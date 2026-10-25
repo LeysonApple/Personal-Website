@@ -4,9 +4,9 @@ PATH = 'work.html'
 
 LOGO = {'s': 'logo-sift.png', 'p': 'logo-picto.png', 'f': 'logo-focenda.png'}
 ITEMS = [
-    ('s', '01', 'SIFT', '', '设计前期的 AI 方向收敛 Agent', '让 AI 少问一点：每次只问一个会改变设计判断的问题。', ['Web', '3 人小组组长', '已上线', '2026'], 'projects/sift.html', 'sift-hero.jpg'),
-    ('p', '02', 'Picto', '片刻', '异地情侣的低打扰陪伴', '让人少聊一点：先表达“我现在怎样”，再决定要不要说话。', ['Mobile', '独立完成', '约 2 个月', '2026'], 'projects/picto.html', 'picto-room.jpg'),
-    ('f', '03', 'Focenda', '专序', '设计师的动态日程规划', '让人少排一点：按重要度和精力，排好今天。', ['Web + Mobile', '内测 10 人', '2026'], 'projects/focenda.html', 'focenda-priority.jpg'),
+    ('s', '01', 'SIFT', '', '设计前期的 AI 方向收敛 Agent', '每次只问一个会改变设计判断的问题。', ['Web', '3 人小组组长', '已上线', '2026'], 'projects/sift.html', 'sift-hero.jpg'),
+    ('p', '02', 'Picto', '片刻', '异地情侣的低打扰陪伴', '先表达“我现在怎样”，再决定要不要说话。', ['Mobile', '独立完成', '约 2 个月', '2026'], 'projects/picto.html', 'picto-room.jpg'),
+    ('f', '03', 'Focenda', '专序', '设计师的动态日程规划', '按重要度和精力，排好今天。', ['Web + Mobile', '内测 10 人', '2026'], 'projects/focenda.html', 'focenda-priority.jpg'),
 ]
 
 
@@ -31,7 +31,7 @@ def render():
     <header class="pick-head">
       <p class="eyebrow px rv">Selected work · 2026</p>
       <h1 class="rv d1">选一个项目，<br>看我怎么做取舍。</h1>
-      <p class="rv d2">三个项目，三种“少做一点”。每个项目页都按 <span class="flow">问题 <i>→</i> 判断 <i>→</i> 设计 <i>→</i> 结果</span> 展开，五分钟能看完。</p>
+      <p class="rv d2">三个项目，三次取舍。每个项目页都按 <span class="flow">问题 <i>→</i> 判断 <i>→</i> 设计 <i>→</i> 结果</span> 展开，五分钟能看完。</p>
     </header>
     <ol class="picks">{rows}
     </ol>
