@@ -306,7 +306,7 @@
     const update = (e) => {
       const m = get('mood'), d = get('doing'), p = get('pref');
       o('mood').textContent = m.value; o('doing').textContent = d.value;
-      o('sent').textContent = `小满现在${m.value}，正在${d.value}。`;
+      o('sent').textContent = `琪琪现在${m.value}，正在${d.value}。`;
       o('heart').innerHTML = svgHeart(p.dataset.c);
       o('pline').textContent = p.value === '只想被看见' ? '看见就好，不必开启聊天。' : `联系偏好：${p.value}`;
       scr.style.setProperty('--mc', m.dataset.c);

@@ -6,7 +6,7 @@ I = B + 'assets/img/'
 
 # ---------------------------------------------------------------- pixel characters (Picto's own product characters)
 # Sampled cell-by-cell from assets/img/picto-after.jpg by tools/extract_picto_sprites.py
-# (top = 小满 the tabby cat, bottom = 阿澈 the dog). Re-run that script and paste if the art changes.
+# (top = 琪琪 the tabby cat, bottom = 森森 the dog). Re-run that script and paste if the art changes.
 CAT = [
     '...a......a...',
     '..bcb....bcb..',
@@ -79,7 +79,7 @@ def picker():
     d = ''.join(f'<label class="pk"><input type="radio" name="doing" value="{n}"{" checked" if n == "休息充电" else ""}><span>{n}</span></label>' for n in DOING)
     p = ''.join(f'<label class="pk pref"><input type="radio" name="pref" value="{n}" data-c="{c}"{" checked" if n == "只想被看见" else ""}>{heart(c)}<span>{n}</span></label>' for n, c in PREFS)
     return f'''<div class="ui-card picto-ui pk-card">
-  <h4>现在的我</h4><p class="hint">正在为 小满 更新 · 仅保存在当前设备</p>
+  <h4>现在的我</h4><p class="hint">正在为 琪琪 更新 · 仅保存在当前设备</p>
   <fieldset><legend>心情 <span data-sel="mood">已选 · 有点累</span></legend><div class="pk-grid g5">{m}</div></fieldset>
   <fieldset><legend>正在做什么 <span data-sel="doing">已选 · 休息充电</span></legend><div class="pk-grid g4">{d}</div></fieldset>
   <fieldset><legend>联系偏好 <span data-sel="pref">已选 · 只想被看见</span></legend><div class="pk-grid g2">{p}</div></fieldset>
@@ -88,23 +88,23 @@ def picker():
 
 def home_phone():
     return f'''<div class="ui-phone picto-ui home" aria-label="伴侣首页预览：随左侧选择实时更新">
-  <div class="hm-top"><div><b>小满 的片刻</b><span>当前角色：阿澈 · 本地演示</span></div><span class="sw">切换角色</span></div>
+  <div class="hm-top"><div><b>琪琪 的片刻</b><span>当前角色：森森 · 本地演示</span></div><span class="sw">切换角色</span></div>
   <div class="dev">
-    <div class="dev-h"><span><i></i>小满 · 本地状态</span><span class="ago">{heart('#E8654F')}刚刚</span></div>
+    <div class="dev-h"><span><i></i>琪琪 · 本地状态</span><span class="ago">{heart('#E8654F')}刚刚</span></div>
     <div class="scr" data-scr>
       <span class="badge b1">表情 <b data-o="mood">有点累</b></span><span class="badge b2">场景 <b data-o="doing">休息充电</b></span>
       {cat_svg()}
       <p class="bub">「回家啦，晚霞很好看」</p>
     </div>
   </div>
-  <div class="st-card" aria-live="polite"><p class="sent" data-o="sent">小满现在有点累，正在休息充电。</p><p class="pl"><span data-o="heart">{heart('#F4F1EC')}</span><span data-o="pline">看见就好，不必开启聊天。</span></p><p class="upd">更新于 刚刚</p></div>
+  <div class="st-card" aria-live="polite"><p class="sent" data-o="sent">琪琪现在有点累，正在休息充电。</p><p class="pl"><span data-o="heart">{heart('#F4F1EC')}</span><span data-o="pline">看见就好，不必开启聊天。</span></p><p class="upd">更新于 刚刚</p></div>
   <div class="mo"><span class="ph" aria-hidden="true"></span><div><b>下班路上的晚霞</b><span>刚刚</span></div></div>
   <nav class="tb" aria-hidden="true"><span class="on">首页</span><span>设置状态</span><span>拍一片刻</span><span>留一句</span><span>片刻墙</span></nav>
 </div>'''
 
 
 # ---------------------------------------------------------------- hero: the two characters and what each one sees
-# 小满 = the tabby cat, 阿澈 = the dog, both on-model from picto-after.jpg. Sentences follow the demo's own rule
+# 琪琪 = the tabby cat, 森森 = the dog, both on-model from picto-after.jpg. Sentences follow the demo's own rule
 # ("<名字>现在<心情>，正在<活动>。" / pref line), so nothing here is new copy.
 
 
@@ -118,11 +118,11 @@ def hero_side(who, cls, kind, mood, mc, doing, pref, pc, line):
 
 
 def hero():
-    left = hero_side('小满', 'l', 'cat', '有点累', '#A9C3E8', '休息充电', '只想被看见', '#F4F1EC', '看见就好，不必开启聊天。')
-    right = hero_side('阿澈', 'r', 'dog', '开心', '#F7C948', '通勤', '可以联系', '#7CC3A6', '联系偏好：可以联系')
+    left = hero_side('琪琪', 'l', 'cat', '有点累', '#A9C3E8', '休息充电', '只想被看见', '#F4F1EC', '看见就好，不必开启聊天。')
+    right = hero_side('森森', 'r', 'dog', '开心', '#F7C948', '通勤', '可以联系', '#7CC3A6', '联系偏好：可以联系')
     return f'''
     <div class="case-visual px-visual rv">
-      <div class="px-stage" role="img" aria-label="Picto 示意：像素猫小满与像素狗阿澈，各自头顶是对方能看到的状态卡（心情、正在做、联系偏好），中间是一句会自动退出首页的留言">
+      <div class="px-stage" role="img" aria-label="Picto 示意：像素猫琪琪与像素狗森森，各自头顶是对方能看到的状态卡（心情、正在做、联系偏好），中间是一句会自动退出首页的留言">
         <div class="px-scene picto-ui" aria-hidden="true">
           {left}
           <div class="px-mid">
