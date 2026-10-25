@@ -25,7 +25,6 @@ def render():
         <span class="pc-txt"><b>{name}</b><span>{line}</span></span>
         <span class="pc-body">
           <span class="pc-prob"><em class="px">Problem</em>{prob}</span>
-          <span class="pc-stat"><strong>{num}</strong><span>{numlab}</span></span>
           <span class="pc-chips">{chip}</span>
         </span>
         <span class="pc-go" aria-hidden="true">→</span>
