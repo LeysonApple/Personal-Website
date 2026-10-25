@@ -113,8 +113,63 @@ def meta(items):
 
 
 def tldr(items):
-    return '<section class="wrap tldr-wrap" aria-label="项目概要"><div class="tldr">' + ''.join(
-        f'<div class="rv"><h2 class="px">{a}</h2><p>{b}</p></div>' for a, b in items) + '</div></section>'
+    """items: (label, text). Four cells a recruiter can read in 30 seconds."""
+    return '<section class="wrap tldr-wrap" aria-label="30 秒速览"><p class="eyebrow px tldr-k">TL;DR · 30 秒速览</p><div class="tldr" style="--n:%d">' % len(items) + ''.join(
+        f'<div class="rv d{min(i,3)}"><h2 class="px">{a}</h2><p>{b}</p></div>' for i, (a, b) in enumerate(items)) + '</div></section>'
+
+
+class Figs:
+    """Numbered, framed figures. frame: browser | phone | stage | plain."""
+    def __init__(self):
+        self.n = 0
+
+    def __call__(self, src, alt, title, note='', frame='stage', cls='', extra='', ar=''):
+        self.n += 1
+        img = f'<img class="zoom" src="{src}" alt="{alt}">'
+        if frame == 'browser':
+            inner = f'<div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>{img}{extra}</div>'
+        elif frame == 'phone':
+            inner = f'<div class="phone">{img}{extra}</div>'
+        elif frame == 'stage':
+            st = f' style="--ar:{ar}"' if ar else ''
+            inner = f'<div class="stage"{st}>{img}{extra}</div>'
+        else:
+            inner = f'<div class="plain">{img}{extra}</div>'
+        cap = f'<figcaption><span class="fn px">Fig. {self.n:02d}</span><b>{title}</b>{(" " + note) if note else ""}</figcaption>'
+        return f'<figure class="fig {cls}">{inner}{cap}</figure>'
+
+
+def metrics(items, cls=''):
+    """items: (value, label, sub, count). Metric cards; count=True animates the number."""
+    out = []
+    for i, (v, l, sub, c) in enumerate(items):
+        dc = ' data-count' if c else ''
+        sb = f'<small>{sub}</small>' if sub else ''
+        out.append(f'<div class="mc rv d{min(i,3)}"><b{dc}>{v}</b><span>{l}</span>{sb}</div>')
+    return f'<div class="mcards {cls}">' + ''.join(out) + '</div>'
+
+
+def cuts(items):
+    """items: (date, cut, why, instead[, keep]). 'We cut X because Y' cards; keep=True marks what stayed."""
+    out = []
+    for i, it in enumerate(items):
+        d, x, y, z = it[:4]
+        keep = len(it) > 4 and it[4]
+        xs = f'<p class="x keep"><em class="px">Keep</em><b>{x}</b></p>' if keep else f'<p class="x"><em class="px">Cut</em><s>{x}</s></p>'
+        zl = 'Shipped' if keep else 'Instead'
+        out.append(f'<li class="rv d{min(i,3)}{" kept" if keep else ""}"><span class="d px">{d}</span>{xs}<p class="y"><em class="px">Why</em>{y}</p><p class="z"><em class="px">{zl}</em>{z}</p></li>')
+    return '<ol class="cuts">' + ''.join(out) + '</ol>'
+
+
+def tabs(name, items, label):
+    """items: (tab, sub, panel_html). Accessible tabs (arrow keys) — main.js wires them."""
+    tl = ''.join(
+        f'<button type="button" role="tab" id="{name}-t{i}" aria-controls="{name}-p{i}" aria-selected="{"true" if i == len(items) - 1 else "false"}" tabindex="{0 if i == len(items) - 1 else -1}"><b>{t}</b><span class="px">{s}</span></button>'
+        for i, (t, s, _) in enumerate(items))
+    ps = ''.join(
+        f'<div class="tp" role="tabpanel" id="{name}-p{i}" aria-labelledby="{name}-t{i}" tabindex="0"{"" if i == len(items) - 1 else " hidden"}>{p}</div>'
+        for i, (_, _, p) in enumerate(items))
+    return f'<div class="tabs rv" data-tabs><div class="tl" role="tablist" aria-label="{label}">{tl}<span class="tl-line" aria-hidden="true"></span></div>{ps}</div>'
 
 
 def toc(items):

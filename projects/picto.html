@@ -46,14 +46,14 @@
     <nav class="crumb px" aria-label="面包屑"><a href="../work.html">Work</a><span aria-hidden="true">/</span><span aria-current="page">Picto</span></nav>
     <p class="case-id px rv"><img src="../assets/img/logo-picto.png" alt="" width="192" height="192" loading="lazy" decoding="async">Picto 片刻 · 02 / 03</p>
     <h1 class="rv cjk">看见彼此，<br>不必一直聊天。</h1>
-    <p class="sub rv d1">片刻 Picto 是一种介于沉默与即时聊天之间的低打扰陪伴方式：先表达“我现在怎样”，再决定要不要说话。</p>
+    <p class="sub rv d1">介于沉默与即时聊天之间的低打扰陪伴方式：先表达“我现在怎样”，再决定要不要说话。</p>
     <dl class="meta"><div><dt>Role</dt><dd>问题定义 · 状态机制 · 语言边界</dd></div><div><dt>Team</dt><dd>独立完成</dd></div><div><dt>Timeline</dt><dd>约 2 个月</dd></div><div><dt>Platform</dt><dd>Mobile · 可运行原型</dd></div><div><dt>Tools</dt><dd>AI 协作完成实现、测试与素材</dd></div></dl>
-    <div class="case-visual rv"><picture><source srcset="../assets/img/picto-room.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-room.jpg" alt="Picto 像素小屋主视觉" fetchpriority="high" width="1600" height="1376" decoding="async"></picture></div>
+    <div class="case-visual rv"><picture><source srcset="../assets/img/picto-room.webp" type="image/webp"><img class="zoom pixel" src="../assets/img/picto-room.jpg" alt="Picto 像素小屋主视觉" fetchpriority="high" width="1600" height="1376" decoding="async"></picture></div>
   </div>
 </section>
 
-<section class="wrap tldr-wrap" aria-label="项目概要"><div class="tldr"><div class="rv"><h2 class="px">Problem · 问题</h2><p>即时通信把“被看见”绑成了“要回复”，忙碌和异地的情侣因此更累。</p></div><div class="rv"><h2 class="px">Approach · 判断</h2><p>用一张状态卡代替一条消息：心情 + 正在做 + 联系偏好，边界直接说出来。</p></div><div class="rv"><h2 class="px">Outcome · 结果</h2><p>一套可解释的状态系统、完整的双角色流程和可运行原型。</p></div></div></section>
-<nav class="toc" aria-label="本页目录"><div class="wrap"><ol><li><a href="#problem"><span class="px">01</span>问题<em>Problem</em></a></li><li><a href="#principles"><span class="px">02</span>设计原则<em>Decision</em></a></li><li><a href="#system"><span class="px">03</span>交互系统<em>Design</em></a></li><li><a href="#flow"><span class="px">04</span>核心流程<em>Design</em></a></li><li><a href="#iterate"><span class="px">05</span>迭代<em>Iteration</em></a></li><li><a href="#next-step"><span class="px">06</span>下一步<em>Next</em></a></li></ol><span class="toc-bar" aria-hidden="true"></span></div></nav>
+<section class="wrap tldr-wrap" aria-label="30 秒速览"><p class="eyebrow px tldr-k">TL;DR · 30 秒速览</p><div class="tldr" style="--n:4"><div class="rv d0"><h2 class="px">Problem · 问题</h2><p>即时通信把“被看见”绑成了“要回复”，忙碌和异地的情侣因此更累。</p></div><div class="rv d1"><h2 class="px">My role · 我的角色</h2><p>约 2 个月独立完成：问题定义、状态机制、语言边界与最终取舍；AI 协作完成实现与测试。</p></div><div class="rv d2"><h2 class="px">Key decision · 关键判断</h2><p>用一张状态卡代替一条消息：心情 + 正在做 + 联系偏好；用可预测的规则，而非生成式 AI。</p></div><div class="rv d3"><h2 class="px">Outcome · 结果</h2><p>可解释的状态系统、六步双角色闭环与可运行原型；通过 21 项逻辑测试与 23 项主流程断言。</p></div></div></section>
+<nav class="toc" aria-label="本页目录"><div class="wrap"><ol><li><a href="#problem"><span class="px">01</span>问题<em>Problem</em></a></li><li><a href="#insight"><span class="px">02</span>洞察<em>Insight</em></a></li><li><a href="#principles"><span class="px">03</span>原则<em>Decision</em></a></li><li><a href="#system"><span class="px">04</span>设计<em>Design</em></a></li><li><a href="#iterate"><span class="px">05</span>迭代与结果<em>Outcome</em></a></li><li><a href="#next-step"><span class="px">06</span>反思<em>Reflection</em></a></li></ol><span class="toc-bar" aria-hidden="true"></span></div></nav>
 <section class="block" id="problem" aria-labelledby="problem-h"><div class="wrap split">
   <div class="lab rv"><span class="no px">01 · Problem</span><h2 id="problem-h">问题</h2></div>
   <div class="body">
@@ -69,8 +69,27 @@
   </div>
 </div></section>
 
-<section class="block theme-picto" id="principles" aria-labelledby="principles-h"><div class="wrap split">
-  <div class="lab rv"><span class="no px">02 · Decision</span><h2 id="principles-h">设计原则</h2></div>
+<section class="block theme-picto" id="insight" aria-labelledby="insight-h"><div class="wrap split">
+  <div class="lab rv"><span class="no px">02 · Insight</span><h2 id="insight-h">洞察</h2></div>
+  <div class="body">
+    <h3 class="rv">拆开“表达、看见、回应”，<br>让它们不必同时发生。</h3>
+    <blockquote class="pull rv picto-pull"><p>“我想让你知道我此刻怎样，但不一定想开启一段对话。”</p><cite class="px">Design hypothesis · 设计起点，不把个人经验包装成用户研究结论</cite></blockquote>
+    <div class="spectrum rv" aria-label="沉默、Picto 与即时聊天的位置">
+      <div><b>沉默</b><span>对方未必感知到</span></div>
+      <div class="on"><b>Picto</b><span>让当下先被看见</span></div>
+      <div><b>即时聊天</b><span>可能形成回复压力</span></div>
+    </div>
+    <p class="sub-h rv gap-sm">前人研究给了三个启示</p>
+    <div class="cards" style="--c:3">
+      <div class="card rv"><span class="n px">CHI 2006 · Kaye</span><h4>极简信号也能承载亲密</h4><p>异地情侣只能互相发送“一比特”点击，却会结合情境读出丰富含义。<b>→ 状态不必写成长消息。</b></p></div>
+      <div class="card rv d1"><span class="n px">CHI 2022 · Read receipts</span><h4>已读回执制造压力</h4><p>接收方感到必须回复，发送方则期待即时回应。<b>→ 不做在线、已读与送达回执。</b></p></div>
+      <div class="card rv d2"><span class="n px">JSPR 2021 · n=647</span><h4>回应仍然重要</h4><p>更频繁、回应性更强的联系与更高的关系满意度相关。<b>→ 回应可以轻到一句“我看见了”。</b></p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="principles" aria-labelledby="principles-h"><div class="wrap split">
+  <div class="lab rv"><span class="no px">03 · Decision</span><h2 id="principles-h">原则</h2></div>
   <div class="body">
     <h3 class="rv">三个原则，约束所有功能与表达。</h3>
     <div class="notes">
@@ -78,43 +97,87 @@
       <div class="card rv d1"><span class="n px">02</span><h4>不回应，也被允许。</h4><p>联系偏好直接可见，不用让沉默承担解释成本。</p></div>
       <div class="card rv d2"><span class="n px">03</span><h4>温柔，但操作必须清楚。</h4><p>情感留给标题与角色，按钮和反馈直接说明结果。</p></div>
     </div>
-  </div>
-</div></section>
-
-<section class="block" id="system" aria-labelledby="system-h"><div class="wrap split">
-  <div class="lab rv"><span class="no px">03 · Design</span><h2 id="system-h">交互系统</h2></div>
-  <div class="body">
-    <h3 class="rv">“智能”来自可解释的状态映射。</h3>
-    <p class="rv">不是自动替你表达，而是把主动选择的信息，转化为可预测、可感知的状态反馈。</p>
-    <div class="formula rv"><span>有点累<small class="px">心情 · 10 种</small></span><i aria-hidden="true">+</i><span>休息充电<small class="px">正在做 · 12 种</small></span><i aria-hidden="true">+</i><span>看见就好<small class="px">联系偏好 · 4 档</small></span><i aria-hidden="true">=</i><span class="out">反馈状态，不催促回应</span></div>
-    <div class="two gap-sm">
-      <figure class="fig rv"><div class="sheet"><picture><source srcset="../assets/img/picto-tired.webp" type="image/webp"><img class="zoom pixel" src="../assets/img/picto-tired.jpg" alt="Picto 像素角色：有点累，休息充电" width="728" height="428" loading="lazy" decoding="async"></picture></div><figcaption><b>输出</b>状态句 + 像素姿态 + 联系边界</figcaption></figure>
-      <p class="aside rv">状态由用户主动选择；系统只组合已知输入，<b>不推断情绪</b>。这样每一个反馈都能说出“为什么是这样”，也不会替任何人做决定。</p>
+    <p class="sub-h rv gap-top">功能语言和情感语言分开：每个词都对应真实能力</p>
+    <div class="lang"><div class="lr rv"><span class="old"><s>配对成功</s></span><span class="ar" aria-hidden="true">→</span><span class="new">本地双人体验已建立</span><p>说明这是同一浏览器里的角色模拟。</p></div><div class="lr rv"><span class="old"><s>在线 · 电量 72%</s></span><span class="ar" aria-hidden="true">→</span><span class="new">刚刚更新 · 看见就好</span><p>只呈现用户主动表达的状态与边界。</p></div><div class="lr rv"><span class="old"><s>消息已送达</s></span><span class="ar" aria-hidden="true">→</span><span class="new">已保存到当前设备</span><p>反馈与真实存储范围完全一致。</p></div></div>
+    <p class="sub-h rv gap-top">规则是刻意的选择：为什么现在不用生成式 AI</p>
+    <div class="cards" style="--c:3">
+      <div class="card rv"><span class="n px">01</span><h4>可预测</h4><p>同样的选择，永远得到同样的状态句。</p></div>
+      <div class="card rv d1"><span class="n px">02</span><h4>不代替表达</h4><p>情绪由本人选择，系统不推断、不放大。</p></div>
+      <div class="card rv d2"><span class="n px">03</span><h4>留在本地</h4><p>心情与活动不上传，不需要账号。</p></div>
     </div>
   </div>
 </div></section>
 
-<section class="block tint-peach" id="flow" aria-labelledby="flow-h"><div class="wrap split">
-  <div class="lab rv"><span class="no px">04 · Design</span><h2 id="flow-h">核心流程</h2></div>
+<section class="block tint-peach" id="system" aria-labelledby="system-h"><div class="wrap split">
+  <div class="lab rv"><span class="no px">04 · Design</span><h2 id="system-h">设计</h2></div>
   <div class="body">
-    <h3 class="rv">从表达，到看见，再到留存。</h3>
-    <div class="shots" style="--c:4">
-      <figure class="rv"><div class="phone"><picture><source srcset="../assets/img/picto-home.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-home.jpg" alt="Picto 首页：看见对方此刻的状态" width="760" height="1634" loading="lazy" decoding="async"></picture></div><figcaption><b>首页</b>先看见对方此刻</figcaption></figure>
-      <figure class="rv d1"><div class="phone"><picture><source srcset="../assets/img/picto-status.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-status.jpg" alt="Picto 选择状态页" width="760" height="1634" loading="lazy" decoding="async"></picture></div><figcaption><b>选状态</b>一次说清三件事</figcaption></figure>
-      <figure class="rv d2"><div class="phone"><picture><source srcset="../assets/img/picto-polaroid.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-polaroid.jpg" alt="Picto 拍一片刻页" width="760" height="1634" loading="lazy" decoding="async"></picture></div><figcaption><b>拍一片刻</b>相机不可用也不中断</figcaption></figure>
-      <figure class="rv d3"><div class="phone"><picture><source srcset="../assets/img/picto-wall.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-wall.jpg" alt="Picto 片刻墙" width="760" height="1634" loading="lazy" decoding="async"></picture></div><figcaption><b>片刻墙</b>短句离开首页，留在这里</figcaption></figure>
+    <h3 class="rv">“智能”来自可解释的状态映射。</h3>
+    <p class="rv">心情 10 种 × 正在做 12 种 × 联系偏好 4 档。心情决定表情，活动决定场景，偏好把边界直接说出来。试着在左边换一组，看右边伴侣看到什么。</p>
+    <figure class="fig wide rv"><div class="picto-demo" data-picto><div class="ui-card picto-ui pk-card">
+  <h4>现在的我</h4><p class="hint">正在为 小满 更新 · 仅保存在当前设备</p>
+  <fieldset><legend>心情 <span data-sel="mood">已选 · 有点累</span></legend><div class="pk-grid g5"><label class="pk mood"><input type="radio" name="mood" value="开心" data-c="#F7C948"><span class="face" style="--fc:#F7C948" aria-hidden="true"><i></i></span><span>开心</span></label><label class="pk mood"><input type="radio" name="mood" value="平静" data-c="#8FD3BE"><span class="face" style="--fc:#8FD3BE" aria-hidden="true"><i></i></span><span>平静</span></label><label class="pk mood"><input type="radio" name="mood" value="有点累" data-c="#A9C3E8" checked><span class="face" style="--fc:#A9C3E8" aria-hidden="true"><i></i></span><span>有点累</span></label><label class="pk mood"><input type="radio" name="mood" value="想你" data-c="#F2A7B0"><span class="face" style="--fc:#F2A7B0" aria-hidden="true"><i></i></span><span>想你</span></label><label class="pk mood"><input type="radio" name="mood" value="难过" data-c="#7F9CC0"><span class="face" style="--fc:#7F9CC0" aria-hidden="true"><i></i></span><span>难过</span></label><label class="pk mood"><input type="radio" name="mood" value="生气" data-c="#E4483F"><span class="face" style="--fc:#E4483F" aria-hidden="true"><i></i></span><span>生气</span></label><label class="pk mood"><input type="radio" name="mood" value="有点不安" data-c="#A08BD6"><span class="face" style="--fc:#A08BD6" aria-hidden="true"><i></i></span><span>有点不安</span></label><label class="pk mood"><input type="radio" name="mood" value="困了" data-c="#4E5D73"><span class="face" style="--fc:#4E5D73" aria-hidden="true"><i></i></span><span>困了</span></label><label class="pk mood"><input type="radio" name="mood" value="兴奋" data-c="#F59A4A"><span class="face" style="--fc:#F59A4A" aria-hidden="true"><i></i></span><span>兴奋</span></label><label class="pk mood"><input type="radio" name="mood" value="想安静" data-c="#D9CBB8"><span class="face" style="--fc:#D9CBB8" aria-hidden="true"><i></i></span><span>想安静</span></label></div></fieldset>
+  <fieldset><legend>正在做什么 <span data-sel="doing">已选 · 休息充电</span></legend><div class="pk-grid g4"><label class="pk"><input type="radio" name="doing" value="学习"><span>学习</span></label><label class="pk"><input type="radio" name="doing" value="工作"><span>工作</span></label><label class="pk"><input type="radio" name="doing" value="玩游戏"><span>玩游戏</span></label><label class="pk"><input type="radio" name="doing" value="吃饭"><span>吃饭</span></label><label class="pk"><input type="radio" name="doing" value="睡觉"><span>睡觉</span></label><label class="pk"><input type="radio" name="doing" value="通勤"><span>通勤</span></label><label class="pk"><input type="radio" name="doing" value="散步"><span>散步</span></label><label class="pk"><input type="radio" name="doing" value="看电影"><span>看电影</span></label><label class="pk"><input type="radio" name="doing" value="听歌"><span>听歌</span></label><label class="pk"><input type="radio" name="doing" value="发呆"><span>发呆</span></label><label class="pk"><input type="radio" name="doing" value="和朋友一起"><span>和朋友一起</span></label><label class="pk"><input type="radio" name="doing" value="休息充电" checked><span>休息充电</span></label></div></fieldset>
+  <fieldset><legend>联系偏好 <span data-sel="pref">已选 · 只想被看见</span></legend><div class="pk-grid g2"><label class="pk pref"><input type="radio" name="pref" value="可以联系" data-c="#7CC3A6"><svg class="hrt" viewBox="0 0 7 6" shape-rendering="crispEdges" aria-hidden="true"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z" fill="#7CC3A6" stroke="#29231F" stroke-width=".35"/></svg><span>可以联系</span></label><label class="pk pref"><input type="radio" name="pref" value="晚点回复" data-c="#F5C26B"><svg class="hrt" viewBox="0 0 7 6" shape-rendering="crispEdges" aria-hidden="true"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z" fill="#F5C26B" stroke="#29231F" stroke-width=".35"/></svg><span>晚点回复</span></label><label class="pk pref"><input type="radio" name="pref" value="需要一点空间" data-c="#E8654F"><svg class="hrt" viewBox="0 0 7 6" shape-rendering="crispEdges" aria-hidden="true"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z" fill="#E8654F" stroke="#29231F" stroke-width=".35"/></svg><span>需要一点空间</span></label><label class="pk pref"><input type="radio" name="pref" value="只想被看见" data-c="#F4F1EC" checked><svg class="hrt" viewBox="0 0 7 6" shape-rendering="crispEdges" aria-hidden="true"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z" fill="#F4F1EC" stroke="#29231F" stroke-width=".35"/></svg><span>只想被看见</span></label></div></fieldset>
+</div><div class="ui-phone picto-ui home" aria-label="伴侣首页预览：随左侧选择实时更新">
+  <div class="hm-top"><div><b>小满 的片刻</b><span>当前角色：阿澈 · 本地演示</span></div><span class="sw">切换角色</span></div>
+  <div class="dev">
+    <div class="dev-h"><span><i></i>小满 · 本地状态</span><span class="ago"><svg class="hrt" viewBox="0 0 7 6" shape-rendering="crispEdges" aria-hidden="true"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z" fill="#E8654F" stroke="#29231F" stroke-width=".35"/></svg>刚刚</span></div>
+    <div class="scr" data-scr>
+      <span class="badge b1">表情 <b data-o="mood">有点累</b></span><span class="badge b2">场景 <b data-o="doing">休息充电</b></span>
+      <svg class="cat" viewBox="0 0 16 15" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="2" y="0" width="1" height="1" fill="#A5643A"/><rect x="3" y="0" width="1" height="1" fill="#F2A0A8"/><rect x="12" y="0" width="1" height="1" fill="#F2A0A8"/><rect x="13" y="0" width="1" height="1" fill="#A5643A"/><rect x="2" y="1" width="1" height="1" fill="#A5643A"/><rect x="3" y="1" width="1" height="1" fill="#A5643A"/><rect x="4" y="1" width="1" height="1" fill="#A5643A"/><rect x="11" y="1" width="1" height="1" fill="#A5643A"/><rect x="12" y="1" width="1" height="1" fill="#A5643A"/><rect x="13" y="1" width="1" height="1" fill="#A5643A"/><rect x="2" y="2" width="1" height="1" fill="#C8814A"/><rect x="3" y="2" width="1" height="1" fill="#C8814A"/><rect x="4" y="2" width="1" height="1" fill="#C8814A"/><rect x="5" y="2" width="1" height="1" fill="#C8814A"/><rect x="6" y="2" width="1" height="1" fill="#C8814A"/><rect x="7" y="2" width="1" height="1" fill="#C8814A"/><rect x="8" y="2" width="1" height="1" fill="#C8814A"/><rect x="9" y="2" width="1" height="1" fill="#C8814A"/><rect x="10" y="2" width="1" height="1" fill="#C8814A"/><rect x="11" y="2" width="1" height="1" fill="#C8814A"/><rect x="12" y="2" width="1" height="1" fill="#C8814A"/><rect x="13" y="2" width="1" height="1" fill="#C8814A"/><rect x="2" y="3" width="1" height="1" fill="#C8814A"/><rect x="3" y="3" width="1" height="1" fill="#C8814A"/><rect x="4" y="3" width="1" height="1" fill="#C8814A"/><rect x="5" y="3" width="1" height="1" fill="#8A5530"/><rect x="6" y="3" width="1" height="1" fill="#C8814A"/><rect x="7" y="3" width="1" height="1" fill="#C8814A"/><rect x="8" y="3" width="1" height="1" fill="#C8814A"/><rect x="9" y="3" width="1" height="1" fill="#C8814A"/><rect x="10" y="3" width="1" height="1" fill="#8A5530"/><rect x="11" y="3" width="1" height="1" fill="#C8814A"/><rect x="12" y="3" width="1" height="1" fill="#C8814A"/><rect x="13" y="3" width="1" height="1" fill="#C8814A"/><rect x="2" y="4" width="1" height="1" fill="#C8814A"/><rect x="3" y="4" width="1" height="1" fill="#C8814A"/><rect x="4" y="4" width="1" height="1" fill="#C8814A"/><rect x="5" y="4" width="1" height="1" fill="#C8814A"/><rect x="6" y="4" width="1" height="1" fill="#C8814A"/><rect x="7" y="4" width="1" height="1" fill="#C8814A"/><rect x="8" y="4" width="1" height="1" fill="#C8814A"/><rect x="9" y="4" width="1" height="1" fill="#C8814A"/><rect x="10" y="4" width="1" height="1" fill="#C8814A"/><rect x="11" y="4" width="1" height="1" fill="#C8814A"/><rect x="12" y="4" width="1" height="1" fill="#C8814A"/><rect x="13" y="4" width="1" height="1" fill="#C8814A"/><rect x="2" y="5" width="1" height="1" fill="#C8814A"/><rect x="3" y="5" width="1" height="1" fill="#C8814A"/><rect x="4" y="5" width="1" height="1" fill="#211A16"/><rect x="5" y="5" width="1" height="1" fill="#211A16"/><rect x="6" y="5" width="1" height="1" fill="#C8814A"/><rect x="7" y="5" width="1" height="1" fill="#C8814A"/><rect x="8" y="5" width="1" height="1" fill="#C8814A"/><rect x="9" y="5" width="1" height="1" fill="#C8814A"/><rect x="10" y="5" width="1" height="1" fill="#211A16"/><rect x="11" y="5" width="1" height="1" fill="#211A16"/><rect x="12" y="5" width="1" height="1" fill="#C8814A"/><rect x="13" y="5" width="1" height="1" fill="#C8814A"/><rect x="2" y="6" width="1" height="1" fill="#C8814A"/><rect x="3" y="6" width="1" height="1" fill="#C8814A"/><rect x="4" y="6" width="1" height="1" fill="#211A16"/><rect x="5" y="6" width="1" height="1" fill="#FFFFFF"/><rect x="6" y="6" width="1" height="1" fill="#C8814A"/><rect x="7" y="6" width="1" height="1" fill="#C8814A"/><rect x="8" y="6" width="1" height="1" fill="#C8814A"/><rect x="9" y="6" width="1" height="1" fill="#C8814A"/><rect x="10" y="6" width="1" height="1" fill="#211A16"/><rect x="11" y="6" width="1" height="1" fill="#FFFFFF"/><rect x="12" y="6" width="1" height="1" fill="#C8814A"/><rect x="13" y="6" width="1" height="1" fill="#C8814A"/><rect x="2" y="7" width="1" height="1" fill="#C8814A"/><rect x="3" y="7" width="1" height="1" fill="#C8814A"/><rect x="4" y="7" width="1" height="1" fill="#C8814A"/><rect x="5" y="7" width="1" height="1" fill="#C8814A"/><rect x="6" y="7" width="1" height="1" fill="#C8814A"/><rect x="7" y="7" width="1" height="1" fill="#E7848E"/><rect x="8" y="7" width="1" height="1" fill="#E7848E"/><rect x="9" y="7" width="1" height="1" fill="#C8814A"/><rect x="10" y="7" width="1" height="1" fill="#C8814A"/><rect x="11" y="7" width="1" height="1" fill="#C8814A"/><rect x="12" y="7" width="1" height="1" fill="#C8814A"/><rect x="13" y="7" width="1" height="1" fill="#C8814A"/><rect x="0" y="8" width="1" height="1" fill="#8A5530"/><rect x="1" y="8" width="1" height="1" fill="#8A5530"/><rect x="2" y="8" width="1" height="1" fill="#E8646E"/><rect x="3" y="8" width="1" height="1" fill="#E8646E"/><rect x="4" y="8" width="1" height="1" fill="#E8646E"/><rect x="5" y="8" width="1" height="1" fill="#E8646E"/><rect x="6" y="8" width="1" height="1" fill="#E8646E"/><rect x="7" y="8" width="1" height="1" fill="#E8646E"/><rect x="8" y="8" width="1" height="1" fill="#E8646E"/><rect x="9" y="8" width="1" height="1" fill="#E8646E"/><rect x="10" y="8" width="1" height="1" fill="#E8646E"/><rect x="11" y="8" width="1" height="1" fill="#E8646E"/><rect x="12" y="8" width="1" height="1" fill="#E8646E"/><rect x="13" y="8" width="1" height="1" fill="#E8646E"/><rect x="14" y="8" width="1" height="1" fill="#8A5530"/><rect x="15" y="8" width="1" height="1" fill="#8A5530"/><rect x="2" y="9" width="1" height="1" fill="#C8814A"/><rect x="3" y="9" width="1" height="1" fill="#E8646E"/><rect x="4" y="9" width="1" height="1" fill="#E8646E"/><rect x="5" y="9" width="1" height="1" fill="#E8646E"/><rect x="6" y="9" width="1" height="1" fill="#E8646E"/><rect x="7" y="9" width="1" height="1" fill="#E8646E"/><rect x="8" y="9" width="1" height="1" fill="#E8646E"/><rect x="9" y="9" width="1" height="1" fill="#E8646E"/><rect x="10" y="9" width="1" height="1" fill="#E8646E"/><rect x="11" y="9" width="1" height="1" fill="#E8646E"/><rect x="12" y="9" width="1" height="1" fill="#E8646E"/><rect x="13" y="9" width="1" height="1" fill="#C8814A"/><rect x="2" y="10" width="1" height="1" fill="#C8814A"/><rect x="3" y="10" width="1" height="1" fill="#C8814A"/><rect x="4" y="10" width="1" height="1" fill="#C8814A"/><rect x="5" y="10" width="1" height="1" fill="#F1C79C"/><rect x="6" y="10" width="1" height="1" fill="#F1C79C"/><rect x="7" y="10" width="1" height="1" fill="#F1C79C"/><rect x="8" y="10" width="1" height="1" fill="#F1C79C"/><rect x="9" y="10" width="1" height="1" fill="#F1C79C"/><rect x="10" y="10" width="1" height="1" fill="#F1C79C"/><rect x="11" y="10" width="1" height="1" fill="#F1C79C"/><rect x="12" y="10" width="1" height="1" fill="#C8814A"/><rect x="13" y="10" width="1" height="1" fill="#C8814A"/><rect x="15" y="10" width="1" height="1" fill="#A5643A"/><rect x="2" y="11" width="1" height="1" fill="#C8814A"/><rect x="3" y="11" width="1" height="1" fill="#C8814A"/><rect x="4" y="11" width="1" height="1" fill="#F1C79C"/><rect x="5" y="11" width="1" height="1" fill="#F1C79C"/><rect x="6" y="11" width="1" height="1" fill="#F1C79C"/><rect x="7" y="11" width="1" height="1" fill="#F1C79C"/><rect x="8" y="11" width="1" height="1" fill="#F1C79C"/><rect x="9" y="11" width="1" height="1" fill="#F1C79C"/><rect x="10" y="11" width="1" height="1" fill="#F1C79C"/><rect x="11" y="11" width="1" height="1" fill="#C8814A"/><rect x="12" y="11" width="1" height="1" fill="#C8814A"/><rect x="13" y="11" width="1" height="1" fill="#C8814A"/><rect x="14" y="11" width="1" height="1" fill="#A5643A"/><rect x="2" y="12" width="1" height="1" fill="#C8814A"/><rect x="3" y="12" width="1" height="1" fill="#C8814A"/><rect x="4" y="12" width="1" height="1" fill="#F1C79C"/><rect x="5" y="12" width="1" height="1" fill="#F1C79C"/><rect x="6" y="12" width="1" height="1" fill="#F1C79C"/><rect x="7" y="12" width="1" height="1" fill="#F1C79C"/><rect x="8" y="12" width="1" height="1" fill="#F1C79C"/><rect x="9" y="12" width="1" height="1" fill="#F1C79C"/><rect x="10" y="12" width="1" height="1" fill="#F1C79C"/><rect x="11" y="12" width="1" height="1" fill="#C8814A"/><rect x="12" y="12" width="1" height="1" fill="#C8814A"/><rect x="13" y="12" width="1" height="1" fill="#C8814A"/><rect x="14" y="12" width="1" height="1" fill="#A5643A"/><rect x="2" y="13" width="1" height="1" fill="#C8814A"/><rect x="3" y="13" width="1" height="1" fill="#C8814A"/><rect x="4" y="13" width="1" height="1" fill="#C8814A"/><rect x="5" y="13" width="1" height="1" fill="#C8814A"/><rect x="6" y="13" width="1" height="1" fill="#C8814A"/><rect x="7" y="13" width="1" height="1" fill="#C8814A"/><rect x="8" y="13" width="1" height="1" fill="#C8814A"/><rect x="9" y="13" width="1" height="1" fill="#C8814A"/><rect x="10" y="13" width="1" height="1" fill="#C8814A"/><rect x="11" y="13" width="1" height="1" fill="#C8814A"/><rect x="12" y="13" width="1" height="1" fill="#C8814A"/><rect x="13" y="13" width="1" height="1" fill="#C8814A"/><rect x="2" y="14" width="1" height="1" fill="#7A4A2A"/><rect x="3" y="14" width="1" height="1" fill="#7A4A2A"/><rect x="12" y="14" width="1" height="1" fill="#7A4A2A"/><rect x="13" y="14" width="1" height="1" fill="#7A4A2A"/></svg>
+      <p class="bub">「回家啦，晚霞很好看」</p>
+    </div>
+  </div>
+  <div class="st-card" aria-live="polite"><p class="sent" data-o="sent">小满现在有点累，正在休息充电。</p><p class="pl"><span data-o="heart"><svg class="hrt" viewBox="0 0 7 6" shape-rendering="crispEdges" aria-hidden="true"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z" fill="#F4F1EC" stroke="#29231F" stroke-width=".35"/></svg></span><span data-o="pline">看见就好，不必开启聊天。</span></p><p class="upd">更新于 刚刚</p></div>
+  <div class="mo"><span class="ph" aria-hidden="true"></span><div><b>下班路上的晚霞</b><span>刚刚</span></div></div>
+  <nav class="tb" aria-hidden="true"><span class="on">首页</span><span>设置状态</span><span>拍一片刻</span><span>留一句</span><span>片刻墙</span></nav>
+</div></div>
+      <figcaption><span class="fn px">Fig. 01</span><b>设置状态 → 伴侣首页</b>按原型界面重建，选项与原型一致。状态由本人选择，系统只组合已知输入，不推断情绪。</figcaption></figure>
+
+    <div class="feat gap-top">
+      <figure class="fig rv"><div class="ui-card picto-ui note-card" data-note>
+  <h4>留一句</h4>
+  <label class="nt"><span class="sr">短句内容</span><input type="text" maxlength="30" value="晚点找你，给你看今天的晚霞" data-note-in><span class="cnt px" data-note-cnt>13/30</span></label>
+  <fieldset><legend>首页显示时长</legend><div class="pk-grid g4"><label class="pk"><input type="radio" name="dur" value="30 分钟"><span>30 分钟</span></label><label class="pk"><input type="radio" name="dur" value="1 小时"><span>1 小时</span></label><label class="pk"><input type="radio" name="dur" value="3 小时" checked><span>3 小时</span></label><label class="pk"><input type="radio" name="dur" value="不自动消失"><span>不自动消失</span></label></div></fieldset>
+  <ol class="life"><li><b>现在</b><span>留在首页 · <span data-note-dur>3 小时</span></span></li><li><b>到期</b><span>退出首页，不把关心变成长期提醒</span></li><li><b>之后</b><span>和照片一起，按时间进入片刻墙</span></li></ol>
+</div><figcaption><span class="fn px">Fig. 02</span><b>留一句</b>30 字以内；时长只控制首页显示，到期后留在片刻墙。</figcaption></figure>
+      <div class="rv d1">
+        <p class="eyebrow px">Flow · 六步双角色交接</p>
+        <h3 class="h-sm">从表达，到看见，<br>再到留存。</h3>
+        <ol class="steps">
+          <li><div><b>表达当下</b><span>心情、活动与联系偏好。</span></div></li>
+          <li><div><b>状态代理</b><span>像素姿态与状态句同步更新。</span></div></li>
+          <li><div><b>切换视角</b><span>同一设备模拟两端。</span></div></li>
+          <li><div><b>看见对方</b><span>姿态、状态句与边界。</span></div></li>
+          <li><div><b>轻量回应</b><span>短句时长可选。</span></div></li>
+          <li><div><b>留下片刻</b><span>照片与短句进入片刻墙；相机不可用时改用本地图片，流程不中断。</span></div></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="refs gap-top rv">
+      <p class="eyebrow px">Original screens · 原型截图</p>
+      <div class="refs-row">
+        <figure class="fig"><div class="phone"><picture><source srcset="../assets/img/picto-polaroid.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-polaroid.jpg" alt="Picto 原型截图：拍一片刻" width="760" height="1634" loading="lazy" decoding="async"></picture></div><figcaption><span class="fn px">Fig. 03</span><b>拍一片刻</b></figcaption></figure>
+        <figure class="fig"><div class="phone"><picture><source srcset="../assets/img/picto-wall.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-wall.jpg" alt="Picto 原型截图：片刻墙" width="760" height="1634" loading="lazy" decoding="async"></picture></div><figcaption><span class="fn px">Fig. 04</span><b>片刻墙</b>短句离开首页，留在这里。</figcaption></figure>
+      </div>
     </div>
   </div>
 </div></section>
 
 <section class="block" id="iterate" aria-labelledby="iterate-h"><div class="wrap split">
-  <div class="lab rv"><span class="no px">05 · Iteration</span><h2 id="iterate-h">迭代</h2></div>
+  <div class="lab rv"><span class="no px">05 · Outcome</span><h2 id="iterate-h">迭代与结果</h2></div>
   <div class="body">
     <h3 class="rv">四次关键迭代，让作品更诚实。</h3>
-    <div class="two">
-      <div class="ba">
-        <figure class="fig rv"><span class="tag">Before</span><div class="sheet"><picture><source srcset="../assets/img/picto-before.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-before.jpg" alt="Picto 早期首页" width="584" height="890" loading="lazy" decoding="async"></picture></div></figure>
-        <figure class="fig rv d1"><span class="tag">After</span><div class="sheet"><picture><source srcset="../assets/img/picto-after.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-after.jpg" alt="Picto 当前首页" width="584" height="890" loading="lazy" decoding="async"></picture></div></figure>
+    <div class="iter">
+      <div class="it rv"><span class="px">7/31 初版</span><span class="u old">ONLINE · 100%</span><span class="ar" aria-hidden="true">→</span><span class="u new">刚刚更新</span><p>不再暗示没有实现的在线与电量。</p></div>
+      <div class="it rv d1"><span class="px">7/31 初版</span><span class="u old">打扰状态</span><span class="ar" aria-hidden="true">→</span><span class="u new">四档联系偏好</span><p>两列排布，保存按钮不再遮挡选项。</p></div>
+      <div class="it rv d2"><span class="px">7/31 初版</span><span class="u old">一直显示</span><span class="ar" aria-hidden="true">→</span><span class="u new">不自动消失</span><p>明确时长只控制首页显示。</p></div>
+    </div>
+    <div class="two gap-sm">
+      <div class="ba keep2">
+        <figure class="fig rv"><span class="tag">Before · 扁平方脸参考</span><div class="stage tight"><picture><source srcset="../assets/img/picto-before.webp" type="image/webp"><img class="zoom pixel" src="../assets/img/picto-before.jpg" alt="早期角色参考：扁平方脸的像素猫与像素狗" width="584" height="890" loading="lazy" decoding="async"></picture></div></figure>
+        <figure class="fig rv d1"><span class="tag">After · 程序像素角色</span><div class="stage tight"><picture><source srcset="../assets/img/picto-after.webp" type="image/webp"><img class="zoom pixel" src="../assets/img/picto-after.jpg" alt="当前角色：程序绘制的像素角色，用于应用、头像与封面" width="584" height="890" loading="lazy" decoding="async"></picture></div></figure>
       </div>
       <ol class="steps rv">
         <li><div><b>角色</b><span>程序像素角色成为唯一基准，应用、头像与封面共用同一套造型。</span></div></li>
@@ -123,14 +186,35 @@
         <li><div><b>展示</b><span>冗长的过程说明，换成真实界面和可交互的案例页。</span></div></li>
       </ol>
     </div>
+    <p class="sub-h rv gap-top">已完成的工程验收</p>
+    <div class="mcards picto"><div class="mc rv d0"><b data-count>21</b><span>项逻辑测试</span></div><div class="mc rv d1"><b data-count>23</b><span>项浏览器主流程断言</span></div><div class="mc rv d2"><b data-count>44</b><span>项案例页断言</span></div><div class="mc rv d3"><b data-count>3</b><span>种手机宽度</span></div></div>
+    <p class="note rv">工程验收说明原型能稳定运行，不等于用户验证；真实使用效果见下一步的日记研究计划。</p>
   </div>
 </div></section>
 
 <section class="block theme-picto" id="next-step" aria-labelledby="next-step-h"><div class="wrap split">
-  <div class="lab rv"><span class="no px">06 · Next</span><h2 id="next-step-h">下一步</h2></div>
+  <div class="lab rv"><span class="no px">06 · Reflection</span><h2 id="next-step-h">反思</h2></div>
   <div class="body">
     <p class="quote rv">让亲密关系里的“此刻”，先被看见。</p>
-    <p class="aside rv gap-sm">下一步计划用一周日记研究验证三个设计假设，并回应低打扰本身的代价：状态不能完全代替主动表达，所以 Picto 保留了短句。</p>
+    <p class="sub-h rv gap-sm">低打扰也有代价：三个风险要提前回应</p>
+    <div class="cards" style="--c:3">
+      <div class="card rv"><span class="n px">Risk 01</span><h4>状态替代了聊天</h4><p>看到“一切如常”，就不再主动说话。<b>→ 状态只是开场，首页始终保留“留一句”的入口。</b></p></div>
+      <div class="card rv d1"><span class="n px">Risk 02</span><h4>在场变成监视</h4><p>持续共享位置、步数，会让一方觉得被盯着。<b>→ 只显示本人主动选择的状态，不采集定位、步数或在线时间。</b></p></div>
+      <div class="card rv d2"><span class="n px">Risk 03</span><h4>又多一个要看的 App</h4><p>功能一多，它就成了另一个消息箱。<b>→ 只做两个人、三件事：状态、短句、片刻。</b></p></div>
+    </div>
+    <p class="note rv">应对为当前设计取舍，尚待真实用户验证。</p>
+    <p class="sub-h rv gap-sm">下一步：用一周日记研究验证三个假设</p>
+    <p class="aside rv">招募 3–5 对异地或忙碌的情侣，使用原型 7 天，前后各做一次半结构化访谈。</p>
+    <div class="table-scroll rv" tabindex="0" role="region" aria-label="验证计划">
+    <table class="compare">
+      <thead><tr><th scope="col">假设</th><th scope="col">方法</th><th scope="col">观测指标</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">H1 低打扰表达能降低回复压力</th><td data-label="方法">每日日记 + 前后访谈</td><td data-label="指标">回复压力自评（1–7）</td></tr>
+        <tr><th scope="row">H2 联系偏好比在线状态更有用</th><td data-label="方法">日记 + 使用记录</td><td data-label="指标">偏好设置与查看频次</td></tr>
+        <tr><th scope="row">H3 能区分首页时效与片刻墙</th><td data-label="方法">可用性任务</td><td data-label="指标">任务完成率与误解次数</td></tr>
+      </tbody>
+    </table>
+    </div>
   </div>
 </div></section>
 
