@@ -27,16 +27,13 @@ def short(name):
     return name.split(' ')[0][:4] + '…'
 
 
-def quadrant(static=False):
+def quadrant():
     bubbles = []
     for k, (n, i, e, m, fixed) in enumerate(TASKS):
         q = quad_of(i, e)
         size = 44 + round(i * 0.36)
         style = f'left:{e}%;bottom:{i}%;--s:{size}px'
-        if static:
-            bubbles.append(f'<span class="bb q-{q}" style="{style}">{short(n)}</span>')
-        else:
-            bubbles.append(f'<button type="button" class="bb q-{q}" style="{style}" data-task="{k}" aria-pressed="{"true" if k == 4 else "false"}" aria-label="{n}：重要度 {i}，精力 {e}">{short(n)}</button>')
+        bubbles.append(f'<button type="button" class="bb q-{q}" style="{style}" data-task="{k}" aria-pressed="{"true" if k == 4 else "false"}" aria-label="{n}：重要度 {i}，精力 {e}">{short(n)}</button>')
     labels = ''.join(f'<span class="ql ql-{c}"><small>{s}</small>{t}</span>' for c, t, s in QUADS)
     return f'<div class="qd"><div class="qd-in">{labels}<span class="ax ax-x" aria-hidden="true">低精力 → 高精力</span><span class="ax ax-y" aria-hidden="true">低重要度 → 高重要度</span>{"".join(bubbles)}</div></div>'
 
@@ -83,30 +80,26 @@ def timeline_ui():
 </div>'''
 
 
-def plan_phone(static=False):
+def plan_phone():
     groups = []
     for c, t, s in QUADS:
         items = [x for x in TASKS if quad_of(x[1], x[2]) == c]
         li = ''.join(f'<li><b>{n}</b><span>重要 {i} · 精力 {e}</span></li>' for n, i, e, m, f in items)
         groups.append(f'<div class="pg-g q-{c}"><p><i></i>{t}<span>{s} · {len(items)} 项</span></p><ul>{li}</ul></div>')
     tasks = ''.join(f'<li class="q-{quad_of(i, e)}"><span class="ck" aria-hidden="true"></span><div><b><i></i>{n}</b><span class="tg"><em>重要度: {i}</em><em>精力: {e}</em></span></div></li>' for n, i, e, m, f in TASKS[:4])
-    if static:
-        tabs = '<div class="ph-tabs"><span>任务清单</span><span class="on">规划视图</span></div>'
-    else:
-        tabs = ('<div class="ph-tabs" role="tablist" aria-label="手机端视图">'
-                '<button type="button" role="tab" id="ph-t0" aria-controls="ph-p0" aria-selected="false" tabindex="-1">任务清单</button>'
-                '<button type="button" role="tab" id="ph-t1" aria-controls="ph-p1" aria-selected="true" tabindex="0">规划视图</button></div>')
-    hid = ' hidden'
-    return f'''<div class="ui-phone foc-ui plan"{' aria-hidden="true"' if static else ' data-tabs'}>
+    tabs = ('<div class="ph-tabs" role="tablist" aria-label="手机端视图">'
+            '<button type="button" role="tab" id="ph-t0" aria-controls="ph-p0" aria-selected="false" tabindex="-1">任务清单</button>'
+            '<button type="button" role="tab" id="ph-t1" aria-controls="ph-p1" aria-selected="true" tabindex="0">规划视图</button></div>')
+    return f'''<div class="ui-phone foc-ui plan" data-tabs>
   {app_bar('<span class="today"><small>TODAY</small>24</span>')}
   {tabs}
-  <div class="ph-p"{' role="tabpanel" id="ph-p0" aria-labelledby="ph-t0" tabindex="0"' if not static else ''}{hid}>
+  <div class="ph-p" role="tabpanel" id="ph-p0" aria-labelledby="ph-t0" tabindex="0" hidden>
     <h5>今天要完成什么？</h5><p class="hint">先写下一件事，再慢慢排好今天。</p>
     <p class="avail">可用时间 <span>8.0h 可用</span></p>
     <p class="in">写下任务，也可以直接带上时间，例如：整理房间45分钟 / 下午3点到4点开会<span>添加任务</span></p>
     <p class="lab">今日任务</p><ul class="tl-tasks">{tasks}</ul>
   </div>
-  <div class="ph-p"{' role="tabpanel" id="ph-p1" aria-labelledby="ph-t1" tabindex="0"' if not static else ''}>{''.join(groups)}</div>
+  <div class="ph-p" role="tabpanel" id="ph-p1" aria-labelledby="ph-t1" tabindex="0">{''.join(groups)}</div>
   <nav class="tb" aria-hidden="true"><span class="on">今日</span><span>未来</span><span>设置</span></nav>
 </div>'''
 
@@ -122,6 +115,126 @@ def rules():
     <ul class="kw"><li><b>专注</b>重要×1.2 − 精力×0.15，从高到低<small>无间隔</small></li><li><b>均衡</b>重要 ÷ 精力，从高到低<small>间隔 15 分钟</small></li><li><b>轻松</b>精力从低到高<small>间隔 15 分钟</small></li></ul>
     <p>先锁定固定时间与午休，其余任务依次填入空档；超过下班时间即标为超时。</p></div>
 </div>'''
+
+# ---------------------------------------------------------------- hero: scattered tasks → quadrant → a day that switches rhythm
+# Every word comes from the recreations below: the same 8 tasks, quadrant names, detail tip and rhythm copy.
+# The two day plans are computed with the same local rules as the Fig. 02 timeline (main.js), not drawn by hand.
+HERO_PICK = 4  # 准备周五汇报 90分钟 — the task followed through all three steps
+# (task index, x offset px, y offset px, rotation deg) for the unsorted cloud
+CLOUD = [(3, 0, 2, -2), (1, 54, -2, 2), (0, 14, 4, 1), (5, 44, -2, -1), (2, 4, 6, 2), (7, 60, -4, -2), (6, 22, 2, 1)]
+# two-character fragments taken from each task name, for the small bubbles
+# small hero-only nudges (% of the quadrant) so bubbles at near-identical scores don't stack; each stays in its quadrant
+NUDGE = [(2, -2), (-4, 4), (0, 0), (-6, 1), (6, -9), (6, 12), (10, -4), (-3, 4)]
+BUB = ['交互<br>设计', '回复<br>导师', '阅读<br>论文', '作品集<br>排版', '周五<br>汇报', '灵感<br>素材', '课堂<br>笔记', '旧版<br>文件']
+OFF_MIN = 18 * 60
+
+
+def fmt(m):
+    return f'{m // 60:02d}:{m % 60:02d}'
+
+
+def day_plan(rhythm):
+    """Port of main.js plan(): lock fixed time + lunch, then fill gaps in rhythm order."""
+    order = {'focus': lambda t: -(t[1] * 1.2 - t[2] * 0.15), 'bal': lambda t: -(t[1] / t[2])}[rhythm]
+    gap = 0 if rhythm == 'focus' else 15
+    blocks = [{'k': k, 's': int(f[:2]) * 60, 'e': int(f[:2]) * 60 + m} for k, (n, i, e, m, f) in enumerate(TASKS) if f]
+    blocks.append({'k': 'lunch', 's': 12 * 60, 'e': 13 * 60})
+    out, cur = [], 9 * 60
+    for k, t in sorted([(k, t) for k, t in enumerate(TASKS) if not t[4]], key=lambda kt: order(kt[1])):
+        moved = True
+        while moved:
+            moved = False
+            for b in blocks:
+                if cur < b['e'] and cur + t[3] > b['s']:
+                    cur, moved = b['e'] + gap, True
+        out.append({'k': k, 's': cur, 'e': cur + t[3]})
+        cur += t[3] + gap
+    return sorted(blocks + out, key=lambda x: x['s'])
+
+
+def day_layout(rhythm):
+    """y (px) per item: height grows with duration, free minutes between items become visible space."""
+    y, prev, pos, line = 0, None, {}, None
+    for it in day_plan(rhythm):
+        g = 0
+        if prev is not None:
+            g = 5 + min(it['s'] - prev, 45) * 0.6
+            y += g
+        if line is None and it['e'] > OFF_MIN:
+            line = y - g / 2
+            y += 18  # a band under the 18:00 line for its label
+        h = 22 + (it['e'] - it['s']) / 6
+        pos[it['k']] = (round(y), round(h), it['s'], it['e'])
+        y += h
+        prev = it['e']
+    return pos, round(y), round(line if line is not None else y + 6)
+
+
+def hero():
+    cloud = ''.join(
+        f'<span class="fo-chip" style="--x:{x}px;--y:{y}px;--r:{r}deg;--d:{j * -0.9:.1f}s">{TASKS[k][0]}</span>'
+        for j, (k, x, y, r) in enumerate(CLOUD))
+    pick = TASKS[HERO_PICK]
+    qname = dict((c, t) for c, t, _ in QUADS)
+
+    bubbles = []
+    for k, (n, i, e, m, f) in enumerate(TASKS):
+        on = ' on' if k == HERO_PICK else ''
+        dx, dy = NUDGE[k]
+        bubbles.append(f'<span class="fo-b q-{quad_of(i, e)}{on}" style="left:{9 + e * .82 + dx:.1f}%;bottom:{9 + i * .82 + dy:.1f}%;--s:{30 + round(i * .2)}px;--d:{k * -0.6:.1f}s">{BUB[k]}</span>')
+    qlabels = ''.join(f'<span class="fo-ql ql-{c}">{t}<small>{sub}</small></span>' for c, t, sub in QUADS)
+
+    a, ha, la = day_layout('focus')
+    b, hb, lb = day_layout('bal')
+    over_b = sum(1 for k, v in b.items() if k != 'lunch' and v[3] > OFF_MIN)
+    rows = []
+    for k in [x['k'] for x in day_plan('focus')]:
+        ya, h, sa, ea = a[k]
+        yb, _, sb, eb = b[k]
+        if k == 'lunch':
+            cls, name, tag_a = 'lunch', '午休', '锁定'
+        else:
+            n, i, e, m, f = TASKS[k]
+            cls, name, tag_a = 'q-' + quad_of(i, e), n, ('锁定' if f else qname[quad_of(i, e)])
+        ov = eb > OFF_MIN and k != 'lunch'
+        cls += (' on' if k == HERO_PICK else '') + (' ov' if ov else '')
+        tag = f'<span class="fo-tg fo-x"><span class="a">{tag_a}</span><span class="b">超时</span></span>' if ov else f'<span class="fo-tg">{tag_a}</span>'
+        rows.append(
+            f'<li class="fo-blk {cls}" style="--ya:{ya}px;--yb:{yb}px;--h:{h}px">'
+            f'<time class="fo-x"><span class="a">{fmt(sa)}–{fmt(ea)}</span><span class="b">{fmt(sb)}–{fmt(eb)}</span></time>'
+            f'<span class="fo-bar"><b>{name}</b>{tag}</span></li>')
+    (_, t1, s1, d1), (_, t2, s2, d2) = RHYTHMS[0], RHYTHMS[1]
+    rows_h = max(ha, hb, la + 22, lb + 22)
+
+    return f'''
+    <div class="case-visual fo-visual rv">
+      <div class="fo-stage" role="img" aria-label="Focenda 示意：零散写下的 8 项任务，按重要度与精力落进四个象限，再按所选节奏排成今天的时间轴；在“专注推进”与“均衡节奏”之间切换时，顺序与空档随之改变，超过 18:00 下班界限的任务标为超时">
+        <div class="fo-canvas foc-ui" aria-hidden="true">
+          <p class="fo-crumb"><span class="lg"></span><b>Focenda</b> / 今日</p>
+          <div class="fo-col fo-in">
+            <p class="fo-k px">00 · 写下</p>
+            <div class="fo-input"><span class="fo-hint">写下任务，也可以直接带上时间</span><span class="fo-typed">{pick[0]}<i class="fo-caret"></i></span><span class="fo-add">添加任务</span></div>
+            <div class="fo-cloud">{cloud}</div>
+          </div>
+          <svg class="fo-flow f1" viewBox="0 0 56 300" preserveAspectRatio="none"><path d="M0 60 C 30 60, 26 130, 56 130"/><path d="M0 150 C 28 150, 28 150, 56 150"/><path d="M0 240 C 30 240, 26 170, 56 170"/></svg>
+          <div class="fo-col fo-mid">
+            <p class="fo-k px">01 · 分象限</p>
+            <div class="fo-quad"><div class="fo-qin">{qlabels}<span class="fo-ax x">精力 →</span><span class="fo-ax y">重要度 →</span>{''.join(bubbles)}</div></div>
+            <div class="fo-detail"><span class="tag-s">任务详情</span><b>{pick[0]}</b><span class="fo-sc"><span class="imp">重要程度 {pick[1]}</span><span class="eng">投入程度 {pick[2]}</span></span><p>这项任务重要且需要专注，建议留出完整时间，并先拆成 2–3 个小步骤。</p></div>
+          </div>
+          <svg class="fo-flow f2" viewBox="0 0 56 300" preserveAspectRatio="none"><path d="M0 110 C 30 110, 26 70, 56 70"/><path d="M0 150 C 28 150, 28 150, 56 150"/><path d="M0 190 C 30 190, 26 230, 56 230"/></svg>
+          <div class="fo-col fo-out">
+            <p class="fo-k px">02 · 排进今天</p>
+            <div class="fo-day">
+              <div class="fo-seg"><i class="fo-thumb"></i><span class="s-a">{t1}</span><span class="s-b">{t2}</span></div>
+              <p class="fo-cap fo-x"><span class="a"><b>{s1}</b>{d1}</span><span class="b"><b>{s2}</b>{d2}</span></p>
+              <ol class="fo-rows" style="--rh:{rows_h}px">{''.join(rows)}<li class="fo-off" style="--ya:{la}px;--yb:{lb}px"><span class="fo-x"><span class="a">18:00 下班界限</span><span class="b">{over_b} 项超过 18:00 下班界限</span></span></li></ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>'''
+
 
 
 def render():
@@ -204,11 +317,6 @@ def render():
     </div>
     <p class="note rv gap-sm">下一步：个性化复盘，以及设计库调用、周报复盘两个概念模块。内测样本较小，结论有待更大样本验证。</p>'''
 
-    cover = f'''<div class="case-visual foc-cover rv" aria-hidden="true">
-      <div class="ui-frame ui-browser foc-ui"><div class="ub-bar"><span class="dots"><i></i><i></i><i></i></span>{app_bar()}</div><div class="fq cover-q"><div class="fq-main">{quadrant(static=True)}</div></div></div>
-      {plan_phone(static=True)}
-    </div>'''
-
     return head('Focenda 专序 — Leyson', 'Focenda 专序：按重要度与精力排好今天的动态日程规划。', B, PATH, 'article') + nav('work', B) + f'''
 <main id="main" class="case">
 <section class="case-hero theme-foc">
@@ -218,7 +326,7 @@ def render():
     <h1 class="rv">Flow Better.<br>Focus Smarter.</h1>
     <p class="sub rv d1">把零散任务，变成可执行的一日安排。起初是课程作业，课程结束后我继续独立打磨。</p>
     {meta([('Role', '研究 · 产品定义 · 交互与视觉'), ('Context', '课程作业 → 课后独立打磨'), ('Research', '设计师半结构化访谈<br>14 个问题'), ('Platform', 'Web + Mobile 响应式'), ('Test', '内测 10 人 · 2 天')])}
-    {cover}
+{hero()}
   </div>
 </section>
 
