@@ -5,21 +5,29 @@ PATH = 'index.html'
 MARQ = '<span><b>✦</b> SIFT <em>设计方向收敛 Agent</em> <b>✦</b> PICTO <em>异地情侣低打扰陪伴</em> <b>✦</b> FOCENDA <em>设计师动态日程</em></span>'
 
 CARDS = [
-    ('s', 'projects/sift.html', 'logo-sift.png', 'SIFT', '设计前期的 AI 方向收敛 Agent', 'sift-hero.jpg', 'Web · 已上线'),
-    ('p', 'projects/picto.html', 'logo-picto.png', 'Picto', '异地情侣的低打扰陪伴', 'picto-home.jpg', 'Mobile · 原型'),
-    ('f', 'projects/focenda.html', 'logo-focenda.png', 'Focenda', '设计师的动态日程规划', 'focenda-priority.jpg', 'Web + Mobile · 内测'),
+    ('s', 'projects/sift.html', 'logo-sift.png', 'SIFT', '设计前期的 AI 方向收敛 Agent', 'Web · 已上线',
+     '设计师拿到模糊 Brief，缺的不是图，而是判断的次序。', '4 周', '定位从“出图 AI”收敛为“判断搭档”', ['3 人小组组长', 'Agent 设计', '已上线']),
+    ('p', 'projects/picto.html', 'logo-picto.png', 'Picto', '异地情侣的低打扰陪伴', 'Mobile · 原型',
+     '即时通信把“被看见”绑成了“要回复”，异地情侣因此更累。', '0', '在线、已读等制造期待的信号', ['独立完成', '约 2 个月', '可运行原型']),
+    ('f', 'projects/focenda.html', 'logo-focenda.png', 'Focenda', '设计师的动态日程规划', 'Web + Mobile · 内测',
+     '设计师的时间被“非设计”吃掉：琐事多、信息散、难出结果。', '9/10', '内测用户使用了任务规划', ['用户访谈', '多端设计', '内测 10 人']),
 ]
 
 
 def render():
     cards = ''
-    for i, (k, href, logo, name, line, shot, tag) in enumerate(CARDS):
+    for i, (k, href, logo, name, line, tag, prob, num, numlab, chips) in enumerate(CARDS):
         d = f' d{i}' if i else ''
+        chip = ''.join(f'<span>{c}</span>' for c in chips)
         cards += f'''
       <a class="pc {k} rv{d}" href="{href}" data-tilt data-cursor="查看">
         <span class="pc-top"><img class="logo" src="assets/img/{logo}" alt=""><span class="px">{i + 1:02d} · {tag}</span></span>
-        <span class="pc-shot" aria-hidden="true"><img src="assets/img/{shot}" alt=""></span>
         <span class="pc-txt"><b>{name}</b><span>{line}</span></span>
+        <span class="pc-body">
+          <span class="pc-prob"><em class="px">Problem</em>{prob}</span>
+          <span class="pc-stat"><strong>{num}</strong><span>{numlab}</span></span>
+          <span class="pc-chips">{chip}</span>
+        </span>
         <span class="pc-go" aria-hidden="true">→</span>
       </a>'''
     return head('梁宇森 Leyson — 交互设计作品集', '梁宇森 Leyson，广州美术学院工业设计（智能交互方向）。把复杂的判断，变成清楚的一步。作品：SIFT、片刻 Picto、Focenda 专序。') + nav('home') + f'''
