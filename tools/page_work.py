@@ -17,12 +17,11 @@ def render():
         small = f'<small>{cn}</small>' if cn else ''
         rows += f'''
   <li class="pick {k} rv">
-    <a href="{href}" data-peek>
+    <a href="{href}">
       <span class="num px">{n}</span>
       <h2><span class="lg"><img src="assets/img/{LOGO[k]}" alt=""></span>{name}{small}</h2>
       <div class="desc"><b>{title}</b><span>{line}</span><ul class="tags" aria-label="项目信息">{t}</ul></div>
       <span class="enter">进入项目 <span aria-hidden="true">→</span></span>
-      <span class="peek" aria-hidden="true"><img src="assets/img/{img}" alt=""></span>
     </a>
   </li>'''
     return head('作品 — Leyson', '选择一个项目：SIFT、片刻 Picto、Focenda 专序。每个项目按 问题 → 判断 → 设计 → 结果 展开。', path='work.html') + nav('work') + f'''
