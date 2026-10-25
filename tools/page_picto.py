@@ -154,6 +154,11 @@ def lang_rows(rows):
         for a, b, c in rows) + '</div>'
 
 
+def proto_cta(where):
+    """体验原型 entry: opens the static local prototype in a new tab."""
+    return f'''<div class="proto-cta proto-picto proto-{where} rv"><a class="btn btn-proto" href="{B}prototypes/picto/" target="_blank" rel="noopener">体验原型 <span class="arr" aria-hidden="true">↗</span><span class="sr">（新标签页打开）</span></a><p class="proto-note"><span>本地原型</span> · <span>数据仅保存在你的浏览器</span> · <span>同一浏览器内切换双角色</span></p></div>'''
+
+
 def render():
     s1 = '''
     <h3 class="rv">情侣想要的是“被想起”，<br>不是“被要求回复”。</h3>
@@ -248,7 +253,8 @@ def render():
     </div>
     <p class="sub-h rv gap-top">已完成的工程验收</p>
     {metrics([('21', '项逻辑测试', '', True), ('23', '项浏览器主流程断言', '', True), ('44', '项案例页断言', '', True), ('3', '种手机宽度', '', True)], 'picto')}
-    <p class="note rv">工程验收说明原型能稳定运行，不等于用户验证；真实使用效果见下一步的日记研究计划。</p>'''
+    <p class="note rv">工程验收说明原型能稳定运行，不等于用户验证；真实使用效果见下一步的日记研究计划。</p>
+    {proto_cta('outcome')}'''
 
     s6 = '''
     <p class="quote rv">让亲密关系里的“此刻”，先被看见。</p>
@@ -281,6 +287,7 @@ def render():
     <h1 class="rv cjk">看见彼此，<br>不必一直聊天。</h1>
     <p class="sub rv d1">介于沉默与即时聊天之间的低打扰陪伴方式：先表达“我现在怎样”，再决定要不要说话。</p>
     {meta([('Role', '问题定义 · 状态机制 · 语言边界'), ('Team', '独立完成'), ('Timeline', '约 2 个月'), ('Platform', 'Mobile · 可运行原型'), ('Tools', 'AI 协作完成实现、测试与素材')])}
+    {proto_cta('hero')}
 {hero()}
   </div>
 </section>

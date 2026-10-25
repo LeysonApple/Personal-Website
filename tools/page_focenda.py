@@ -237,6 +237,11 @@ def hero():
 
 
 
+def proto_cta(where):
+    """体验原型 entry: opens the static local prototype in a new tab."""
+    return f'''<div class="proto-cta proto-foc proto-{where} rv"><a class="btn btn-proto" href="{B}prototypes/focenda/" target="_blank" rel="noopener">体验原型 <span class="arr" aria-hidden="true">↗</span><span class="sr">（新标签页打开）</span></a><p class="proto-note"><span>本地原型</span> · <span>数据仅保存在你的浏览器</span></p></div>'''
+
+
 def render():
     data = json.dumps([{'n': n, 'i': i, 'e': e, 'm': m, 'f': f} for n, i, e, m, f in TASKS], ensure_ascii=False)
 
@@ -306,7 +311,8 @@ def render():
       </tbody>
     </table>
     </div>
-    <figure class="fig rv gap-sm ref-sm"><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img class="zoom" src="{I}focenda-early.jpg" alt="早期方案 Focus Flow 界面（重绘示意）"></div><figcaption><span class="fn px">Fig. 04</span><b>早期方案 Focus Flow</b>重绘示意，作为对照参考。</figcaption></figure>'''
+    <figure class="fig rv gap-sm ref-sm"><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img class="zoom" src="{I}focenda-early.jpg" alt="早期方案 Focus Flow 界面（重绘示意）"></div><figcaption><span class="fn px">Fig. 04</span><b>早期方案 Focus Flow</b>重绘示意，作为对照参考。</figcaption></figure>
+    {proto_cta('outcome')}'''
 
     s6 = '''
     <p class="quote rv">先把“排好今天”做扎实。</p>
@@ -326,6 +332,7 @@ def render():
     <h1 class="rv">Flow Better.<br>Focus Smarter.</h1>
     <p class="sub rv d1">把零散任务，变成可执行的一日安排。起初是课程作业，课程结束后我继续独立打磨。</p>
     {meta([('Role', '研究 · 产品定义 · 交互与视觉'), ('Context', '课程作业 → 课后独立打磨'), ('Research', '设计师半结构化访谈<br>14 个问题'), ('Platform', 'Web + Mobile 响应式'), ('Test', '内测 10 人 · 2 天')])}
+    {proto_cta('hero')}
 {hero()}
   </div>
 </section>
