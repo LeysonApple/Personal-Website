@@ -51,7 +51,7 @@ def detail():
 
 
 def app_bar(title_right=''):
-    return f'<div class="fa-bar"><span class="lg" aria-hidden="true">F</span><b>Focenda</b><small>专序</small><span class="sp"></span>{title_right}</div>'
+    return f'<div class="fa-bar"><span class="lg" aria-hidden="true"><img src="{I}logo-focenda.png" alt=""></span><b>Focenda</b><small>专序</small><span class="sp"></span>{title_right}</div>'
 
 
 def quad_ui():
