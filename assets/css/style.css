@@ -914,8 +914,8 @@ button.mk::before { content: ""; position: absolute; inset: -14px; border-radius
 /* --- Focenda --- */
 .foc-ui { --u-bg: #F5F7FB; --u-ink: #172033; --u-mute: #5B6577; --u-line: #E3E7F0; --ind: #4F46E5; --q-do: #087A58; --q-focus: #4F46E5; --q-easy: #F2A93B; --q-cut: #C8323F; }
 .fa-bar { flex: 1; display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 13px; }
-.fa-bar .lg { width: 24px; height: 24px; border-radius: 7px; display: grid; place-items: center; background: linear-gradient(135deg, var(--foc-deep), var(--foc)); flex: none; overflow: hidden; }
-.fa-bar .lg img { width: 72%; height: 72%; object-fit: contain; }
+.fa-bar .lg { width: 22px; height: 22px; flex: none; background: var(--foc); -webkit-mask: url(../img/logo-focenda.png) center / contain no-repeat; mask: url(../img/logo-focenda.png) center / contain no-repeat; }
+.fa-bar .lg img { display: none; }
 .fa-bar b { font-family: var(--lat); }
 .fa-bar small { color: var(--u-mute); font-size: 11px; }
 .fa-bar .sp { flex: 1; }
