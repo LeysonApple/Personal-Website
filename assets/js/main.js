@@ -56,12 +56,54 @@
     const fmt = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', hour: '2-digit', minute: '2-digit', hour12: false });
     const tick = () => {
       const s = fmt.format(new Date()); const h = parseInt(s, 10);
-      t.textContent = s; t.dateTime = s;
+      t.innerHTML = s.replace(':', '<span class="cl">:</span>'); t.dateTime = s;
       const night = h >= 22 || h < 7;
       clock.classList.toggle('night', night);
       clock.title = night ? '广州 · 夜间' : '广州 · 白天';
     };
     tick(); setInterval(tick, 20000);
+  }
+
+  /* ---------- status card: pixel avatar + cycling rows ---------- */
+  const PXC = { o: '#29231F', y: '#F7C948', p: '#F2A0A8', w: '#FFFFFF', g: '#7CC3A6', s: '#F7C948', b: '#A5643A', r: '#F0687F', u: '#8FB3E8' };
+  const pxSvg = (rows) => `<svg viewBox="0 0 8 8" shape-rendering="crispEdges">${rows.map((row, y) => [...row].map((c, x) => c === '.' ? '' : `<rect x="${x}" y="${y}" width="1" height="1" fill="${PXC[c]}"/>`).join('')).join('')}</svg>`;
+  const ICONS = {
+    excited: ['..oooo..', '.oyyyyo.', 'oyoyyoyo', 'oyyyyyyo', 'opooooPo'.replace('P', 'p'), 'oyorroyo', '.oyyyyo.', '..oooo..'],
+    focus: ['..oooo..', '.oyyyyo.', 'ooyyyooo'.slice(0, 8), 'oyyyyyyo', 'oyyyyyyo', 'oyyooyyo', '.oyyyyo.', '..oooo..'],
+    sleepy: ['..oooo..', '.oyyyyo.', 'oyyyyyyo', 'ooyyyooo'.slice(0, 8), 'opyyyypo', 'oyyooyyo', '.oyyyyo.', '..oooo..'],
+    happy: ['..oooo..', '.oyyyyo.', 'oyoyyoyo', 'opyyyypo', 'ooyyyyoo', 'oyooooyo', '.oyyyyo.', '..oooo..'],
+    folio: ['oooooooo', 'owwwwwwo', 'owswwwwo', 'owwwwgwo', 'owwwgggo', 'owgggggo', 'owwwwwwo', 'oooooooo'],
+    proto: ['......oo', '.....oro', '....oyoo', '...oyyo.', '..oyyo..', '.oyyo...', 'owoo....', 'oo......'],
+    read: ['........', 'oooooooo', 'owwwowwo', 'oowwoowo', 'owwwowwo', 'oowwoowo', 'oooooooo', '........'],
+    coffee: ['..w.w...', '...w.w..', 'oooooo..', 'obbbboo.', 'obbbbo.o', 'obbbboo.', '.oooo...', 'oooooo..'],
+  };
+  const CYC = {
+    mood: [['有点兴奋', 'excited'], ['很专注', 'focus'], ['有点困', 'sleepy'], ['挺开心', 'happy']],
+    doing: [['打磨作品集', 'folio'], ['画交互原型', 'proto'], ['读论文', 'read'], ['续一杯咖啡', 'coffee']],
+  };
+  $$('[data-cyc]').forEach((btn) => {
+    const list = CYC[btn.dataset.cyc], ico = $('.pxi', btn), lab = $('span', btn), dt = btn.closest('dd').previousElementSibling.textContent;
+    let i = 0;
+    const show = (anim) => {
+      ico.innerHTML = pxSvg(ICONS[list[i][1]]); lab.textContent = list[i][0];
+      btn.setAttribute('aria-label', `${dt}：${list[i][0]}（点一下换一个）`);
+      if (anim && !reduce) { btn.classList.remove('pop'); void btn.offsetWidth; btn.classList.add('pop'); }
+    };
+    btn.addEventListener('click', () => { i = (i + 1) % list.length; show(true); });
+    show(false);
+  });
+  const ava = $('[data-ava]'), say = $('[data-ava-say]');
+  if (ava && say) {
+    const LINES = ['嗨，我是 Leyson', '要不要看看作品？', '实习机会欢迎来聊', '排版又改了一版'];
+    let k = 0, hideT = 0;
+    const blink = () => { ava.classList.add('blink'); setTimeout(() => ava.classList.remove('blink'), 140); };
+    ava.addEventListener('click', () => {
+      say.textContent = LINES[k]; k = (k + 1) % LINES.length;
+      say.classList.add('show'); clearTimeout(hideT); hideT = setTimeout(() => say.classList.remove('show'), 2200);
+      if (!reduce) { ava.classList.remove('hop'); void ava.offsetWidth; ava.classList.add('hop'); blink(); }
+    });
+    ava.addEventListener('animationend', () => ava.classList.remove('hop'));
+    if (!reduce) { const loop = () => { blink(); setTimeout(loop, 2800 + Math.random() * 2600); }; setTimeout(loop, 2000); }
   }
 
   /* ---------- tilt + magnetic (fine pointers only) ---------- */
@@ -199,19 +241,6 @@
   /* ==========================================================
      Case-study recreations (all keyboard-operable, reduced-motion safe)
      ========================================================== */
-
-  /* ---------- SIFT hero cover: gentle pointer parallax ---------- */
-  $$('[data-sh-hero]').forEach((st) => {
-    if (!fine || reduce) return;
-    let raf = 0;
-    st.addEventListener('pointermove', (e) => {
-      const r = st.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width * 2 - 1, y = (e.clientY - r.top) / r.height * 2 - 1;
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => { st.style.setProperty('--mx', x.toFixed(3)); st.style.setProperty('--my', y.toFixed(3)); });
-    });
-    st.addEventListener('pointerleave', () => { cancelAnimationFrame(raf); st.style.setProperty('--mx', 0); st.style.setProperty('--my', 0); });
-  });
 
   /* ---------- generic tabs: arrow keys move, Home/End jump ---------- */
   $$('[data-tabs]').forEach((box) => {

@@ -26,8 +26,8 @@ PAL = {'e': '#A5643A', 'p': '#F2A0A8', 'b': '#C8814A', 's': '#8A5530', 'k': '#21
        'n': '#E7848E', 'r': '#E8646E', 'c': '#F1C79C', 'a': '#8A5530', 't': '#A5643A', 'd': '#7A4A2A'}
 
 
-def cat_svg(cls='cat'):
-    rects = ''.join(f'<rect x="{x}" y="{y}" width="1" height="1" fill="{PAL[ch]}"/>'
+def cat_svg(cls='cat', pal=PAL):
+    rects = ''.join(f'<rect x="{x}" y="{y}" width="1" height="1" fill="{pal[ch]}"/>'
                     for y, row in enumerate(CAT) for x, ch in enumerate(row) if ch != '.')
     return f'<svg class="{cls}" viewBox="0 0 16 15" shape-rendering="crispEdges" aria-hidden="true" focusable="false">{rects}</svg>'
 
@@ -70,6 +70,41 @@ def home_phone():
   <div class="mo"><span class="ph" aria-hidden="true"></span><div><b>下班路上的晚霞</b><span>刚刚</span></div></div>
   <nav class="tb" aria-hidden="true"><span class="on">首页</span><span>设置状态</span><span>拍一片刻</span><span>留一句</span><span>片刻墙</span></nav>
 </div>'''
+
+
+# ---------------------------------------------------------------- hero: the two characters and what each one sees
+# Second character = same sprite with a cool palette. Sentences follow the demo's own rule
+# ("<名字>现在<心情>，正在<活动>。" / pref line), so nothing here is new copy.
+PAL2 = dict(PAL, e='#6F6A78', b='#A7A2AE', s='#6F6A78', a='#6F6A78', t='#6F6A78', d='#57525E', c='#EEE8DE', r='#5D8FD8', n='#E7848E')
+
+
+def hero_side(who, cls, pal, mood, mc, doing, pref, pc, line):
+    return f'''<div class="px-side {cls}">
+            <div class="px-bub"><p class="px-who"><i></i>{who} · 刚刚更新</p><p class="px-sent">{who}现在{mood}，正在{doing}。</p>
+              <p class="px-tags"><span><span class="face" style="--fc:{mc}"><i></i></span>{mood}</span><span>{doing}</span><span>{heart(pc)}{pref}</span></p>
+              <p class="px-pl">{line}</p></div>
+            <div class="px-char" style="--mc:{mc}">{cat_svg('cat', pal)}<span class="px-shadow"></span></div>
+          </div>'''
+
+
+def hero():
+    left = hero_side('小满', 'l', PAL, '有点累', '#A9C3E8', '休息充电', '只想被看见', '#F4F1EC', '看见就好，不必开启聊天。')
+    right = hero_side('阿澈', 'r', PAL2, '开心', '#F7C948', '通勤', '可以联系', '#7CC3A6', '联系偏好：可以联系')
+    return f'''
+    <div class="case-visual px-visual rv">
+      <div class="px-stage" role="img" aria-label="Picto 示意：小满与阿澈两个像素角色，各自头顶是对方能看到的状态卡（心情、正在做、联系偏好），中间是一句会自动退出首页的留言">
+        <div class="px-scene picto-ui" aria-hidden="true">
+          {left}
+          <div class="px-mid">
+            <div class="px-note"><p class="px-nk">留一句 · 首页显示 3 小时</p><p>「晚点找你，给你看今天的晚霞」</p></div>
+            <div class="px-path"><i></i><i></i><i></i>{heart('#F0687F')}<i></i><i></i><i></i></div>
+            <p class="px-flag">不显示在线 · 已读 · 送达</p>
+          </div>
+          {right}
+          <div class="px-floor"></div>
+        </div>
+      </div>
+    </div>'''
 
 
 def note_card():
@@ -209,14 +244,14 @@ def render():
 
     return head('片刻 Picto — Leyson', '片刻 Picto：介于沉默与即时聊天之间的低打扰陪伴方式。', B, PATH, 'article') + nav('work', B) + f'''
 <main id="main" class="case">
-<section class="case-hero theme-picto">
+<section class="case-hero theme-picto px-hero">
   <div class="wrap">
     {crumb('Picto')}
     <p class="case-id px rv"><img src="{I}logo-picto.png" alt="">Picto 片刻 · 02 / 03</p>
     <h1 class="rv cjk">看见彼此，<br>不必一直聊天。</h1>
     <p class="sub rv d1">介于沉默与即时聊天之间的低打扰陪伴方式：先表达“我现在怎样”，再决定要不要说话。</p>
     {meta([('Role', '问题定义 · 状态机制 · 语言边界'), ('Team', '独立完成'), ('Timeline', '约 2 个月'), ('Platform', 'Mobile · 可运行原型'), ('Tools', 'AI 协作完成实现、测试与素材')])}
-    <div class="case-visual rv"><img class="zoom pixel" src="{I}picto-room.jpg" alt="Picto 像素小屋主视觉" fetchpriority="high"></div>
+{hero()}
   </div>
 </section>
 

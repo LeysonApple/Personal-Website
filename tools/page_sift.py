@@ -37,67 +37,50 @@ NODES = [
 ]
 
 
-# ---------------------------------------------------------------- hero cover: three SIFT cards, rebuilt in HTML/CSS
-# Copy from the original cover (sift-hero.jpg) and the canvas copy above. Bottle photo stays a raster.
-SV = {
-    'spark': '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v4M8 11v4M1 8h4M11 8h4M3 3l2.5 2.5M10.5 10.5 13 13M13 3l-2.5 2.5M5.5 10.5 3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>',
-    'eye': '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8Z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>',
-    'compass': '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m10.5 5.5-1.6 3.4-3.4 1.6 1.6-3.4z" fill="currentColor"/></svg>',
-    'search': '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m10.5 10.5 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
-    'wand': '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 13 7-7M11 2v3M9.5 3.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>',
-    'redo': '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3v5a3 3 0 0 0 3 3h5m0 0-2.5-2.5M12 11l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>',
-    'layers': '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2 2 5l6 3 6-3zM2 8l6 3 6-3M2 11l6 3 6-3" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>',
-    'star': '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m8 1.5 2 4.2 4.5.6-3.3 3.1.8 4.5L8 11.7 4 13.9l.8-4.5L1.5 6.3 6 5.7z" fill="currentColor"/></svg>',
-}
-_ic = lambda d: f'<svg viewBox="0 0 16 16"><path d="{d}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-TOOLS = ('<span class="sh-tools" aria-hidden="true">' + _ic('m4 10 4-4 4 4') + _ic('M4 3v5a3 3 0 0 0 3 3h5')
-         + _ic('M5.5 5.5h7v7h-7zM3.5 10.5v-7h7') + _ic('M3 4.5h10M6 4.5V3h4v1.5M4.5 4.5l.7 8.5h5.6l.7-8.5')
-         + '<svg viewBox="0 0 16 16"><circle cx="3.5" cy="8" r="1.2" fill="currentColor"/><circle cx="8" cy="8" r="1.2" fill="currentColor"/><circle cx="12.5" cy="8" r="1.2" fill="currentColor"/></svg></span>')
+# ---------------------------------------------------------------- hero: a messy brief sifted into directions
+# All copy comes from the canvas / ask-card recreations below (same brief, same question, same chain).
+# Each chip: (text, kept?, x offset, y offset, rotation)
+CHIPS = [('可折叠', 1, -6, 4, -3), ('户外硬核风', 0, 8, -4, 2), ('单手开合', 1, 10, -6, 2), ('-mockup', 0, 12, 2, 1),
+         ('不漏水', 1, -4, 8, 1), ('卷收式', 0, 2, -10, 3), ('通勤', 1, 6, -2, -2), ('高饱和塑料感', 0, -8, 6, -2),
+         ('-template', 0, -6, -6, -1), ('轻', 1, -10, 6, 3), ('伸缩套筒', 0, -2, 4, -3), ('耐用', 1, 4, -8, -1), ('-stock', 0, 4, 8, 2)]
+
+
+def _chips():
+    return ''.join(
+        f'<span class="sx-chip {"k" if keep else "x"}" style="--x:{x}px;--y:{y}px;--r:{r}deg;--d:{k * -0.7:.1f}s">{t}</span>'
+        for k, (t, keep, x, y, r) in enumerate(CHIPS))
+
 
 HERO = f'''
-    <div class="case-visual sh-visual rv">
-      <div class="sh-stage" data-sh-hero role="img" aria-label="SIFT 界面卡片组合：风格主题“呼吸褶”、画面生成卡与核心策略基准卡">
-        <div class="sh-fan sift-ui" aria-hidden="true">
-          <article class="sh-c sh-l" style="--tc:#3B32C8">
-            <header><span class="sh-chip sh-solid" style="--cc:#3B32C8">3 风格主题</span><span class="sh-chip sh-soft-v">主题 01</span><span class="sh-chip sh-soft-o">{SV['star']}喜欢</span></header>
-            <h5 class="sh-t">呼吸褶</h5>
-            <p class="sh-sub">风琴褶随饮水起伏 <b>与</b> 压扁收纳是同一个动作</p>
-            <hr>
-            <p class="sh-link">{SV['spark']}已连 1 个上游：2 策略基准</p>
-            <div class="sh-box"><p class="sh-lab">{SV['eye']}视觉意象</p><p class="sh-body">一节节半透雾面硅胶褶皱像在缓慢呼吸：满水时舒展成柔和的柱体，喝完按压即层层收拢；光线穿过褶皱边缘，留下一圈圈乳白色渐变高光。</p></div>
-            <p class="sh-row">{SV['compass']}设计决策与避坑提醒</p>
-            <div class="sh-pick"><p class="sh-sel">✓ 已选定为当前主题</p><div class="sh-two"><span class="sh-o">{SV['search']}灵感检索</span><span class="sh-p">{SV['wand']}画面生成</span></div></div>
-            <footer><span>已衍生 3 张下游探索卡</span><span class="sh-ghost">{SV['layers']}收起分支</span></footer>
-          </article>
-          <article class="sh-c sh-r" style="--tc:#1F7F55">
-            <header><span class="sh-chip sh-soft-g">核心收敛</span>{TOOLS}</header>
-            <h5 class="sh-t">策略基准</h5>
-            <hr>
-            <div class="sh-box sh-drive">形式与结构共同驱动（折叠即形态）</div>
-            <div class="sh-box sh-brief">为城市通勤者设计可折叠水壶，喝完压扁入包，单手开合不漏水</div>
-            <span class="sh-chip sh-tag">通勤者</span>
-            <div class="sh-box sh-hyp"><p class="sh-lab">假设</p><p class="sh-body">以<b>风琴褶</b>为核心结构语言，<b>半透雾面硅胶</b>让水位与褶皱同时可见，盖体单手按压开合；单手提示强弱留待验证。</p></div>
-            <div class="sh-two sh-keep">
-              <div><p class="sh-lab">视觉坚持</p><span>可见的折叠结构</span><span>半透雾面质感</span><span>单手按压盖钮</span></div>
-              <div class="sh-no"><p class="sh-lab">视觉红线</p><span>不做户外硬核风</span><span>避开高饱和塑料感</span></div>
+    <div class="case-visual sx-visual rv">
+      <div class="sx-stage" role="img" aria-label="SIFT 画布示意：一句模糊 Brief 的碎片经过一道关键提问，筛成策略基准、风格主题与画面生成三张方向卡">
+        <div class="sx-canvas sift-ui" aria-hidden="true">
+          <p class="sx-crumb"><b>SIFT</b> / 呼吸褶 · 折叠水壶</p>
+          <div class="sx-col sx-in">
+            <p class="sx-k px">00 · Brief</p>
+            <p class="sx-brief">为城市通勤者设计一款可折叠水壶，喝完能压扁放进包里，单手就能开合且不漏水。</p>
+            <div class="sx-cloud">{_chips()}</div>
+          </div>
+          <div class="sx-sieve"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="sx-col sx-ask">
+            <p class="sx-k px">01 · 关键提问</p>
+            <div class="sx-q">
+              <header><span class="chip-k b">1 视觉抉择</span><span class="st">形态结构</span></header>
+              <h5>折叠方式在外观上如何被看见？</h5>
+              <span class="sx-o on"><b>01</b>风琴褶：环形褶皱逐级压缩<em></em></span>
+              <span class="sx-o"><b>02</b>卷收式：软袋整体卷起扣合<em></em></span>
+              <span class="sx-o"><b>03</b>伸缩套筒：硬质分段嵌套<em></em></span>
+              <span class="sx-o tbd"><b>?</b>暂不确定 · 不阻塞流程<em></em></span>
             </div>
-            <p class="sh-src">依据来源与未决项 · 1 项待定</p>
-            <div class="sh-cta"><span class="sh-ghost">调整方向</span><span class="sh-dark">推导风格主题 →</span></div>
-          </article>
-          <article class="sh-c sh-m" style="--tc:#7A3FD0">
-            <header><span class="sh-chip sh-solid" style="--cc:#6A3FE0">画面生成</span><span class="sh-chip sh-soft-gr"><i></i>已渲染（1 版）</span>{TOOLS}</header>
-            <h5 class="sh-t sh-big">《呼吸褶》</h5>
-            <p class="sh-sub">褶皱可见的柱体轮廓与单手按压盖钮的信息层次</p>
-            <hr>
-            <p class="sh-link sh-inh">{SV['spark']}继承主题：呼吸褶<span class="sh-upd">{SV['redo']}更新</span></p>
-            <div class="sh-img"><img src="{I}sift-bottle.jpg" alt="" width="768" height="768" fetchpriority="high" decoding="async"></div>
-            <div class="sh-prompt">
-              <p class="sh-ph"><span>{SV['wand']}<b>画面提示词</b><em>（186字）</em></span><span class="sh-mute">重置 · 复制</span></p>
-              <p class="sh-ratio"><span class="on">1:1</span><span>3:4</span><span>4:3</span><span>16:9</span></p>
-              <p class="sh-body">通勤包侧袋里的一只可折叠水壶，半透雾面乳白硅胶构成层层风琴褶，满水舒展、喝完收拢；暖灰哑光盖体配钴蓝按压钮，单手即可开合。柔和北窗光，极简日系工业设计，studio lighting, tactile CMF details</p>
-            </div>
-            <footer><code>image-gen</code><span class="sh-btn">重新渲染</span><span class="sh-btn2">生成 4 版候选</span></footer>
-          </article>
+          </div>
+          <div class="sx-col sx-out">
+            <p class="sx-k px">02 · 收敛方向</p>
+            <ol class="sx-dirs">
+              <li class="c-g"><span class="chip-k">2 策略基准</span><b>形式与结构共同驱动</b><span>可见的折叠结构 · 半透雾面质感 · 单手按压盖钮</span></li>
+              <li class="c-v"><span class="chip-k">3 风格主题</span><b>呼吸褶</b><span>风琴褶随饮水起伏，与压扁收纳是同一个动作</span></li>
+              <li class="c-p sx-gen"><img src="{I}sift-bottle.jpg" alt="" width="768" height="768" fetchpriority="high" decoding="async"><div><span class="chip-k">5 画面生成</span><b>《呼吸褶》</b><span>继承主题：呼吸褶</span></div></li>
+            </ol>
+          </div>
         </div>
       </div>
     </div>'''

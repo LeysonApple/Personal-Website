@@ -47,12 +47,17 @@ def render():
       <aside class="status rv d3" aria-label="我的当前状态">
         <div class="top px"><span>Status · 此刻</span><span class="clock" data-clock><i aria-hidden="true"></i>广州 <time>--:--</time></span></div>
         <div class="me">
-          <div class="ava"><img src="assets/img/portrait-avatar.jpg" alt="梁宇森 Leyson 头像" loading="eager"></div>
+          <button type="button" class="ava" data-ava aria-label="梁宇森 Leyson 的像素头像：点一下打个招呼">
+            <img class="f0" src="assets/img/avatar-pixel.png" alt="" width="80" height="80" loading="eager">
+            <img class="f1" src="assets/img/avatar-pixel-blink.png" alt="" width="80" height="80" loading="eager">
+            <span class="on-dot" aria-hidden="true"></span>
+          </button>
+          <span class="ava-say" data-ava-say aria-live="polite"></span>
           <div><b>梁宇森 Leyson</b><span>交互 / UI·UX 设计</span></div>
         </div>
         <dl>
-          <dt>心情</dt><dd>有点兴奋</dd>
-          <dt>正在做</dt><dd>打磨作品集</dd>
+          <dt>心情</dt><dd><button type="button" class="cyc" data-cyc="mood" aria-label="心情：有点兴奋（点一下换一个）"><i class="pxi" aria-hidden="true"></i><span>有点兴奋</span></button></dd>
+          <dt>正在做</dt><dd><button type="button" class="cyc" data-cyc="doing" aria-label="正在做：打磨作品集（点一下换一个）"><i class="pxi" aria-hidden="true"></i><span>打磨作品集</span></button></dd>
           <dt>联系偏好</dt><dd>欢迎来聊</dd>
         </dl>
         <div class="say"><a href="#contact">→ 开放实习机会</a><a class="fmt px" href="work.html">See work ↗</a></div>
