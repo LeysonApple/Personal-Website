@@ -4,32 +4,63 @@ PATH = 'projects/picto.html'
 B = '../'
 I = B + 'assets/img/'
 
-# ---------------------------------------------------------------- pixel character (Picto's own product character)
+# ---------------------------------------------------------------- pixel characters (Picto's own product characters)
+# Sampled cell-by-cell from assets/img/picto-after.jpg by tools/extract_picto_sprites.py
+# (top = 小满 the tabby cat, bottom = 阿澈 the dog). Re-run that script and paste if the art changes.
 CAT = [
-    '..ep........pe..',
-    '..eee......eee..',
-    '..bbbbbbbbbbbb..',
-    '..bbbsbbbbsbbb..',
-    '..bbbbbbbbbbbb..',
-    '..bbkkbbbbkkbb..',
-    '..bbkwbbbbkwbb..',
-    '..bbbbbnnbbbbb..',
-    'aarrrrrrrrrrrraa',
-    '..brrrrrrrrrrb..',
-    '..bbbcccccccbb.t',
-    '..bbcccccccbbbt.',
-    '..bbcccccccbbbt.',
-    '..bbbbbbbbbbbb..',
-    '..dd........dd..',
+    '...a......a...',
+    '..bcb....bcb..',
+    '..bbbabababb..',
+    '..bbbbbabbbb..',
+    '..bbbbbbbbbb..',
+    '..bbbbbbbbbb..',
+    '..bbdebbdebb..',
+    '..bbeebbeebb..',
+    'aabbbfggfbbbaa',
+    '..chhhhhhhhc..',
+    '.abbhhhbbbbba.',
+    '...bhhhffbbba.',
+    '...bbffffbbbb.',
+    '...bbffffbbbb.',
+    '...bbffffbbbb.',
+    '...bbbbbbbb...',
+    '...aab..baa...',
 ]
-PAL = {'e': '#A5643A', 'p': '#F2A0A8', 'b': '#C8814A', 's': '#8A5530', 'k': '#211A16', 'w': '#FFFFFF',
-       'n': '#E7848E', 'r': '#E8646E', 'c': '#F1C79C', 'a': '#8A5530', 't': '#A5643A', 'd': '#7A4A2A'}
+CAT_PAL = {'a': '#895433', 'b': '#C6854E', 'c': '#ED9CA6', 'd': '#FCFCFC', 'e': '#2D2422', 'f': '#F0C799', 'g': '#B75C68', 'h': '#E2696D'}
+
+DOG = [
+    '...a......a...',
+    '..ab......ba..',
+    '..aaaaccaaaa..',
+    '..aaaaccaaaa..',
+    '..aaaaaaaaaa..',
+    '..aacdaacdaa..',
+    '..aaddaaddaa..',
+    '..aaddaaddaa..',
+    '..aaacddcaaa..',
+    '..effffffffe.g',
+    '..aafffaaaaaag',
+    '...afffcccaaa.',
+    '...acccccca...',
+    '...acccccca...',
+    '...acccccca...',
+    '...aaaaaaaa...',
+    '...gga..agg...',
+]
+DOG_PAL = {'a': '#D49864', 'b': '#F8AAB9', 'c': '#F7F3E9', 'd': '#2C2C2C', 'e': '#FCD1A6', 'f': '#E16A6E', 'g': '#AC7249'}
+
+SPRITES = {'cat': (CAT, CAT_PAL), 'dog': (DOG, DOG_PAL)}
 
 
-def cat_svg(cls='cat', pal=PAL):
+def sprite_svg(kind='cat', cls='cat'):
+    grid, pal = SPRITES[kind]
     rects = ''.join(f'<rect x="{x}" y="{y}" width="1" height="1" fill="{pal[ch]}"/>'
-                    for y, row in enumerate(CAT) for x, ch in enumerate(row) if ch != '.')
-    return f'<svg class="{cls}" viewBox="0 0 16 15" shape-rendering="crispEdges" aria-hidden="true" focusable="false">{rects}</svg>'
+                    for y, row in enumerate(grid) for x, ch in enumerate(row) if ch != '.')
+    return f'<svg class="{cls}" viewBox="0 0 {len(grid[0])} {len(grid)}" shape-rendering="crispEdges" aria-hidden="true" focusable="false">{rects}</svg>'
+
+
+def cat_svg(cls='cat'):
+    return sprite_svg('cat', cls)
 
 
 # ---------------------------------------------------------------- recreated UI: status picker + home (picto-status.jpg, picto-home.jpg)
@@ -73,26 +104,25 @@ def home_phone():
 
 
 # ---------------------------------------------------------------- hero: the two characters and what each one sees
-# Second character = same sprite with a cool palette. Sentences follow the demo's own rule
+# 小满 = the tabby cat, 阿澈 = the dog, both on-model from picto-after.jpg. Sentences follow the demo's own rule
 # ("<名字>现在<心情>，正在<活动>。" / pref line), so nothing here is new copy.
-PAL2 = dict(PAL, e='#6F6A78', b='#A7A2AE', s='#6F6A78', a='#6F6A78', t='#6F6A78', d='#57525E', c='#EEE8DE', r='#5D8FD8', n='#E7848E')
 
 
-def hero_side(who, cls, pal, mood, mc, doing, pref, pc, line):
+def hero_side(who, cls, kind, mood, mc, doing, pref, pc, line):
     return f'''<div class="px-side {cls}">
             <div class="px-bub"><p class="px-who"><i></i>{who} · 刚刚更新</p><p class="px-sent">{who}现在{mood}，正在{doing}。</p>
               <p class="px-tags"><span><span class="face" style="--fc:{mc}"><i></i></span>{mood}</span><span>{doing}</span><span>{heart(pc)}{pref}</span></p>
               <p class="px-pl">{line}</p></div>
-            <div class="px-char" style="--mc:{mc}">{cat_svg('cat', pal)}<span class="px-shadow"></span></div>
+            <div class="px-char" style="--mc:{mc}">{sprite_svg(kind, 'cat ' + kind)}<span class="px-shadow"></span></div>
           </div>'''
 
 
 def hero():
-    left = hero_side('小满', 'l', PAL, '有点累', '#A9C3E8', '休息充电', '只想被看见', '#F4F1EC', '看见就好，不必开启聊天。')
-    right = hero_side('阿澈', 'r', PAL2, '开心', '#F7C948', '通勤', '可以联系', '#7CC3A6', '联系偏好：可以联系')
+    left = hero_side('小满', 'l', 'cat', '有点累', '#A9C3E8', '休息充电', '只想被看见', '#F4F1EC', '看见就好，不必开启聊天。')
+    right = hero_side('阿澈', 'r', 'dog', '开心', '#F7C948', '通勤', '可以联系', '#7CC3A6', '联系偏好：可以联系')
     return f'''
     <div class="case-visual px-visual rv">
-      <div class="px-stage" role="img" aria-label="Picto 示意：小满与阿澈两个像素角色，各自头顶是对方能看到的状态卡（心情、正在做、联系偏好），中间是一句会自动退出首页的留言">
+      <div class="px-stage" role="img" aria-label="Picto 示意：像素猫小满与像素狗阿澈，各自头顶是对方能看到的状态卡（心情、正在做、联系偏好），中间是一句会自动退出首页的留言">
         <div class="px-scene picto-ui" aria-hidden="true">
           {left}
           <div class="px-mid">
