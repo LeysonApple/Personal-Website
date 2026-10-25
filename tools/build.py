@@ -81,7 +81,7 @@ def foot(base=''):
   <div class="wrap">
     <p class="eyebrow px">Contact</p>
     <h2 aria-label="Let’s talk.">Let’s talk<button type="button" class="mk mk-big" data-dot aria-label="换一个点的颜色"></button></h2>
-    <p class="l">期待和你聊聊这三个作品背后的取舍。</p>
+    <p class="l">欢迎聊聊实习机会，或这三个项目的细节。</p>
     <div class="links">
       <span class="mail-group"><a href="mailto:{MAIL}">{MAIL}</a><button type="button" class="copy" data-copy="{MAIL}" aria-label="复制邮箱地址"><span>复制</span></button></span>
       <a href="tel:{TEL}">{TEL_SHOW}</a>

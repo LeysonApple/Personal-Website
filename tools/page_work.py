@@ -29,8 +29,8 @@ def render():
   <div class="wrap">
     <header class="pick-head">
       <p class="eyebrow px rv">Selected work · 2026</p>
-      <h1 class="rv d1">选一个项目，<br>看我怎么做取舍。</h1>
-      <p class="rv d2">三个项目，三次取舍。每个项目页都按 <span class="flow">问题 <i>→</i> 判断 <i>→</i> 设计 <i>→</i> 结果</span> 展开，五分钟能看完。</p>
+      <h1 class="rv d1">作品</h1>
+      <p class="rv d2">2026 年的三个交互设计项目，涵盖 AI Agent、移动端与多端产品。</p>
     </header>
     <ol class="picks">{rows}
     </ol>

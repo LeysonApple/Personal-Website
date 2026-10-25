@@ -69,20 +69,9 @@ def render():
   {MARQ}
 </div></div>
 
-<section class="sec" aria-labelledby="how-h">
-  <div class="wrap">
-    <div class="sec-head rv"><div class="no px">01 · How I work</div><h2 id="how-h">三个作品，<br>同一种做事方式。</h2></div>
-    <div class="how">
-      <article class="rv"><span class="n px">01</span><h3>先找到真正的问题</h3><p>不急着画界面。先弄清用户卡在哪一步，哪个判断最影响结果。</p><div class="eg"><span>SIFT · 四个断层</span><span>Focenda · 访谈</span></div></article>
-      <article class="rv d1"><span class="n px">02</span><h3>用减法做取舍</h3><p>删掉“看起来很强”的功能，留下真正帮人省力的那一个。</p><div class="eg"><span>不做对话框</span><span>不显示已读</span></div></article>
-      <article class="rv d2"><span class="n px">03</span><h3>做成能跑的原型</h3><p>借助 AI 编程工具把设计落成可交互 Demo，再拿去给人用、听反馈、改。</p><div class="eg"><span>SIFT 已上线</span><span>Focenda 内测</span></div></article>
-    </div>
-  </div>
-</section>
-
 <section class="sec sec-work" aria-labelledby="work-h">
   <div class="wrap">
-    <div class="sec-head rv"><div class="no px">02 · Selected work</div><h2 id="work-h">三个项目，三次取舍。</h2><a class="more" href="work.html">全部作品 <span aria-hidden="true">→</span></a></div>
+    <div class="sec-head rv"><div class="no px">01 · Selected work</div><h2 id="work-h">精选作品</h2><a class="more" href="work.html">全部作品 <span aria-hidden="true">→</span></a></div>
     <div class="pcs">{cards}
     </div>
   </div>
@@ -90,7 +79,7 @@ def render():
 
 <section class="sec" id="about" aria-labelledby="about-h">
   <div class="wrap">
-    <div class="sec-head rv"><div class="no px">03 · About</div><h2 id="about-h">你好，我是<span class="lat"> Leyson</span>。</h2></div>
+    <div class="sec-head rv"><div class="no px">02 · About</div><h2 id="about-h">你好，我是<span class="lat"> Leyson</span>。</h2></div>
     <div class="about">
       <div class="photo rv"><img src="assets/img/portrait.jpg" alt="梁宇森 Leyson 的照片"><span class="hi px"><i class="mk" aria-hidden="true"></i>Hi! I’m Leyson</span></div>
       <div class="rv d1">
