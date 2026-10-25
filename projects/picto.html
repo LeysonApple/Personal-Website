@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>片刻 Picto — Leyson</title>
+<meta name="description" content="片刻 Picto：介于沉默与即时聊天之间的低打扰陪伴方式。">
+<meta name="author" content="梁宇森 Leyson">
+<link rel="canonical" href="https://leysonapple.github.io/Personal-Website/projects/picto.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Leyson — 交互设计作品集">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="片刻 Picto — Leyson">
+<meta property="og:description" content="片刻 Picto：介于沉默与即时聊天之间的低打扰陪伴方式。">
+<meta property="og:url" content="https://leysonapple.github.io/Personal-Website/projects/picto.html">
+<meta property="og:image" content="https://leysonapple.github.io/Personal-Website/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F3F1EC">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/Bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/style.css">
+<script>document.documentElement.className='js';try{var c=localStorage.getItem('ly-dot');if(c)document.documentElement.style.setProperty('--dot',c)}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Leyson 首页">Leyson<i class="mk" aria-hidden="true"></i></a>
+    <span class="open px">Open to internships · 2026</span>
+    <ul>
+      <li><a href="../work.html" aria-current="page">作品</a></li>
+      <li><a href="../index.html#about">关于</a></li>
+      <li class="hide-xs"><a href="#contact">联系</a></li>
+      <li><a class="cta" href="../files/Leyson-Portfolio-Short.pdf" download>PDF <span aria-hidden="true">↓</span></a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main" class="case">
+<section class="case-hero theme-picto">
+  <div class="wrap">
+    <nav class="crumb px" aria-label="面包屑"><a href="../work.html">Work</a><span aria-hidden="true">/</span><span aria-current="page">Picto</span></nav>
+    <p class="case-id px rv"><img src="../assets/img/logo-picto.png" alt="" width="192" height="192" loading="lazy" decoding="async">Picto 片刻 · 02 / 03</p>
+    <h1 class="rv cjk">看见彼此，<br>不必一直聊天。</h1>
+    <p class="sub rv d1">片刻 Picto 是一种介于沉默与即时聊天之间的低打扰陪伴方式：先表达“我现在怎样”，再决定要不要说话。</p>
+    <dl class="meta"><div><dt>Role</dt><dd>问题定义 · 状态机制 · 语言边界</dd></div><div><dt>Team</dt><dd>独立完成</dd></div><div><dt>Timeline</dt><dd>约 2 个月</dd></div><div><dt>Platform</dt><dd>Mobile · 可运行原型</dd></div><div><dt>Tools</dt><dd>AI 协作完成实现、测试与素材</dd></div></dl>
+    <div class="case-visual rv"><picture><source srcset="../assets/img/picto-room.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-room.jpg" alt="Picto 像素小屋主视觉" fetchpriority="high" width="1600" height="1376" decoding="async"></picture></div>
+  </div>
+</section>
+
+<section class="wrap tldr-wrap" aria-label="项目概要"><div class="tldr"><div class="rv"><h2 class="px">Problem · 问题</h2><p>即时通信把“被看见”绑成了“要回复”，忙碌和异地的情侣因此更累。</p></div><div class="rv"><h2 class="px">Approach · 判断</h2><p>用一张状态卡代替一条消息：心情 + 正在做 + 联系偏好，边界直接说出来。</p></div><div class="rv"><h2 class="px">Outcome · 结果</h2><p>一套可解释的状态系统、完整的双角色流程和可运行原型。</p></div></div></section>
+<nav class="toc" aria-label="本页目录"><div class="wrap"><ol><li><a href="#problem"><span class="px">01</span>问题<em>Problem</em></a></li><li><a href="#principles"><span class="px">02</span>设计原则<em>Decision</em></a></li><li><a href="#system"><span class="px">03</span>交互系统<em>Design</em></a></li><li><a href="#flow"><span class="px">04</span>核心流程<em>Design</em></a></li><li><a href="#iterate"><span class="px">05</span>迭代<em>Iteration</em></a></li><li><a href="#next-step"><span class="px">06</span>下一步<em>Next</em></a></li></ol><span class="toc-bar" aria-hidden="true"></span></div></nav>
+<section class="block" id="problem" aria-labelledby="problem-h"><div class="wrap split">
+  <div class="lab rv"><span class="no px">01 · Problem</span><h2 id="problem-h">问题</h2></div>
+  <div class="body">
+    <h3 class="rv">情侣想要的是“被想起”，<br>不是“被要求回复”。</h3>
+    <p class="rv">桌面研究里反复出现同一个张力：关系需要持续的在场感，但现有工具把“在场”和“回复义务”绑在一起。</p>
+    <div class="stats rv picto-ink">
+      <div><b data-count>52%</b><span>伴侣没按预期时间回复时会感到焦虑</span></div>
+      <div><b data-count>67.5%</b><span>有过异地恋经历</span></div>
+      <div><b data-count>41.3%</b><span>认为“忽略了联系”是异地恋的阻碍</span></div>
+      <div><b>0</b><span>在线、已读等制造期待的信号，Picto 一个都不显示</span></div>
+    </div>
+    <p class="note rv">来源：Huang &amp; Yao, 2024, JSPR, N=50；中国青年报社会调查中心, 2016, N=2001。为已发表研究数据，非本项目调研。</p>
+  </div>
+</div></section>
+
+<section class="block theme-picto" id="principles" aria-labelledby="principles-h"><div class="wrap split">
+  <div class="lab rv"><span class="no px">02 · Decision</span><h2 id="principles-h">设计原则</h2></div>
+  <div class="body">
+    <h3 class="rv">三个原则，约束所有功能与表达。</h3>
+    <div class="notes">
+      <div class="card rv"><span class="n px">01</span><h4>看见，不等于打扰。</h4><p>状态先于消息，让关心可以停在“我知道了”。</p></div>
+      <div class="card rv d1"><span class="n px">02</span><h4>不回应，也被允许。</h4><p>联系偏好直接可见，不用让沉默承担解释成本。</p></div>
+      <div class="card rv d2"><span class="n px">03</span><h4>温柔，但操作必须清楚。</h4><p>情感留给标题与角色，按钮和反馈直接说明结果。</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="system" aria-labelledby="system-h"><div class="wrap split">
+  <div class="lab rv"><span class="no px">03 · Design</span><h2 id="system-h">交互系统</h2></div>
+  <div class="body">
+    <h3 class="rv">“智能”来自可解释的状态映射。</h3>
+    <p class="rv">不是自动替你表达，而是把主动选择的信息，转化为可预测、可感知的状态反馈。</p>
+    <div class="formula rv"><span>有点累<small class="px">心情 · 10 种</small></span><i aria-hidden="true">+</i><span>休息充电<small class="px">正在做 · 12 种</small></span><i aria-hidden="true">+</i><span>看见就好<small class="px">联系偏好 · 4 档</small></span><i aria-hidden="true">=</i><span class="out">反馈状态，不催促回应</span></div>
+    <div class="two gap-sm">
+      <figure class="fig rv"><div class="sheet"><picture><source srcset="../assets/img/picto-tired.webp" type="image/webp"><img class="zoom pixel" src="../assets/img/picto-tired.jpg" alt="Picto 像素角色：有点累，休息充电" width="728" height="428" loading="lazy" decoding="async"></picture></div><figcaption><b>输出</b>状态句 + 像素姿态 + 联系边界</figcaption></figure>
+      <p class="aside rv">状态由用户主动选择；系统只组合已知输入，<b>不推断情绪</b>。这样每一个反馈都能说出“为什么是这样”，也不会替任何人做决定。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="block tint-peach" id="flow" aria-labelledby="flow-h"><div class="wrap split">
+  <div class="lab rv"><span class="no px">04 · Design</span><h2 id="flow-h">核心流程</h2></div>
+  <div class="body">
+    <h3 class="rv">从表达，到看见，再到留存。</h3>
+    <div class="shots" style="--c:4">
+      <figure class="rv"><div class="phone"><picture><source srcset="../assets/img/picto-home.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-home.jpg" alt="Picto 首页：看见对方此刻的状态" width="760" height="1634" loading="lazy" decoding="async"></picture></div><figcaption><b>首页</b>先看见对方此刻</figcaption></figure>
+      <figure class="rv d1"><div class="phone"><picture><source srcset="../assets/img/picto-status.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-status.jpg" alt="Picto 选择状态页" width="760" height="1634" loading="lazy" decoding="async"></picture></div><figcaption><b>选状态</b>一次说清三件事</figcaption></figure>
+      <figure class="rv d2"><div class="phone"><picture><source srcset="../assets/img/picto-polaroid.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-polaroid.jpg" alt="Picto 拍一片刻页" width="760" height="1634" loading="lazy" decoding="async"></picture></div><figcaption><b>拍一片刻</b>相机不可用也不中断</figcaption></figure>
+      <figure class="rv d3"><div class="phone"><picture><source srcset="../assets/img/picto-wall.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-wall.jpg" alt="Picto 片刻墙" width="760" height="1634" loading="lazy" decoding="async"></picture></div><figcaption><b>片刻墙</b>短句离开首页，留在这里</figcaption></figure>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="iterate" aria-labelledby="iterate-h"><div class="wrap split">
+  <div class="lab rv"><span class="no px">05 · Iteration</span><h2 id="iterate-h">迭代</h2></div>
+  <div class="body">
+    <h3 class="rv">四次关键迭代，让作品更诚实。</h3>
+    <div class="two">
+      <div class="ba">
+        <figure class="fig rv"><span class="tag">Before</span><div class="sheet"><picture><source srcset="../assets/img/picto-before.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-before.jpg" alt="Picto 早期首页" width="584" height="890" loading="lazy" decoding="async"></picture></div></figure>
+        <figure class="fig rv d1"><span class="tag">After</span><div class="sheet"><picture><source srcset="../assets/img/picto-after.webp" type="image/webp"><img class="zoom" src="../assets/img/picto-after.jpg" alt="Picto 当前首页" width="584" height="890" loading="lazy" decoding="async"></picture></div></figure>
+      </div>
+      <ol class="steps rv">
+        <li><div><b>角色</b><span>程序像素角色成为唯一基准，应用、头像与封面共用同一套造型。</span></div></li>
+        <li><div><b>语言</b><span>能力不再被夸大：“在线、已送达”改为“当前设备、切换角色查看”。</span></div></li>
+        <li><div><b>流程</b><span>分散的页面整合为六步双角色交接，表达、看见、回应、接收形成闭环。</span></div></li>
+        <li><div><b>展示</b><span>冗长的过程说明，换成真实界面和可交互的案例页。</span></div></li>
+      </ol>
+    </div>
+  </div>
+</div></section>
+
+<section class="block theme-picto" id="next-step" aria-labelledby="next-step-h"><div class="wrap split">
+  <div class="lab rv"><span class="no px">06 · Next</span><h2 id="next-step-h">下一步</h2></div>
+  <div class="body">
+    <p class="quote rv">让亲密关系里的“此刻”，先被看见。</p>
+    <p class="aside rv gap-sm">下一步计划用一周日记研究验证三个设计假设，并回应低打扰本身的代价：状态不能完全代替主动表达，所以 Picto 保留了短句。</p>
+  </div>
+</div></section>
+
+</main>
+<a class="next theme-foc" href="../projects/focenda.html">
+  <div class="wrap">
+    <span class="px">Next project · 03/03</span>
+    <span class="next-t">Focenda <span class="arr" aria-hidden="true">→</span></span>
+    <p>把零散任务，变成可执行的一日安排。</p>
+  </div>
+</a>
+<nav class="wrap pager" aria-label="项目切换">
+  <a class="pg prev" href="../projects/sift.html" rel="prev"><span class="px">← Previous</span><b>SIFT</b></a>
+  <a class="pg all" href="../work.html"><span class="px">All work</span><b>全部项目</b></a>
+  <a class="pg nxt" href="../projects/focenda.html" rel="next"><span class="px">Next →</span><b>Focenda</b></a>
+</nav>
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <p class="eyebrow px">Contact</p>
+    <h2 aria-label="Let’s talk.">Let’s talk<button type="button" class="mk mk-big" data-dot aria-label="换一个点的颜色"></button></h2>
+    <p class="l">期待和你聊聊这三个作品背后的取舍。</p>
+    <div class="links">
+      <span class="mail-group"><a href="mailto:leyson@foxmail.com">leyson@foxmail.com</a><button type="button" class="copy" data-copy="leyson@foxmail.com" aria-label="复制邮箱地址"><span>复制</span></button></span>
+      <a href="tel:+8618929085955">189 2908 5955</a>
+      <a href="../files/Leyson-Portfolio-Short.pdf" download>下载作品集 PDF <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="base">
+      <span>© <span id="y">2026</span> 梁宇森 Leyson · 广州</span>
+      <span class="px">Designed by Leyson · built with AI</span>
+      <a class="top px" href="#main">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+<div class="cursor" aria-hidden="true"><span></span></div>
+<p class="toast" role="status" aria-live="polite"></p>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
