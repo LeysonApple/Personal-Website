@@ -200,6 +200,19 @@
      Case-study recreations (all keyboard-operable, reduced-motion safe)
      ========================================================== */
 
+  /* ---------- SIFT hero cover: gentle pointer parallax ---------- */
+  $$('[data-sh-hero]').forEach((st) => {
+    if (!fine || reduce) return;
+    let raf = 0;
+    st.addEventListener('pointermove', (e) => {
+      const r = st.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width * 2 - 1, y = (e.clientY - r.top) / r.height * 2 - 1;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => { st.style.setProperty('--mx', x.toFixed(3)); st.style.setProperty('--my', y.toFixed(3)); });
+    });
+    st.addEventListener('pointerleave', () => { cancelAnimationFrame(raf); st.style.setProperty('--mx', 0); st.style.setProperty('--my', 0); });
+  });
+
   /* ---------- generic tabs: arrow keys move, Home/End jump ---------- */
   $$('[data-tabs]').forEach((box) => {
     const tabs = $$('[role=tab]', box);
