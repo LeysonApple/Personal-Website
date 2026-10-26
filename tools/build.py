@@ -19,6 +19,7 @@ PROJECTS = [
     ('sift', 'SIFT', 'projects/sift.html', '设计前期的 AI 方向收敛 Agent', 'theme-sift'),
     ('picto', 'Picto', 'projects/picto.html', '看见彼此，不必一直聊天。', 'theme-picto-acc'),
     ('focenda', 'Focenda', 'projects/focenda.html', '把零散任务，变成可执行的一日安排。', 'theme-foc'),
+    ('cobuddy', 'CoBuddy', 'projects/cobuddy.html', '孩子主握，家长辅助的亲子牙刷。', 'theme-cob'),
 ]
 
 
@@ -81,7 +82,7 @@ def foot(base=''):
   <div class="wrap">
     <p class="eyebrow px">Contact</p>
     <h2 aria-label="Let’s talk.">Let’s talk<button type="button" class="mk mk-big" data-dot aria-label="换一个点的颜色"></button></h2>
-    <p class="l">欢迎聊聊实习机会，或这三个项目的细节。</p>
+    <p class="l">欢迎聊聊实习机会，或这几个项目的细节。</p>
     <div class="links">
       <span class="mail-group"><a href="mailto:{MAIL}">{MAIL}</a><button type="button" class="copy" data-copy="{MAIL}" aria-label="复制邮箱地址"><span>复制</span></button></span>
       <a href="tel:{TEL}">{TEL_SHOW}</a>
@@ -260,6 +261,6 @@ if __name__ == '__main__':
     import importlib, sys
     sys.dont_write_bytecode = True
     sys.path.insert(0, str(ROOT / 'tools'))
-    for name in ['page_home', 'page_work', 'page_sift', 'page_picto', 'page_focenda']:
+    for name in ['page_home', 'page_work', 'page_sift', 'page_picto', 'page_focenda', 'page_cobuddy']:
         mod = importlib.import_module(name)
         write(mod.PATH, mod.render())

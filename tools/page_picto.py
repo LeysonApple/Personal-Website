@@ -283,7 +283,7 @@ def render():
 <section class="case-hero theme-picto px-hero">
   <div class="wrap">
     {crumb('Picto')}
-    <p class="case-id px rv"><img src="{I}logo-picto.png" alt="">Picto 片刻 · 02 / 03</p>
+    <p class="case-id px rv"><img src="{I}logo-picto.png" alt="">Picto 片刻 · 02 / 04</p>
     <h1 class="rv cjk">看见彼此，<br>不必一直聊天。</h1>
     <p class="sub rv d1">介于沉默与即时聊天之间的低打扰陪伴方式：先表达“我现在怎样”，再决定要不要说话。</p>
     {meta([('Role', '问题定义 · 状态机制 · 语言边界'), ('Team', '独立完成'), ('Timeline', '约 2 个月'), ('Platform', 'Mobile · 可运行原型'), ('Tools', 'AI 协作完成实现、测试与素材')])}

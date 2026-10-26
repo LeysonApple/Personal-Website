@@ -271,7 +271,7 @@ def render():
 <section class="case-hero theme-sift">
   <div class="wrap">
     {crumb('SIFT')}
-    <p class="case-id px rv"><img src="{I}logo-sift.png" alt="">SIFT · 01 / 03</p>
+    <p class="case-id px rv"><img src="{I}logo-sift.png" alt="">SIFT · 01 / 04</p>
     <h1 class="rv">Sift the noise.<br>Find the direction.</h1>
     <p class="sub rv d1">设计前期的 AI 智能体：把一句模糊 Brief，收敛成说得清来由的视觉方向。</p>
     {meta([('Role', '组长<br>调研 · 产品定义 · 交互设计'), ('Team', '3 人小组'), ('Timeline', '2026.09 – 10 · 4 周<br>PRD 迭代至 v4.0'), ('Platform', 'Web · 已上线'), ('Tools', '借助 AI 编程工具完成开发<br>Next.js · React Flow · DeepSeek')])}

@@ -2,11 +2,12 @@ from build import head, nav, foot, PDF
 
 PATH = 'work.html'
 
-LOGO = {'s': 'logo-sift.png', 'p': 'logo-picto.png', 'f': 'logo-focenda.png'}
+LOGO = {'s': 'logo-sift.png', 'p': 'logo-picto.png', 'f': 'logo-focenda.png', 'c': 'logo-cobuddy.png'}
 ITEMS = [
     ('s', '01', 'SIFT', '', '设计前期的 AI 方向收敛 Agent', '每次只问一个会改变设计判断的问题。', ['Web', '3 人小组组长', '已上线', '2026'], 'projects/sift.html', 'sift-hero.jpg'),
     ('p', '02', 'Picto', '片刻', '异地情侣的低打扰陪伴', '先表达“我现在怎样”，再决定要不要说话。', ['Mobile', '独立完成', '约 2 个月', '2026'], 'projects/picto.html', 'picto-room.jpg'),
     ('f', '03', 'Focenda', '专序', '设计师的动态日程规划', '按重要度和精力，排好今天。', ['Web + Mobile', '内测 10 人', '2026'], 'projects/focenda.html', 'focenda-priority.jpg'),
+    ('c', '04', 'CoBuddy', '', '亲子牙刷 · 高露洁 × 广美', '孩子主握，家长从外侧稳定辅助。', ['产品设计', '独立完成', '约 2 个月', '2026'], 'projects/cobuddy.html', ''),
 ]
 
 
@@ -24,13 +25,13 @@ def render():
       <span class="enter">进入项目 <span aria-hidden="true">→</span></span>
     </a>
   </li>'''
-    return head('作品 — Leyson', '选择一个项目：SIFT、片刻 Picto、Focenda 专序。每个项目按 问题 → 判断 → 设计 → 结果 展开。', path='work.html') + nav('work') + f'''
+    return head('作品 — Leyson', '选择一个项目：SIFT、片刻 Picto、Focenda 专序、CoBuddy 亲子牙刷。每个项目按 问题 → 判断 → 设计 → 结果 展开。', path='work.html') + nav('work') + f'''
 <main id="main">
   <div class="wrap">
     <header class="pick-head">
       <p class="eyebrow px rv">Selected work · 2026</p>
       <h1 class="rv d1">作品</h1>
-      <p class="rv d2">2026 年的三个交互设计项目，涵盖 AI Agent、移动端与多端产品。</p>
+      <p class="rv d2">2026 年的四个项目，涵盖 AI Agent、移动端、多端产品与亲子产品设计。</p>
     </header>
     <ol class="picks">{rows}
     </ol>

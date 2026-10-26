@@ -2,7 +2,7 @@ from build import head, nav, foot, PDF
 
 PATH = 'index.html'
 
-MARQ = '<span><b>✦</b> SIFT <em>设计方向收敛 Agent</em> <b>✦</b> PICTO <em>异地情侣低打扰陪伴</em> <b>✦</b> FOCENDA <em>设计师动态日程</em></span>'
+MARQ = '<span><b>✦</b> SIFT <em>设计方向收敛 Agent</em> <b>✦</b> PICTO <em>异地情侣低打扰陪伴</em> <b>✦</b> FOCENDA <em>设计师动态日程</em> <b>✦</b> COBUDDY <em>亲子协同牙刷</em></span>'
 
 CARDS = [
     ('s', 'projects/sift.html', 'logo-sift.png', 'SIFT', '设计前期的 AI 方向收敛 Agent', 'Web · 已上线',
@@ -11,6 +11,8 @@ CARDS = [
      '即时通信把“被看见”绑成了“要回复”，异地情侣因此更累。', '0', '在线、已读等制造期待的信号', ['独立完成', '约 2 个月', '可运行原型']),
     ('f', 'projects/focenda.html', 'logo-focenda.png', 'Focenda', '设计师的动态日程规划', 'Web + Mobile · 内测',
      '设计师的时间被“非设计”吃掉：琐事多、信息散、难出结果。', '9/10', '内测用户使用了任务规划', ['用户访谈', '多端设计', '内测 10 人']),
+    ('c', 'projects/cobuddy.html', 'logo-cobuddy.png', 'CoBuddy', '高露洁 × 广美 亲子牙刷', 'Product · 校企合作',
+     '孩子握得住牙刷，却控制不住刷牙；家长一帮忙就变成代刷。', '', '', ['独立完成', '约 2 个月', '产品设计']),
 ]
 
 
@@ -29,7 +31,7 @@ def render():
         </span>
         <span class="pc-go" aria-hidden="true">→</span>
       </a>'''
-    return head('梁宇森 Leyson — 交互设计作品集', '梁宇森 Leyson，广州美术学院工业设计（智能交互方向）。把复杂的判断，变成清楚的一步。作品：SIFT、片刻 Picto、Focenda 专序。') + nav('home') + f'''
+    return head('梁宇森 Leyson — 交互设计作品集', '梁宇森 Leyson，广州美术学院工业设计（智能交互方向）。把复杂的判断，变成清楚的一步。作品：SIFT、片刻 Picto、Focenda 专序、CoBuddy 亲子牙刷。') + nav('home') + f'''
 <main id="main">
 <section class="hero">
   <div class="wrap">
