@@ -51,7 +51,7 @@ def hero():
         t(183.9, 568.5, 76, '安心材质', 'cs-ct'), t(173.4, 599.9, 96.9, '安全放心<br>呵护宝贝口腔', 'cs-cs'),
         t(344.8, 568.5, 76, '科学护龈', 'cs-ct'), t(350.5, 599.9, 64.6, '柔软刷毛<br>温和清洁', 'cs-cs'),
         t(506.9, 568.5, 76, '亲子设计', 'cs-ct'), t(504.6, 599.9, 80.7, '大小刷头<br>陪伴式刷牙', 'cs-cs')])
-    return f"""
+    html = f"""
     <div class="case-visual cob-hero2 rv">
       <div class="cob-slide" role="img" aria-label="CoBuddy 亲子牙刷主视觉：儿童牙刷与家长牙刷立在展台上">
         {img('hero-bg2x', '', 'cs-bg', 'webp')}
@@ -69,6 +69,9 @@ def hero():
           <p class="cs-k1" style="--ty:29.2">家长牙刷</p><p class="cs-k2" style="--ty:71.3">全面清洁</p><p class="cs-k3" style="--ty:102.4">深入清洁<br>呵护口腔健康</p></div>
       </div>
     </div>"""
+    # above the fold: load eagerly so the poster doesn't pop in piece by piece
+    html = html.replace('<img ', '<img loading="eager" ')
+    return html.replace('<img loading="eager" class="cs-bg"', '<img fetchpriority="high" class="cs-bg"')
 
 
 def adult_vs_kid():
