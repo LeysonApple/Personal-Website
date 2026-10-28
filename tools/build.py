@@ -259,6 +259,8 @@ if __name__ == '__main__':
     import importlib, sys
     sys.dont_write_bytecode = True
     sys.path.insert(0, str(ROOT / 'tools'))
-    for name in ['page_home', 'page_work', 'page_sift', 'page_picto', 'page_focenda', 'page_cobuddy']:
+    # about.html (page_home) has hand edits since; build it only when named explicitly.
+    names = sys.argv[1:] or ['page_work', 'page_sift', 'page_picto', 'page_focenda', 'page_cobuddy']
+    for name in names:
         mod = importlib.import_module(name)
         write(mod.PATH, mod.render())

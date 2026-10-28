@@ -1733,3 +1733,16 @@ button.bb[aria-pressed=true] { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--qc), 
 @media (max-width: 640px) { .pcs { grid-template-columns: 1fr; } }
 .pick.c .lg img { width: 42px; height: 42px; }
 .pc.c .pc-top .logo { padding: 5px; }
+/* collapsible process detail */
+.more { border-top: 1px solid var(--line); padding: 18px 0; }
+.more:last-of-type { border-bottom: 1px solid var(--line); }
+.more summary { cursor: pointer; list-style: none; font-family: var(--cjk); font-weight: 700; font-size: 1.05rem; display: flex; gap: 14px; align-items: baseline; }
+.more summary::-webkit-details-marker { display: none; }
+.more summary .px { font-size: 11px; color: var(--mute); min-width: 52px; }
+.more[open] summary .px { color: var(--ink); }
+.more-b { padding-top: 18px; }
+.more-b .cards .card p { font-size: var(--fs-sm); }
+.more .tabs, .more .rv { opacity: 1 !important; transform: none !important; }
+.sift-shots .browser { border-radius: 12px; }
+.voices.one { grid-template-columns: 1fr; max-width: 720px; }
+@media (max-width: 640px) { .more-b .cards { grid-template-columns: 1fr 1fr !important; } }
