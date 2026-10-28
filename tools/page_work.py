@@ -35,7 +35,6 @@ def render():
     </header>
     <ol class="picks">{rows}
     </ol>
-    <div class="pick-foot rv"><span>想一次看完？</span><a class="btn btn-line" href="{PDF}" download>下载 30 页 PDF <span aria-hidden="true">↓</span></a></div>
   </div>
 </main>
 ''' + foot()

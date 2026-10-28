@@ -43,7 +43,6 @@ def render():
         <p class="sub">广州美术学院 工业设计（智能交互方向）本科。我习惯先把问题定义清楚，再用减法做取舍，最后借助 AI 编程工具把设计做成能跑的原型。</p>
         <div class="acts">
           <a class="btn btn-ink" href="work.html" data-magnetic>选一个项目 <span class="arr" aria-hidden="true">→</span></a>
-          <a class="btn btn-line" href="{PDF}" download>下载 PDF</a>
         </div>
       </div>
       <aside class="status rv d3" aria-label="我的当前状态">

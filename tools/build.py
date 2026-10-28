@@ -70,7 +70,6 @@ def nav(cur, base=''):
       <li>{a('work.html', '作品', 'work')}</li>
       <li>{a('about.html#about', '关于', 'about')}</li>
       <li class="hide-xs"><a href="#contact">联系</a></li>
-      <li><a class="cta" href="{base}{PDF}" download>PDF <span aria-hidden="true">↓</span></a></li>
     </ul>
   </div>
 </header>
@@ -86,7 +85,6 @@ def foot(base=''):
     <div class="links">
       <span class="mail-group"><a href="mailto:{MAIL}">{MAIL}</a><button type="button" class="copy" data-copy="{MAIL}" aria-label="复制邮箱地址"><span>复制</span></button></span>
       <a href="tel:{TEL}">{TEL_SHOW}</a>
-      <a href="{base}{PDF}" download>下载作品集 PDF <span aria-hidden="true">↓</span></a>
     </div>
     <div class="base">
       <span>© <span id="y">2026</span> 梁宇森 Leyson · 广州</span>
