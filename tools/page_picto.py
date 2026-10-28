@@ -255,7 +255,6 @@ def render():
     {metrics([('6', '步双角色闭环', '', True), ('21', '项逻辑测试', '', True), ('23', '项主流程断言', '', True), ('3', '种手机宽度', '', True)], 'picto')}
     <p class="note rv">以上是工程验收，说明原型稳定可用，不等于用户验证。</p>
     {proto_cta('outcome')}
-    <figure class="end-visual rv"><img class="zoom" src="{I}picto-room.jpg" alt="Picto 主视觉：两个像素角色各在自己的房间，中间由照片和短句连起来" loading="lazy"></figure>
     <p class="quote rv gap-sm">让亲密关系里的“此刻”，先被看见。</p>'''
 
     s4 = f'''
