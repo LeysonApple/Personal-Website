@@ -1773,3 +1773,6 @@ button.bb[aria-pressed=true] { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--qc), 
 .cv-labels span { position: absolute; bottom: 10px; transform: translateX(-50%); white-space: nowrap; display: flex; align-items: center; gap: 7px; }
 .cv-labels b { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--dot); color: #fff; font: 700 12px/1 var(--sans, sans-serif); }
 .cv-labels span::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: 10px; background: var(--line, #ccc); }
+.meta-line { font-size: 11px; letter-spacing: .04em; opacity: .6; margin: var(--s2) 0 0; }
+.case-hero .meta dd { font-size: 15.5px; }
+@media (max-width: 640px) { .case-hero .meta dd br { display: none; } .case-hero .meta dd { font-size: 14.5px; } }

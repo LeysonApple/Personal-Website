@@ -241,13 +241,13 @@ def render():
     {crumb('SIFT')}
     <p class="case-id px rv"><img src="{I}logo-sift.png" alt="">SIFT · 01 / 04</p>
     <h1 class="rv">Sift the noise.<br>Find the direction.</h1>
-    <p class="sub rv d1">设计前期的 AI 智能体：把一句模糊 Brief，收敛成说得清来由的视觉方向。</p>
-    {meta([('Role', '组长<br>调研 · 产品定义 · 交互设计'), ('Team', '3 人小组'), ('Timeline', '2026.09 – 10 · 4 周'), ('Platform', 'Web · 已上线'), ('Tools', '借助 AI 编程工具完成开发<br>Next.js · React Flow · DeepSeek')])}
+    <p class="sub rv d1">给设计师用的 AI 智能体：把一句模糊 Brief，收敛成说得清来由的视觉方向。</p>
+    {meta([('Problem · 问题', '拿到模糊 Brief，设计师不缺图，<br>缺“先判断什么”的次序'), ('Solution · 方案', '一张可追溯的画布，<br>每轮只问 2–3 道对立选择题'), ('My role · 我负责', '3 人小组组长：调研、产品定义、<br>交互设计，借助 AI 编程工具开发'), ('Result · 结果', '4 周迭代上线 · 两轮用户测试<br>非设计师也能看懂方向来由')])}
+    <p class="meta-line px rv">2026.09 – 10 · Web 已上线 · Next.js · React Flow · DeepSeek</p>
 {HERO}
   </div>
 </section>
 
-{tldr([('Problem · 问题', '拿到模糊 Brief，设计师不缺图，缺“先判断什么”的次序。'), ('Solution · 方案', '一张可追溯的画布，每轮只问 2–3 道对立选择题。'), ('Result · 结果', '4 周迭代上线；终期测试中，非设计师也能看懂方向的来由。')])}
 {toc([('design', '01', '设计', 'Design'), ('decision', '02', '关键取舍', 'Decision'), ('outcome', '03', '结果', 'Outcome'), ('process', '04', '过程', 'Process')])}
 {sec('design', '01', '设计', 'Design', s1, 'full')}
 {sec('decision', '02', '关键取舍', 'Decision', s2, 'full')}
