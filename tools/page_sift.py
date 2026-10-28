@@ -150,7 +150,7 @@ def more(title, body):
 
 
 def shot(f, t, n, d=''):
-    return (f'<figure class="rv {d}"><div class="browser"><img class="zoom" src="{I}{f}.jpg" alt="SIFT {t}卡片界面截图"></div>'
+    return (f'<figure class="rv {d}"><div class="browser"><img class="zoom" src="{I}{f}.jpg" alt="SIFT {t.split()[-1]}卡片界面截图"></div>'
             f'<figcaption><b>{t}</b>{n}</figcaption></figure>')
 
 
@@ -192,12 +192,12 @@ def render():
     <h3 class="rv">一张画布：从 Brief 到方向，<br>每一步都可追溯。</h3>
     <figure class="fig rv wide cv-shot"><div class="cv-scroll" tabindex="0" role="region" aria-label="SIFT 线上画布截图，可横向滚动"><div class="cv-labels" aria-hidden="true"><span style="left:8.5%"><b>1</b>简报</span><span style="left:24.5%"><b>2</b>关键提问</span><span style="left:41%"><b>3</b>策略基准</span><span style="left:57.5%"><b>4</b>风格主题</span><span style="left:74%"><b>5</b>灵感检索</span><span style="left:91%"><b>6</b>画面生成</span></div><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><div class="cv-pins"><img class="zoom" src="{I}sift-canvas-hd.jpg" alt="SIFT 线上画布截图：简报、视觉抉择、策略基准、风格主题、灵感检索、画面生成六张卡片连成推演链"><span class="cv-pin" style="left:8.5%"><b>1</b></span><span class="cv-pin" style="left:24.5%"><b>2</b></span><span class="cv-pin" style="left:41%"><b>3</b></span><span class="cv-pin" style="left:57.5%"><b>4</b></span><span class="cv-pin" style="left:74%"><b>5</b></span><span class="cv-pin" style="left:91%"><b>6</b></span></div></div></div>
       <figcaption><span class="fn px">Fig. 01</span><b>线上画布</b>1 简报 → 6 画面生成，卡片之间的连线即继承关系，每张卡都能回指来源。</figcaption></figure>
-    <h3 class="h-sm rv gap-top">四张核心卡片</h3>
+    <h3 class="h-sm rv gap-top">关键卡片特写</h3>
     <div class="shots sift-shots" style="--c:4">
-      {shot('sift-ask-hd', '关键提问', '每轮 2–3 题，选项对立')}
-      {shot('sift-theme-hd', '风格主题', '写明继承自哪张卡', 'd1')}
-      {shot('sift-gen-hd', '画面生成', '画面只辅助判断', 'd2')}
-      {shot('sift-advisor-hd', '策略顾问', '横向对比，给出排序', 'd3')}
+      {shot('sift-ask-hd', '② 关键提问', '每轮 2–3 题，选项对立')}
+      {shot('sift-theme-hd', '④ 风格主题', '写明继承自哪张卡', 'd1')}
+      {shot('sift-gen-hd', '⑥ 画面生成', '画面只辅助判断', 'd2')}
+      {shot('sift-advisor-hd', '+ 策略顾问', '多个方向横向对比、给出排序', 'd3')}
     </div>
     <h3 class="h-sm rv gap-top">65 秒看完 SIFT。</h3>
     <div class="video rv"><video controls playsinline preload="none" width="1920" height="1080" poster="{I}sift-launch-poster.jpg" aria-label="SIFT 发布短片，65 秒"><source src="{B}assets/video/sift-launch.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></div>
@@ -206,13 +206,13 @@ def render():
     s2 = f'''
     <h3 class="rv">提问从“问卷”变成“抉择”。</h3>
     <figure class="fig">{ba()}<figcaption class="rv"><span class="fn px">Fig. 02</span><b>Before / After</b>早期版本为重绘示意，右侧为当前版本，可直接点选。</figcaption></figure>
-    <p class="sub-h rv gap-top">我主导删掉的三件事</p>
+    <p class="sub-h rv gap-top">为了守住“只做前期判断”，我删掉了三件事</p>
     {cuts([('09.18', '长篇策略方案', '测试中没人读完', '每轮只问 2–3 个关键问题'),
            ('09.21', '生图、打样字段', '被当成出图工具', '画面只辅助判断'),
            ('09.22', '多个 AI 对话框', '确认过的判断找不回', '交互全部放进画布卡片')])}'''
 
     s3 = '''
-    <h3 class="rv">两轮测试：从“看不懂”<br>到“说得清方向怎么来的”。</h3>
+    <h3 class="rv">终期测试：流程看得懂了，<br>非设计师也能参与。</h3>
     <div class="shift rv">
       <div><p class="px">中期测试 · 集中问题</p><ul><li>文字偏多</li><li>只给链接</li><li>视觉证据不足</li><li>流程偏长</li></ul></div>
       <span class="ar" aria-hidden="true">→</span>
@@ -224,7 +224,7 @@ def render():
     <p class="note rv">4 周内 PRD 从 v1.0 迭代到 v4.0 并上线，100+ 次代码提交。</p>'''
 
     s4 = f'''
-    <p class="rv">想看我怎么一步步推到这里，可以展开：</p>
+    <p class="rv">过程细节，按需展开：</p>
     <div class="rv">
     {more('设计前期的四个断层', PROBLEMS)}
     {more('导师评审：重新定义产品', MENTOR)}
@@ -247,7 +247,7 @@ def render():
   </div>
 </section>
 
-{tldr([('Problem · 问题', '设计师不缺图，缺“先判断什么”的次序。'), ('Design · 设计', '可追溯的画布，每轮只问 2–3 个对立选择题。'), ('Outcome · 结果', '4 周迭代上线，两轮用户测试。')])}
+{tldr([('Problem · 问题', '拿到模糊 Brief，设计师不缺图，缺“先判断什么”的次序。'), ('Solution · 方案', '一张可追溯的画布，每轮只问 2–3 道对立选择题。'), ('Result · 结果', '4 周迭代上线；终期测试中，非设计师也能看懂方向的来由。')])}
 {toc([('design', '01', '设计', 'Design'), ('decision', '02', '关键取舍', 'Decision'), ('outcome', '03', '结果', 'Outcome'), ('process', '04', '过程', 'Process')])}
 {sec('design', '01', '设计', 'Design', s1, 'full')}
 {sec('decision', '02', '关键取舍', 'Decision', s2, 'full')}
