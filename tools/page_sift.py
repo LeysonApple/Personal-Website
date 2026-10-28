@@ -5,7 +5,7 @@ B = '../'
 I = B + 'assets/img/'
 
 # ---------------------------------------------------------------- recreated UI: the traceable canvas
-# Copy taken from the real canvas screenshot (sift-canvas.jpg) and the theme / generation cards.
+# Copy taken from the real canvas screenshot (sift-canvas-hd.jpg) and the theme / generation cards.
 NODES = [
     ('0', '简报解析', '设计简报', '已确认', 'k',
      '<p>为城市通勤者设计一款可折叠水壶，喝完能压扁放进包里，单手就能开合且不漏水。</p><p class="kw">关键词：轻 · 可折叠 · 单手 · 耐用 · 通勤</p>',
@@ -190,14 +190,14 @@ PRD = [
 def render():
     s1 = f'''
     <h3 class="rv">一张画布：从 Brief 到方向，<br>每一步都可追溯。</h3>
-    <figure class="fig rv wide cv-shot"><div class="cv-scroll" tabindex="0" role="region" aria-label="SIFT 线上画布截图，可横向滚动"><div class="cv-labels" aria-hidden="true"><span style="left:8.5%"><b>1</b>简报</span><span style="left:24.5%"><b>2</b>关键提问</span><span style="left:41%"><b>3</b>策略基准</span><span style="left:57.5%"><b>4</b>风格主题</span><span style="left:74%"><b>5</b>灵感检索</span><span style="left:91%"><b>6</b>画面生成</span></div><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><div class="cv-pins"><img class="zoom" src="{I}sift-canvas.jpg" alt="SIFT 线上画布截图：简报、视觉抉择、策略基准、风格主题、灵感检索、画面生成六张卡片连成推演链"><span class="cv-pin" style="left:8.5%"><b>1</b></span><span class="cv-pin" style="left:24.5%"><b>2</b></span><span class="cv-pin" style="left:41%"><b>3</b></span><span class="cv-pin" style="left:57.5%"><b>4</b></span><span class="cv-pin" style="left:74%"><b>5</b></span><span class="cv-pin" style="left:91%"><b>6</b></span></div></div></div>
+    <figure class="fig rv wide cv-shot"><div class="cv-scroll" tabindex="0" role="region" aria-label="SIFT 线上画布截图，可横向滚动"><div class="cv-labels" aria-hidden="true"><span style="left:8.5%"><b>1</b>简报</span><span style="left:24.5%"><b>2</b>关键提问</span><span style="left:41%"><b>3</b>策略基准</span><span style="left:57.5%"><b>4</b>风格主题</span><span style="left:74%"><b>5</b>灵感检索</span><span style="left:91%"><b>6</b>画面生成</span></div><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><div class="cv-pins"><img class="zoom" src="{I}sift-canvas-hd.jpg" alt="SIFT 线上画布截图：简报、视觉抉择、策略基准、风格主题、灵感检索、画面生成六张卡片连成推演链"><span class="cv-pin" style="left:8.5%"><b>1</b></span><span class="cv-pin" style="left:24.5%"><b>2</b></span><span class="cv-pin" style="left:41%"><b>3</b></span><span class="cv-pin" style="left:57.5%"><b>4</b></span><span class="cv-pin" style="left:74%"><b>5</b></span><span class="cv-pin" style="left:91%"><b>6</b></span></div></div></div>
       <figcaption><span class="fn px">Fig. 01</span><b>线上画布</b>1 简报 → 6 画面生成，卡片之间的连线即继承关系，每张卡都能回指来源。</figcaption></figure>
     <h3 class="h-sm rv gap-top">四张核心卡片</h3>
     <div class="shots sift-shots" style="--c:4">
-      {shot('sift-ask', '关键提问', '每轮 2–3 题，选项对立')}
-      {shot('sift-theme', '风格主题', '写明继承自哪张卡', 'd1')}
-      {shot('sift-gen', '画面生成', '画面只辅助判断', 'd2')}
-      {shot('sift-advisor', '策略顾问', '横向对比，给出排序', 'd3')}
+      {shot('sift-ask-hd', '关键提问', '每轮 2–3 题，选项对立')}
+      {shot('sift-theme-hd', '风格主题', '写明继承自哪张卡', 'd1')}
+      {shot('sift-gen-hd', '画面生成', '画面只辅助判断', 'd2')}
+      {shot('sift-advisor-hd', '策略顾问', '横向对比，给出排序', 'd3')}
     </div>
     <h3 class="h-sm rv gap-top">65 秒看完 SIFT。</h3>
     <div class="video rv"><video controls playsinline preload="none" width="1920" height="1080" poster="{I}sift-launch-poster.jpg" aria-label="SIFT 发布短片，65 秒"><source src="{B}assets/video/sift-launch.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></div>
