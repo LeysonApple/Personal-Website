@@ -7,7 +7,7 @@ ITEMS = [
     ('s', '01', 'SIFT', '', '设计前期的 AI 方向收敛 Agent', '每次只问一个会改变设计判断的问题。', ['Web', '3 人小组组长', '已上线', '2026'], 'projects/sift.html', 'sift-hero.jpg'),
     ('p', '02', 'Picto', '片刻', '情侣的低打扰陪伴 App', '先表达“我现在怎样”，再决定要不要说话。', ['Mobile', '独立完成', '约 2 个月', '2026'], 'projects/picto.html', 'picto-room.jpg'),
     ('f', '03', 'Focenda', '专序', '每日规划与动态排期', '按重要度和精力，排好今天。', ['Web + Mobile', '内测 10 人', '2026'], 'projects/focenda.html', 'focenda-priority.jpg'),
-    ('c', '04', 'CoBuddy', '', '亲子牙刷 · 高露洁 × 广美', '孩子主握，家长从外侧稳定辅助。', ['产品设计', '独立完成', '约 2 个月', '2026'], 'projects/cobuddy.html', ''),
+    ('c', '04', 'CoBuddy', '', '亲子牙刷 · 工业设计跨界', '同一套方法用在实体产品：先定义谁主导，再做形态。', ['工业设计', '高露洁 × 广美', '独立完成', '2026'], 'projects/cobuddy.html', ''),
 ]
 
 
@@ -31,7 +31,7 @@ def render():
     <header class="pick-head">
       <p class="eyebrow px rv">Selected work · 2026</p>
       <h1 class="rv d1">作品</h1>
-      <p class="rv d2">2026 年的四个项目，涵盖 AI Agent、移动端、多端产品与亲子产品设计。</p>
+      <p class="rv d2">3 个交互 / UI·UX 项目，加 1 个工业设计跨界项目。</p>
     </header>
     <ol class="picks">{rows}
     </ol>

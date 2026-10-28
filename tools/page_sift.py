@@ -242,8 +242,8 @@ def render():
     <p class="case-id px rv"><img src="{I}logo-sift.png" alt="">SIFT · 01 / 04</p>
     <h1 class="rv cjk">不急着出图，<br>先帮设计师想清方向。</h1>
     <p class="sub rv d1">给设计师用的 AI 智能体：把一句模糊 Brief，收敛成说得清来由的视觉方向。</p>
-    {meta([('问题', '拿到模糊 Brief，设计师不缺图，<br>缺“先判断什么”的次序'), ('方案', '一张可追溯的画布，<br>每轮只问 2–3 道对立选择题'), ('我负责', '3 人小组组长：调研、产品定义、<br>交互设计，借助 AI 编程工具开发'), ('结果', '4 周迭代上线 · 两轮用户测试，<br>非设计师也能看懂方向来由')])}
-    <p class="meta-line px rv">Sift the noise. Find the direction. · 2026.09 – 10 · Web 已上线 · Next.js · React Flow · DeepSeek</p>
+    {meta([('问题', '拿到模糊 Brief，设计师不缺图，<br>缺“先判断什么”的次序'), ('方案', '一张可追溯的画布，<br>每轮只问 2–3 道对立选择题'), ('我负责', '组长：产品定义、交互设计、原型开发；<br>2 位队友提供建议与资料'), ('结果', '4 周迭代上线 · 两轮用户测试，<br>非设计师也能看懂方向来由')])}
+    <p class="meta-line px rv">Sift the noise. Find the direction. · 2026.09 – 10 · Web 已上线 · 借助 AI 编程工具实现 · Next.js · React Flow · DeepSeek</p>
 {HERO}
   </div>
 </section>
