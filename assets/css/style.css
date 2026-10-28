@@ -1746,3 +1746,26 @@ button.bb[aria-pressed=true] { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--qc), 
 .sift-shots .browser { border-radius: 12px; }
 .voices.one { grid-template-columns: 1fr; max-width: 720px; }
 @media (max-width: 640px) { .more-b .cards { grid-template-columns: 1fr 1fr !important; } }
+/* SIFT design-first refinements */
+.block.full .split { grid-template-columns: 1fr; gap: var(--s3); }
+.block.full .split > .lab { position: static; display: flex; align-items: baseline; gap: 14px; }
+.block.full .lab h2 { margin: 0; }
+.block.full .lab h2::after { display: none; }
+.more summary .c, .more[open] summary .o { display: none; }
+.more[open] summary .c { display: inline; }
+.more summary i { font-style: normal; }
+.cv-pins { position: relative; }
+.cv-pin { position: absolute; top: 14%; transform: translate(-50%, -50%); pointer-events: none; }
+.cv-pin b, .cv-legend b { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--dot); color: #fff; font: 700 13px/1 var(--sans, sans-serif); box-shadow: 0 0 0 3px #fff, 0 6px 14px rgba(0,0,0,.18); }
+.cv-legend { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px 22px; font-family: var(--cjk); font-size: 15px; font-weight: 700; }
+.cv-legend li { display: flex; align-items: center; gap: 8px; }
+.cv-legend li + li::before { content: "→"; color: var(--mute); font-weight: 400; margin-right: 14px; }
+.cv-legend b { width: 22px; height: 22px; font-size: 12px; box-shadow: none; }
+.ba-side.after .ask { margin: 0; }
+@media (max-width: 640px) {
+  .cv-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 calc(var(--gut, 20px) * -1); padding: 0 var(--gut, 20px) 8px; }
+  .cv-scroll .browser { width: 980px; }
+  .cv-legend li + li::before { margin-right: 6px; }
+  .sift-shots { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; padding-bottom: 8px; }
+  .sift-shots figure { flex: 0 0 72%; scroll-snap-align: start; margin-top: 0 !important; }
+}

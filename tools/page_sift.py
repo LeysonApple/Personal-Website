@@ -133,24 +133,20 @@ def ba():
     before = ''.join(f'<li>{t}</li>' for t in [
         '1. 请问您希望这款产品在整体上呈现出怎样的风格与气…', '2. 在材料选择方面，您是否有特别偏好或需要避免的…',
         '3. 关于目标用户的年龄层、使用习惯以及…', '4. 您对色彩方案是否有初步设想，比如…', '5. 是否需要考虑品牌调性与现有产品线…'])
-    def row(q, opts):
-        return f'<p class="bq">{q}</p><div class="bo">' + ''.join(('<span class="on">' if k == 0 else '<span>') + f'{x}</span>' for k, x in enumerate(opts)) + '</div>'
-    after = row('1 · 折叠方式如何被看见？', ['风琴褶', '卷收式', '伸缩套筒']) + row('2 · 壶身呈现怎样的触感？', ['半透雾面', '哑光实色', '硬软拼接'])
     return f'''<div class="ba-ui">
   <div class="ba-side before rv"><span class="ba-k px">Before · 早期版本（重绘）</span>
     <div class="ui-card sift-ui qlist"><ol>{before}</ol><p class="foot-k">随机 1–5 题 · 平均题干 40+ 字</p>
       <span class="pin" style="top:18%;right:-12px" aria-hidden="true">1</span></div>
     <p class="ba-note"><b>1</b> 开放式问卷：题干长、无选项，设计师得自己组织答案。</p></div>
   <div class="ba-arrow" aria-hidden="true">→</div>
-  <div class="ba-side after rv d1"><span class="ba-k px">After · 当前版本</span>
-    <div class="ui-card sift-ui qopts">{after}<p class="foot-k blue">2–3 题 · 题干 ≤35 字 · 选项强对立</p>
-      <span class="pin" style="top:30%;right:-12px" aria-hidden="true">2</span></div>
-    <p class="ba-note"><b>2</b> 对立选项逼出真实偏好，点选即可回答。</p></div>
+  <div class="ba-side after rv d1"><span class="ba-k px">After · 当前版本 · 可直接点选</span>
+    {ask_card()}
+    <p class="ba-note"><b>2</b> 每轮 2–3 题、题干 ≤35 字、选项对立，可选“暂不确定”；回答即写入记录。</p></div>
 </div>'''
 
 
 def more(title, body):
-    return f'<details class="more"><summary><span class="px">+ 展开</span>{title}</summary><div class="more-b">{body}</div></details>'
+    return f'<details class="more"><summary><span class="px"><i class="o">+ 展开</i><i class="c">− 收起</i></span>{title}</summary><div class="more-b">{body}</div></details>'
 
 
 def shot(f, t, n, d=''):
@@ -194,8 +190,9 @@ PRD = [
 def render():
     s1 = f'''
     <h3 class="rv">一张画布：从 Brief 到方向，<br>每一步都可追溯。</h3>
-    <figure class="fig rv wide"><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img class="zoom" src="{I}sift-canvas.jpg" alt="SIFT 线上画布截图：简报、视觉抉择、策略基准、风格主题、灵感检索、画面生成六张卡片连成推演链"></div><figcaption><span class="fn px">Fig. 01</span><b>线上画布</b>6 类卡片连成推演链，连线即继承关系。</figcaption></figure>
-    <figure class="fig rv wide">{canvas()}<figcaption><span class="fn px">Fig. 02</span><b>可交互重建</b>点任意卡片看来源，或按“播放推演”。</figcaption></figure>
+    <figure class="fig rv wide cv-shot"><div class="cv-scroll" tabindex="0" role="region" aria-label="SIFT 线上画布截图，可横向滚动"><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><div class="cv-pins"><img class="zoom" src="{I}sift-canvas.jpg" alt="SIFT 线上画布截图：简报、视觉抉择、策略基准、风格主题、灵感检索、画面生成六张卡片连成推演链"><span class="cv-pin" style="left:8.5%"><b>1</b></span><span class="cv-pin" style="left:24.5%"><b>2</b></span><span class="cv-pin" style="left:41%"><b>3</b></span><span class="cv-pin" style="left:57.5%"><b>4</b></span><span class="cv-pin" style="left:74%"><b>5</b></span><span class="cv-pin" style="left:91%"><b>6</b></span></div></div></div>
+      <ol class="cv-legend" aria-label="推演链"><li><b>1</b>简报</li><li><b>2</b>关键提问</li><li><b>3</b>策略基准</li><li><b>4</b>风格主题</li><li><b>5</b>灵感检索</li><li><b>6</b>画面生成</li></ol>
+      <figcaption><span class="fn px">Fig. 01</span><b>线上画布</b>卡片之间的连线即继承关系，每张卡都能回指来源。</figcaption></figure>
     <h3 class="h-sm rv gap-top">四张核心卡片</h3>
     <div class="shots sift-shots" style="--c:4">
       {shot('sift-ask', '关键提问', '每轮 2–3 题，选项对立')}
@@ -203,35 +200,29 @@ def render():
       {shot('sift-gen', '画面生成', '画面只辅助判断', 'd2')}
       {shot('sift-advisor', '策略顾问', '横向对比，给出排序', 'd3')}
     </div>
-    <div class="feat gap-top">
-      <figure class="fig rv">{ask_card()}<figcaption><span class="fn px">Fig. 03</span><b>试一下提问卡</b>选择会即时写入记录。</figcaption></figure>
-      <div class="rv d1">
-        <p class="eyebrow px">Ask card</p>
-        <h3 class="h-sm">提问只问分水岭。</h3>
-        <ol class="steps">
-          <li><div><b>每轮 2–3 题</b><span>题干 ≤35 字</span></div></li>
-          <li><div><b>选项彼此对立</b><span>逼出真实偏好</span></div></li>
-          <li><div><b>允许“暂不确定”</b><span>不阻塞流程</span></div></li>
-          <li><div><b>回答即沉淀</b><span>后续卡片全部回指它</span></div></li>
-        </ol>
-      </div>
-    </div>
     <h3 class="h-sm rv gap-top">65 秒看完 SIFT。</h3>
-    <div class="video rv"><video controls playsinline preload="none" width="1920" height="1080" poster="{I}sift-launch-poster.jpg" aria-label="SIFT 发布短片，65 秒"><source src="{B}assets/video/sift-launch.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></div>'''
+    <div class="video rv"><video controls playsinline preload="none" width="1920" height="1080" poster="{I}sift-launch-poster.jpg" aria-label="SIFT 发布短片，65 秒"><source src="{B}assets/video/sift-launch.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></div>
+    <p class="note rv">短片用另一个 Brief（冷萃茶）完整演示一遍流程。</p>'''
 
     s2 = f'''
     <h3 class="rv">提问从“问卷”变成“抉择”。</h3>
-    <figure class="fig">{ba()}<figcaption class="rv"><span class="fn px">Fig. 04</span><b>Before / After</b>早期版本为重绘示意。</figcaption></figure>
+    <figure class="fig">{ba()}<figcaption class="rv"><span class="fn px">Fig. 02</span><b>Before / After</b>早期版本为重绘示意，右侧为当前版本，可直接点选。</figcaption></figure>
     <p class="sub-h rv gap-top">我主导删掉的三件事</p>
     {cuts([('09.18', '长篇策略方案', '测试中没人读完', '每轮只问 2–3 个关键问题'),
            ('09.21', '生图、打样字段', '被当成出图工具', '画面只辅助判断'),
            ('09.22', '多个 AI 对话框', '确认过的判断找不回', '交互全部放进画布卡片')])}'''
 
-    s3 = f'''
-    {metrics([('4 周', 'PRD v1.0 → v4.0', '', False), ('100+', '次代码提交', '', False), ('6', '位终期测试参与者', '', True), ('17', '个垂直检索源', '', True)], 'dark')}
+    s3 = '''
+    <h3 class="rv">两轮测试：从“看不懂”<br>到“说得清方向怎么来的”。</h3>
+    <div class="shift rv">
+      <div><p class="px">中期测试 · 集中问题</p><ul><li>文字偏多</li><li>只给链接</li><li>视觉证据不足</li><li>流程偏长</li></ul></div>
+      <span class="ar" aria-hidden="true">→</span>
+      <div class="on"><p class="px">终期测试 · 6 位新参与者</p><ul><li>流程关系更清楚</li><li>搜索更有方向</li><li>参考证据回到画布</li><li>非设计角色也能参与</li></ul></div>
+    </div>
     <div class="voices one gap-sm">
       <blockquote class="rv"><p>“我不是设计师，但现在能理解为什么从 Brief 走到这个方向，也知道该怎么给反馈。”</p><cite>JWY · 产品经理</cite></blockquote>
-    </div>'''
+    </div>
+    <p class="note rv">4 周内 PRD 从 v1.0 迭代到 v4.0 并上线，100+ 次代码提交。</p>'''
 
     s4 = f'''
     <p class="rv">想看我怎么一步步推到这里，可以展开：</p>
@@ -257,11 +248,11 @@ def render():
   </div>
 </section>
 
-{tldr([('Problem · 问题', '设计师不缺图，缺“先判断什么”的次序。'), ('Design · 设计', '可追溯画布 + 每轮 2–3 题的对立提问。'), ('Outcome · 结果', '4 周迭代上线，两轮用户测试。')])}
+{tldr([('Problem · 问题', '设计师不缺图，缺“先判断什么”的次序。'), ('Design · 设计', '可追溯的画布，每轮只问 2–3 个对立选择题。'), ('Outcome · 结果', '4 周迭代上线，两轮用户测试。')])}
 {toc([('design', '01', '设计', 'Design'), ('decision', '02', '关键取舍', 'Decision'), ('outcome', '03', '结果', 'Outcome'), ('process', '04', '过程', 'Process')])}
-{sec('design', '01', '设计', 'Design', s1)}
-{sec('decision', '02', '关键取舍', 'Decision', s2)}
-{sec('outcome', '03', '结果', 'Outcome', s3, 'dark-sec')}
-{sec('process', '04', '过程', 'Process', s4)}
+{sec('design', '01', '设计', 'Design', s1, 'full')}
+{sec('decision', '02', '关键取舍', 'Decision', s2, 'full')}
+{sec('outcome', '03', '结果', 'Outcome', s3, 'dark-sec full')}
+{sec('process', '04', '过程', 'Process', s4, 'full')}
 </main>
 ''' + pager('sift') + foot(B)
