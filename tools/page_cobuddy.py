@@ -240,51 +240,49 @@ def hold():
         <svg class="cs-line" viewBox="0 0 1440 810" aria-hidden="true"><line x1="867.2" y1="524.6" x2="922.6" y2="620.6" stroke="#CEAA8F" stroke-width="2.25" stroke-dasharray="0 6" stroke-linecap="round"/><circle cx="867.2" cy="524.6" r="4" fill="#CEAA8F"/><circle cx="922.6" cy="620.6" r="4" fill="#CEAA8F"/></svg>
         <p class="cs-t cs-note" style="--x:838.1;--y:640.6;--w:258.5">软硅胶保护儿童口腔安全</p>
     </div>
-    <p class="quote rv gap-top">一刷相伴，呵护成长每一步。</p>"""
+"""
 
 # ---------------------------------------------------------------- page
 
+def more(title, body):
+    return f'<details class="more"><summary><span class="px"><i class="o">+ 展开</i><i class="c">− 收起</i></span>{title}</summary><div class="more-b">{body}</div></details>'
+
+
 def render():
     s1 = f'''
-    <h3 class="rv">孩子握得住牙刷，<br>却<span class="hl">控制不住</span>刷牙。</h3>
-    <p class="rv">儿童牙刷的本质，不应只被理解为“清洁牙齿的工具”。对孩子而言，刷牙同时是身体控制、自我照护与日常习惯建立的过程。我从本质主义视角出发，重新思考工具如何支持儿童完成动作，而不是要求儿童适应成人工具。</p>
-    {adult_vs_kid()}
-    {essence()}
-    <p class="sub-h rv gap-top">握持观察：孩子真实刷牙时怎么握？</p>
-    <p class="rv">观察 3–6 岁儿童的日常刷牙动作，分析握持方式、手部姿态与控制特点，为牙刷的体量、截面与握持区设计提供依据。</p>
-    {strip()}
-    {grip_ab()}
-    {chain()}'''
-
-    s2 = f'''
-    <h3 class="rv">真正的问题不是孩子不会握，<br>而是握住后<span class="hl">无法稳定</span>完成动作。</h3>
-    <p class="rv">再观察家长参与的刷牙：孩子掌心包握，家长从外侧覆盖孩子手背。两只手落在同一根手柄上，形成内外两层控制，这是现有牙刷从没为它设计过的动作。</p>
-    {parent_obs()}
-'''
-
-    s3 = f'''
-    <h3 class="rv">从工具加法，<br>到亲子协同。</h3>
-    <p class="rv">不是让牙刷更大，而是让儿童与家长更稳定地共同控制。现有产品多在工具本身做加法，问题依然存在：它们只优化了牙刷作为“单人工具”的可用性，没有重构亲子刷牙时的协同关系。</p>
-    {cuts([('旧方向 01', '加粗手柄', '握得住，但入口笨重，灵活性下降。', '环抱式主握区：体积留给掌心，刷头一端保持纤细灵活。'),
-           ('旧方向 02', '加防滑材料', '增摩擦，但方向仍不清晰。', '用海獭造型本身指示握持方向，手自然落位。'),
-           ('旧方向 03', '加安全附件', '降低风险，但结构复杂，增加工具负担。', '软硅胶包裹刷头，保护集成进形态里。')])}
-    {pivot()}
-    <p class="sub-h rv gap-sm">新机会：亲子协同关系</p>
-    <p class="rv">重新定义儿童、家长与牙刷之间的协同关系，实现参与感、控制力与清洁效果的平衡。</p>
-    {opp()}'''
-
-    s4 = f'''
-    <h3 class="rv">海獭妈妈抱着幼崽，<br>就是“孩子主握、家长辅助”。</h3>
-    <p class="rv">灵感来自海獭妈妈温柔环抱幼崽的姿态，把爱与陪伴融入每一次刷牙体验。</p>
-    {otter()}
-    {sketch_kid()}
-    {sketch_parent()}'''
-
-    s5 = f'''
-    <h3 class="rv">一对牙刷，<br>一个“儿童主握、家长辅助”的动作。</h3>
-    <p class="rv">儿童款负责“握得稳”，家长款负责“扶得准”。两支牙刷沿用同一套海獭造型语言，放在一起就是一对母子。</p>
+    <h3 class="rv">一对牙刷：<br>孩子握得稳，家长扶得准。</h3>
+    <p class="rv">儿童款负责“握得稳”，家长款负责“扶得准”；两支沿用同一套海獭造型，放在一起就是一对母子。</p>
     {renders()}
     {hold()}'''
+
+    s2 = f'''
+    <h3 class="rv">不在工具上做加法，<br>把刷柄做成亲子协同的界面。</h3>
+    <p class="sub-h rv">现有产品的三种加法，我都没有沿用</p>
+    {cuts([('旧方向 01', '加粗手柄', '握得住，但入口笨重、不灵活', '环抱式主握区：体积留给掌心，刷头一端保持纤细'),
+           ('旧方向 02', '加防滑材料', '摩擦大了，握持方向仍不清晰', '用海獭造型本身指示握持方向'),
+           ('旧方向 03', '加安全附件', '结构变复杂，工具负担更重', '软硅胶包裹刷头，保护集成进形态')])}
+    {pivot()}
+    <h3 class="h-sm rv gap-top">造型从哪来：海獭妈妈抱着幼崽，<br>就是“孩子主握、家长辅助”。</h3>
+    {otter()}'''
+
+    s3 = f'''
+    <h3 class="rv">孩子握得住牙刷，<br>却<span class="hl">控制不住</span>刷牙。</h3>
+    <p class="rv">观察 3–6 岁儿童日常刷牙：握持方式、手部姿态与控制特点，决定了牙刷的体量、截面与握持区。</p>
+    {strip()}
+    {grip_ab()}
+    <h3 class="h-sm rv gap-top">家长参与时：两只手落在同一根手柄上。</h3>
+    <p class="rv">孩子掌心包握，家长从外侧覆盖孩子手背，形成内外两层控制，现有牙刷从没为这个动作设计过。</p>
+    {parent_obs()}
+    <p class="quote rv gap-top">一刷相伴，呵护成长每一步。</p>'''
+
+    s4 = f'''
+    <p class="rv">过程细节，按需展开：</p>
+    <div class="rv">
+    {more('出发点：儿童牙刷不只是“缩小的成人牙刷”', adult_vs_kid() + essence())}
+    {more('从观察到机会点', chain() + opp())}
+    {more('手绘草图：儿童款', sketch_kid())}
+    {more('手绘草图：家长款', sketch_parent())}
+    </div>'''
 
     return head('CoBuddy 亲子牙刷 — Leyson', 'CoBuddy 亲子牙刷：广州美术学院 × 高露洁校企合作课程项目。让 3–6 岁孩子握得稳，让家长辅助而不代替。', B, PATH, 'article') + nav('work', B) + f'''
 <main id="main" class="case cob">
@@ -293,22 +291,20 @@ def render():
     {crumb('CoBuddy')}
     <p class="case-id px rv"><img src="{I}logo-cobuddy.png" alt="">CoBuddy 亲子牙刷 · 04 / 04</p>
     <h1 class="rv cjk">不是把牙刷变可爱，<br>而是让孩子握得稳。</h1>
-    <p class="sub rv d1">为 3–6 岁儿童和家长设计的一对亲子牙刷：孩子主握，家长从外侧稳定辅助，而不是抢过牙刷代刷。</p>
-    {meta([('Role', '研究 · 造型 · 草图 · 渲染'), ('Team', '独立完成'), ('Timeline', '约 2 个月 · 2026'), ('Context', '广美 × 高露洁 校企合作'), ('Output', '儿童款 + 家长款 · 两套方案')])}
+    <p class="sub rv d1">给 3–6 岁孩子和家长的一对亲子牙刷：孩子主握，家长从外侧稳定辅助，不再抢过来代刷。</p>
+    {meta([('Problem · 问题', '孩子握得住牙刷却控制不稳，<br>家长只能抢过来代刷'), ('Solution · 方案', '一对海獭环抱造型牙刷：<br>孩子主握，家长外侧辅助'), ('My role · 我负责', '独立完成：握持观察、问题定义、<br>造型、手绘草图到产品渲染'), ('Result · 结果', '儿童款 + 家长款 · A / B 两套方案<br>收纳时合成“妈妈抱着宝宝”')])}
+    <p class="meta-line px rv">广美 × 高露洁 校企合作 · 约 2 个月 · 2026 · 工业设计</p>
 {hero()}
   </div>
 </section>
 
-{tldr([('Problem · 问题', '3–6 岁孩子握得住牙刷，却控制不稳；家长只能抢过来代刷，孩子越来越抗拒。'), ('My role · 我的角色', '约 2 个月独立完成：握持观察、问题定义、造型提取、手绘草图到产品渲染。'), ('Key decision · 关键判断', '不在工具上做加法，而是把刷柄设计成亲子协同的界面：孩子主握，家长辅助。'), ('Outcome · 结果', '海獭环抱造型的儿童款 + 家长款，正面 / 侧面两套方案，完成草图、渲染与握持展示。')])}
-{toc([('problem', '01', '问题', 'Problem'), ('insight', '02', '洞察', 'Insight'), ('decision', '03', '判断', 'Decision'), ('design', '04', '设计', 'Design'), ('outcome', '05', '结果', 'Outcome')])}
-{sec('problem', '01', '问题', 'Problem', s1)}
-{sec('insight', '02', '洞察', 'Insight', s2, 'tint-cob')}
-{sec('decision', '03', '判断', 'Decision', s3)}
-{sec('design', '04', '设计', 'Design', s4, 'tint-cob')}
-{sec('outcome', '05', '结果', 'Outcome', s5)}
+{toc([('design', '01', '设计', 'Design'), ('decision', '02', '关键取舍', 'Decision'), ('evidence', '03', '依据', 'Evidence'), ('process', '04', '过程', 'Process')])}
+{sec('design', '01', '设计', 'Design', s1, 'full')}
+{sec('decision', '02', '关键取舍', 'Decision', s2, 'tint-cob full')}
+{sec('evidence', '03', '依据', 'Evidence', s3, 'full')}
+{sec('process', '04', '过程', 'Process', s4, 'tint-cob full')}
 </main>
 ''' + pager('cobuddy') + foot(B)
-
 
 if __name__ == '__main__':
     import sys

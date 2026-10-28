@@ -22,7 +22,7 @@
 <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/Bricolage.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/style.css?v=10281328">
+<link rel="stylesheet" href="../assets/css/style.css?v=10282145">
 <script>document.documentElement.className='js';try{var c=localStorage.getItem('ly-dot');if(c)document.documentElement.style.setProperty('--dot',c)}catch(e){}</script>
 </head>
 <body>
@@ -45,8 +45,9 @@
     <nav class="crumb px" aria-label="面包屑"><a href="../work.html">Work</a><span aria-hidden="true">/</span><span aria-current="page">Focenda</span></nav>
     <p class="case-id px rv"><img src="../assets/img/logo-focenda.png" alt="" width="192" height="192" loading="lazy" decoding="async">Focenda 专序 · 03 / 04</p>
     <h1 class="rv">Flow Better.<br>Focus Smarter.</h1>
-    <p class="sub rv d1">把零散任务，变成可执行的一日安排。起初是课程作业，课程结束后我继续独立打磨。</p>
-    <dl class="meta"><div><dt>Role</dt><dd>研究 · 产品定义 · 交互与视觉</dd></div><div><dt>Context</dt><dd>课程作业 → 课后独立打磨</dd></div><div><dt>Research</dt><dd>设计师半结构化访谈<br>14 个问题</dd></div><div><dt>Platform</dt><dd>Web + Mobile 响应式</dd></div><div><dt>Test</dt><dd>内测 10 人 · 2 天</dd></div></dl>
+    <p class="sub rv d1">每日规划工具：一句话写下任务，它按重要度和精力帮你排好今天。</p>
+    <dl class="meta"><div><dt>Problem · 问题</dt><dd>任务一多，不知道先做哪件，<br>也不知道今天排得下多少</dd></div><div><dt>Solution · 方案</dt><dd>重要度 × 精力分进四象限，<br>选一种节奏生成今日时间轴</dd></div><div><dt>My role · 我负责</dt><dd>研究、产品定义、交互与视觉，<br>借助 AI 编程工具实现</dd></div><div><dt>Result · 结果</dt><dd>10 人 · 2 天内测：任务完成率 84%<br>80% 接受自动排期</dd></div></dl>
+    <p class="meta-line px rv">课程作业 → 课后独立打磨 · 设计师访谈 14 问 · Web + Mobile 响应式 · 本地运行</p>
     <div class="proto-cta proto-foc proto-hero rv"><a class="btn btn-proto" href="../prototypes/focenda/" target="_blank" rel="noopener">体验原型 <span class="arr" aria-hidden="true">↗</span><span class="sr">（新标签页打开）</span></a><p class="proto-note"><span>本地原型</span> · <span>数据仅保存在你的浏览器</span></p></div>
 
     <div class="case-visual fo-visual rv">
@@ -79,37 +80,57 @@
   </div>
 </section>
 
-<section class="wrap tldr-wrap" aria-label="30 秒速览"><p class="eyebrow px tldr-k">TL;DR · 30 秒速览</p><div class="tldr" style="--n:4"><div class="rv d0"><h2 class="px">Problem · 问题</h2><p>设计师的时间被“非设计”吃掉：琐事太多、信息没对齐、难拿出结果。</p></div><div class="rv d1"><h2 class="px">My role · 我的角色</h2><p>研究、产品定义、交互与视觉；课程结束后继续独立打磨。</p></div><div class="rv d2"><h2 class="px">Key decision · 关键判断</h2><p>先把“排好今天”做扎实：重要度 × 精力分象限，三种节奏生成时间轴，规则全部本地可解释。</p></div><div class="rv d3"><h2 class="px">Outcome · 结果</h2><p>10 人 · 2 天内测：9 人用了任务规划，任务完成率 84%，80% 接受自动排期。</p></div></div></section>
-<nav class="toc" aria-label="本页目录"><div class="wrap"><ol><li><a href="#research"><span class="px">01</span>问题<em>Problem</em></a></li><li><a href="#insight"><span class="px">02</span>洞察<em>Insight</em></a></li><li><a href="#rules"><span class="px">03</span>规则<em>Decision</em></a></li><li><a href="#flow"><span class="px">04</span>设计<em>Design</em></a></li><li><a href="#test"><span class="px">05</span>结果<em>Outcome</em></a></li><li><a href="#reflect"><span class="px">06</span>反思<em>Reflection</em></a></li></ol><span class="toc-bar" aria-hidden="true"></span></div></nav>
-<section class="block" id="research" aria-labelledby="research-h"><div class="wrap split">
-  <div class="lab rv"><span class="no px">01 · Problem</span><h2 id="research-h">问题</h2></div>
+<nav class="toc" aria-label="本页目录"><div class="wrap"><ol><li><a href="#design"><span class="px">01</span>设计<em>Design</em></a></li><li><a href="#decision"><span class="px">02</span>关键取舍<em>Decision</em></a></li><li><a href="#outcome"><span class="px">03</span>结果<em>Outcome</em></a></li><li><a href="#process"><span class="px">04</span>过程<em>Process</em></a></li></ol><span class="toc-bar" aria-hidden="true"></span></div></nav>
+<section class="block full" id="design" aria-labelledby="design-h"><div class="wrap split">
+  <div class="lab rv"><span class="no px">01 · Design</span><h2 id="design-h">设计</h2></div>
   <div class="body">
-    <h3 class="rv">设计师的时间，<br>被“非设计”吃掉了。</h3>
-    <p class="rv">对初创公司设计师做半结构化访谈（14 个问题），归纳出三类关键阻塞。</p>
-    <div class="mcards foc"><div class="mc rv d0"><b data-count>7.4</b><span>项 · 平均负责的工作类型</span></div><div class="mc rv d1"><b data-count>3.7</b><span>次 · 每个页面平均修改</span></div><div class="mc rv d2"><b data-count>70%</b><span>返工源于需求模糊</span></div><div class="mc rv d3"><b data-count>83%</b><span>只能自己上网找资料</span></div></div>
-    <div class="cards gap-sm" style="--c:3">
-      <div class="card rv"><span class="n px">01</span><h4>琐事太多</h4><p>隐性劳动侵蚀创作时间。</p></div>
-      <div class="card rv d1"><span class="n px">02</span><h4>信息没对齐</h4><p>链路断裂导致高频返工。</p></div>
-      <div class="card rv d2"><span class="n px">03</span><h4>难拿出结果</h4><p>设计价值难以量化呈现。</p></div>
+    <h3 class="rv">一句话录入，<br>按重要度 × 精力排好今天。</h3>
+    <div class="shots swipe" style="--c:2">
+      <figure class="rv "><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><picture><source srcset="../assets/img/focenda-priority.webp" type="image/webp"><img class="zoom" src="../assets/img/focenda-priority.jpg" alt="Focenda 原型截图：优先级视图" loading="lazy" width="1600" height="1016" decoding="async"></picture></div><figcaption><b>① 优先级视图</b>气泡位置 = 重要度 × 精力，落进四个象限</figcaption></figure>
+      <figure class="rv d1"><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><picture><source srcset="../assets/img/focenda-timeline.webp" type="image/webp"><img class="zoom" src="../assets/img/focenda-timeline.jpg" alt="Focenda 原型截图：一日时间轴" loading="lazy" width="1600" height="1016" decoding="async"></picture></div><figcaption><b>② 一日时间轴</b>选一种节奏，自动生成今天的安排</figcaption></figure>
+    </div>
+    <div class="shots swipe gap-sm" style="--c:2">
+      <figure class="rv "><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><picture><source srcset="../assets/img/focenda-detail.webp" type="image/webp"><img class="zoom" src="../assets/img/focenda-detail.jpg" alt="Focenda 原型截图：任务详情" loading="lazy" width="1600" height="1099" decoding="async"></picture></div><figcaption><b>③ 任务详情</b>两项评分 + 执行建议</figcaption></figure>
+      <figure class="rv d1"><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><picture><source srcset="../assets/img/focenda-future.webp" type="image/webp"><img class="zoom" src="../assets/img/focenda-future.jpg" alt="Focenda 原型截图：未来 7 天" loading="lazy" width="1600" height="1055" decoding="async"></picture></div><figcaption><b>④ 未来 7 天</b>提前把任务放进某一天</figcaption></figure>
+    </div>
+    <div class="shots swipe gap-sm phone-row" style="--c:4">
+      <figure class="rv "><div class="phone"><picture><source srcset="../assets/img/focenda-today.webp" type="image/webp"><img class="zoom" src="../assets/img/focenda-today.jpg" alt="Focenda 手机端截图：手机 · 任务清单" loading="lazy" width="760" height="1588" decoding="async"></picture></div><figcaption><b>⑤ 手机 · 任务清单</b>首屏只留输入与今日任务</figcaption></figure>
+      <figure class="rv d1"><div class="phone"><picture><source srcset="../assets/img/focenda-plan.webp" type="image/webp"><img class="zoom" src="../assets/img/focenda-plan.jpg" alt="Focenda 手机端截图：手机 · 规划视图" loading="lazy" width="760" height="1588" decoding="async"></picture></div><figcaption><b>⑥ 手机 · 规划视图</b>单列看下一步</figcaption></figure>
+    </div>
+    <p class="note rv">可运行原型真实截图，Web + 手机响应式。</p>
+    <h3 class="h-sm rv gap-top">试一试：点任意气泡，看它的评分和建议。</h3>
+    <figure class="fig wide rv"><div class="ui-frame ui-browser foc-ui" data-quad>
+  <div class="ub-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="fa-bar"><span class="lg" aria-hidden="true"><img src="../assets/img/logo-focenda.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><b>Focenda</b><small>专序</small><span class="sp"></span><span class="seg"><span class="on">今日</span><span>未来</span><span>设置</span></span></div></div>
+  <div class="fq"><div class="fq-main"><div class="fq-h"><span class="seg"><span class="on">优先级视图</span><span>时间安排</span></span><span class="legend"><span class="lg-i q-do"><i></i>优先完成</span><span class="lg-i q-focus"><i></i>专注推进</span><span class="lg-i q-easy"><i></i>顺手处理</span><span class="lg-i q-cut"><i></i>考虑删减</span></span></div><div class="qd"><div class="qd-in"><span class="ql ql-do"><small>重要 · 轻松</small>优先完成</span><span class="ql ql-focus"><small>重要 · 费力</small>专注推进</span><span class="ql ql-easy"><small>不急 · 轻松</small>顺手处理</span><span class="ql ql-cut"><small>不急 · 费力</small>考虑删减</span><span class="ax ax-x" aria-hidden="true">低精力 → 高精力</span><span class="ax ax-y" aria-hidden="true">低重要度 → 高重要度</span><button type="button" class="bb q-do" style="left:38%;bottom:66%;--s:68px" data-task="0" aria-pressed="false" aria-label="9点到10点 交互设计课：重要度 66，精力 38">9点到1…</button><button type="button" class="bb q-do" style="left:22%;bottom:74%;--s:71px" data-task="1" aria-pressed="false" aria-label="回复导师邮件 15分钟：重要度 74，精力 22">回复导师…</button><button type="button" class="bb q-focus" style="left:62%;bottom:58%;--s:65px" data-task="2" aria-pressed="false" aria-label="阅读论文 45分钟：重要度 58，精力 62">阅读论文…</button><button type="button" class="bb q-focus" style="left:66%;bottom:90%;--s:76px" data-task="3" aria-pressed="false" aria-label="完成作品集排版 2小时：重要度 90，精力 66">完成作品…</button><button type="button" class="bb q-focus" style="left:76%;bottom:84%;--s:74px" data-task="4" aria-pressed="true" aria-label="准备周五汇报 90分钟：重要度 84，精力 76">准备周五…</button><button type="button" class="bb q-easy" style="left:16%;bottom:24%;--s:53px" data-task="5" aria-pressed="false" aria-label="整理灵感素材库 30分钟：重要度 24，精力 16">整理灵感…</button><button type="button" class="bb q-easy" style="left:30%;bottom:34%;--s:56px" data-task="6" aria-pressed="false" aria-label="整理课堂笔记 40分钟：重要度 34，精力 30">整理课堂…</button><button type="button" class="bb q-cut" style="left:72%;bottom:18%;--s:50px" data-task="7" aria-pressed="false" aria-label="清理旧版文件夹 60分钟：重要度 18，精力 72">清理旧版…</button></div></div></div><div class="fd" aria-live="polite" data-fd>
+  <span class="tag-s">任务详情</span><h4 data-f="name">准备周五汇报 90分钟</h4>
+  <div class="sc"><span class="imp">重要程度：<b data-f="i">84</b></span><span class="eng">投入程度：<b data-f="e">76</b></span></div>
+  <dl><div><dt>时间</dt><dd data-f="time">尚未指定时间</dd></div><div><dt>预计耗时</dt><dd data-f="min">90 分钟</dd></div><div><dt>象限</dt><dd data-f="q">专注推进</dd></div></dl>
+  <div class="tip"><b>执行建议</b><p data-f="tip">这项任务重要且需要专注，建议留出完整时间，并先拆成 2–3 个小步骤。</p></div>
+</div></div>
+</div><figcaption><span class="fn px">Fig. 01</span><b>优先级视图 + 任务详情</b>按原型界面重建，8 个任务与评分取自原型示例数据。</figcaption></figure>
+    <h3 class="h-sm rv gap-top">再换一种节奏：同一组任务，顺序和空档都不同。</h3>
+    <figure class="fig wide rv"><div class="ui-frame ui-browser foc-ui" data-tl>
+  <div class="ub-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="fa-bar"><span class="lg" aria-hidden="true"><img src="../assets/img/logo-focenda.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><b>Focenda</b><small>专序</small><span class="sp"></span><span class="seg"><span class="on">今日</span><span>未来</span><span>设置</span></span></div></div>
+  <div class="ft">
+    <fieldset class="ft-r"><legend>安排方式<small>选一个适合今天的节奏。</small></legend><label class="rh"><input type="radio" name="rhythm" value="focus"><b>专注推进</b><em>任务紧密衔接</em><span>优先处理高价值任务，减少中途切换。</span></label><label class="rh"><input type="radio" name="rhythm" value="bal" checked><b>均衡节奏</b><em>工作与休息交替</em><span>每项任务之间预留 15 分钟缓冲。</span></label><label class="rh"><input type="radio" name="rhythm" value="easy"><b>轻松安排</b><em>保留更多空白</em><span>先做轻松任务，为高消耗事项留出余量。</span></label><p class="saved">✓ 排期已自动保存，明日失效</p></fieldset>
+    <div class="ft-m">
+      <p class="ft-sum" aria-live="polite"><span class="tag-s">安排建议</span><span data-tl-sum>今天已离线安排 8 项任务，预计需要 7 小时 40 分钟。</span><span class="ot" data-tl-ot></span></p>
+      <div class="ft-axis"><div class="hrs" aria-hidden="true"><span style="left:0.000%">09:00</span><span style="left:8.333%">10:00</span><span style="left:16.667%">11:00</span><span style="left:25.000%">12:00</span><span style="left:33.333%">13:00</span><span style="left:41.667%">14:00</span><span style="left:50.000%">15:00</span><span style="left:58.333%">16:00</span><span style="left:66.667%">17:00</span><span style="left:75.000%">18:00</span><span style="left:83.333%">19:00</span><span style="left:91.667%">20:00</span><span style="left:100.000%">21:00</span></div><div class="track" data-tl-track><span class="off" style="left:75.000%"><em>下班界限</em></span></div></div>
+      <ol class="ft-list" data-tl-list></ol>
     </div>
   </div>
-</div></section>
-
-<section class="block" id="insight" aria-labelledby="insight-h"><div class="wrap split">
-  <div class="lab rv"><span class="no px">02 · Insight</span><h2 id="insight-h">洞察</h2></div>
-  <div class="body">
-    <h3 class="rv">研究起点和内测发现不一样，<br>我选择跟着证据收窄。</h3>
-    <ol class="loop rv" aria-label="定位的变化"><li>研究起点：为设计师做 AI 协同工作空间</li><li>内测发现：最被需要的是“排好今天”</li><li class="on">定位：面向大众的每日规划与动态排期</li></ol>
-    <p class="rv">内测 10 人中学生占 5 人，任务规划使用率 90%。于是先把“规划”做扎实，另外两个模块留作后续。</p>
-    <ol class="cuts"><li class="rv d0"><span class="d px">Concept</span><p class="x"><em class="px">Cut</em><s>设计库调用</s></p><p class="y"><em class="px">Why</em>内测中最被需要的是“排好今天”，设计库不在主路径上。</p><p class="z"><em class="px">Instead</em>保留为概念设计，留作后续版本</p></li><li class="rv d1"><span class="d px">Concept</span><p class="x"><em class="px">Cut</em><s>周报复盘</s></p><p class="y"><em class="px">Why</em>同上；先验证规划与排期，再做汇总。</p><p class="z"><em class="px">Instead</em>保留为概念设计，“个性化复盘”放入后续</p></li><li class="rv d2 kept"><span class="d px">Built</span><p class="x keep"><em class="px">Keep</em><b>任务管理 + 时间规划</b></p><p class="y"><em class="px">Why</em>任务规划是 9/10 位内测者实际用到的部分。</p><p class="z"><em class="px">Shipped</em>自然语言录入、四象限、三种节奏、未来七天</p></li></ol>
+</div><figcaption><span class="fn px">Fig. 02</span><b>一日时间轴</b>专注把高价值任务排前面，均衡和轻松留出缓冲；超过 18:00 的标红。</figcaption></figure>
+    <script type="application/json" id="foc-data">[{"n": "9点到10点 交互设计课", "i": 66, "e": 38, "m": 60, "f": "09:00"}, {"n": "回复导师邮件 15分钟", "i": 74, "e": 22, "m": 15, "f": ""}, {"n": "阅读论文 45分钟", "i": 58, "e": 62, "m": 45, "f": ""}, {"n": "完成作品集排版 2小时", "i": 90, "e": 66, "m": 120, "f": ""}, {"n": "准备周五汇报 90分钟", "i": 84, "e": 76, "m": 90, "f": ""}, {"n": "整理灵感素材库 30分钟", "i": 24, "e": 16, "m": 30, "f": ""}, {"n": "整理课堂笔记 40分钟", "i": 34, "e": 30, "m": 40, "f": ""}, {"n": "清理旧版文件夹 60分钟", "i": 18, "e": 72, "m": 60, "f": ""}]</script>
   </div>
 </div></section>
 
-<section class="block theme-foc" id="rules" aria-labelledby="rules-h"><div class="wrap split">
-  <div class="lab rv"><span class="no px">03 · Decision</span><h2 id="rules-h">规则</h2></div>
+<section class="block full" id="decision" aria-labelledby="decision-h"><div class="wrap split">
+  <div class="lab rv"><span class="no px">02 · Decision</span><h2 id="decision-h">关键取舍</h2></div>
   <div class="body">
-    <h3 class="rv">智能从哪来：<br>三步本地规则。</h3>
-    <p class="rv">全部在本地运行，无需联网；每一条安排都能说出理由。</p>
+    <h3 class="rv">跟着证据收窄：<br>先把“排好今天”做扎实。</h3>
+    <ol class="loop rv" aria-label="定位的变化"><li>研究起点：为设计师做 AI 协同工作空间</li><li>内测发现：最被需要的是“排好今天”</li><li class="on">定位：面向大众的每日规划与动态排期</li></ol>
+    <ol class="cuts"><li class="rv d0"><span class="d px">Concept</span><p class="x"><em class="px">Cut</em><s>设计库调用</s></p><p class="y"><em class="px">Why</em>不在“排好今天”的主路径上</p><p class="z"><em class="px">Instead</em>保留为概念设计，留作后续版本</p></li><li class="rv d1"><span class="d px">Concept</span><p class="x"><em class="px">Cut</em><s>周报复盘</s></p><p class="y"><em class="px">Why</em>先验证规划与排期，再做汇总</p><p class="z"><em class="px">Instead</em>“个性化复盘”放入后续</p></li><li class="rv d2 kept"><span class="d px">Built</span><p class="x keep"><em class="px">Keep</em><b>任务管理 + 时间规划</b></p><p class="y"><em class="px">Why</em>9/10 位内测者实际用到</p><p class="z"><em class="px">Shipped</em>自然语言录入、四象限、三种节奏、未来七天</p></li></ol>
+    <h3 class="h-sm rv gap-top">不用大模型：三步本地规则，每条安排都说得出理由。</h3>
     <div class="rules">
   <div class="rule rv"><span class="no px">01 · 评估</span><h4>关键词打分</h4><p>每项起始 <b>40</b> 分，按任务描述加减，结果限定在 <b>10–95</b>。</p>
     <ul class="kw"><li><b class="up">+25</b>高价值词 → 重要度<small>核心、规划、复盘</small></li><li><b class="dn">−20</b>低价值词 → 重要度<small>整理、报销、周报</small></li><li><b class="up">+25</b>高投入词 → 精力<small>开发、改版、紧急</small></li><li><b class="dn">−20</b>轻量词 → 精力<small>快速、顺手、草拟</small></li></ul></div>
@@ -123,77 +144,36 @@
   </div>
 </div></section>
 
-<section class="block" id="flow" aria-labelledby="flow-h"><div class="wrap split">
-  <div class="lab rv"><span class="no px">04 · Design</span><h2 id="flow-h">设计</h2></div>
+<section class="block tint-blue full" id="outcome" aria-labelledby="outcome-h"><div class="wrap split">
+  <div class="lab rv"><span class="no px">03 · Outcome</span><h2 id="outcome-h">结果</h2></div>
   <div class="body">
-    <h3 class="rv">按价值与精力，<br>分进四个象限。</h3>
-    <p class="rv">一句话输入任务，带上时长与时间；每个任务得到重要度与精力两项评分，气泡位置就是优先级。点任意气泡，看它的评分和执行建议。</p>
-    <figure class="fig wide rv"><div class="ui-frame ui-browser foc-ui" data-quad>
-  <div class="ub-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="fa-bar"><span class="lg" aria-hidden="true"><img src="../assets/img/logo-focenda.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><b>Focenda</b><small>专序</small><span class="sp"></span><span class="seg"><span class="on">今日</span><span>未来</span><span>设置</span></span></div></div>
-  <div class="fq"><div class="fq-main"><div class="fq-h"><span class="seg"><span class="on">优先级视图</span><span>时间安排</span></span><span class="legend"><span class="lg-i q-do"><i></i>优先完成</span><span class="lg-i q-focus"><i></i>专注推进</span><span class="lg-i q-easy"><i></i>顺手处理</span><span class="lg-i q-cut"><i></i>考虑删减</span></span></div><div class="qd"><div class="qd-in"><span class="ql ql-do"><small>重要 · 轻松</small>优先完成</span><span class="ql ql-focus"><small>重要 · 费力</small>专注推进</span><span class="ql ql-easy"><small>不急 · 轻松</small>顺手处理</span><span class="ql ql-cut"><small>不急 · 费力</small>考虑删减</span><span class="ax ax-x" aria-hidden="true">低精力 → 高精力</span><span class="ax ax-y" aria-hidden="true">低重要度 → 高重要度</span><button type="button" class="bb q-do" style="left:38%;bottom:66%;--s:68px" data-task="0" aria-pressed="false" aria-label="9点到10点 交互设计课：重要度 66，精力 38">9点到1…</button><button type="button" class="bb q-do" style="left:22%;bottom:74%;--s:71px" data-task="1" aria-pressed="false" aria-label="回复导师邮件 15分钟：重要度 74，精力 22">回复导师…</button><button type="button" class="bb q-focus" style="left:62%;bottom:58%;--s:65px" data-task="2" aria-pressed="false" aria-label="阅读论文 45分钟：重要度 58，精力 62">阅读论文…</button><button type="button" class="bb q-focus" style="left:66%;bottom:90%;--s:76px" data-task="3" aria-pressed="false" aria-label="完成作品集排版 2小时：重要度 90，精力 66">完成作品…</button><button type="button" class="bb q-focus" style="left:76%;bottom:84%;--s:74px" data-task="4" aria-pressed="true" aria-label="准备周五汇报 90分钟：重要度 84，精力 76">准备周五…</button><button type="button" class="bb q-easy" style="left:16%;bottom:24%;--s:53px" data-task="5" aria-pressed="false" aria-label="整理灵感素材库 30分钟：重要度 24，精力 16">整理灵感…</button><button type="button" class="bb q-easy" style="left:30%;bottom:34%;--s:56px" data-task="6" aria-pressed="false" aria-label="整理课堂笔记 40分钟：重要度 34，精力 30">整理课堂…</button><button type="button" class="bb q-cut" style="left:72%;bottom:18%;--s:50px" data-task="7" aria-pressed="false" aria-label="清理旧版文件夹 60分钟：重要度 18，精力 72">清理旧版…</button></div></div></div><div class="fd" aria-live="polite" data-fd>
-  <span class="tag-s">任务详情</span><h4 data-f="name">准备周五汇报 90分钟</h4>
-  <div class="sc"><span class="imp">重要程度：<b data-f="i">84</b></span><span class="eng">投入程度：<b data-f="e">76</b></span></div>
-  <dl><div><dt>时间</dt><dd data-f="time">尚未指定时间</dd></div><div><dt>预计耗时</dt><dd data-f="min">90 分钟</dd></div><div><dt>象限</dt><dd data-f="q">专注推进</dd></div></dl>
-  <div class="tip"><b>执行建议</b><p data-f="tip">这项任务重要且需要专注，建议留出完整时间，并先拆成 2–3 个小步骤。</p></div>
-</div></div>
-</div><figcaption><span class="fn px">Fig. 01</span><b>优先级视图 + 任务详情</b>按原型界面重建，8 个任务与评分取自原型示例数据；建议按上方规则生成。</figcaption></figure>
-
-    <h3 class="h-sm rv gap-top">选一种节奏，<br>生成今天的时间轴。</h3>
-    <p class="rv">同一组任务，换一种节奏，顺序与空档就不同。切换试试：专注把高价值任务排在前面，均衡和轻松在任务之间留出缓冲，超过 18:00 下班界限的会标红。</p>
-    <figure class="fig wide rv"><div class="ui-frame ui-browser foc-ui" data-tl>
-  <div class="ub-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="fa-bar"><span class="lg" aria-hidden="true"><img src="../assets/img/logo-focenda.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><b>Focenda</b><small>专序</small><span class="sp"></span><span class="seg"><span class="on">今日</span><span>未来</span><span>设置</span></span></div></div>
-  <div class="ft">
-    <fieldset class="ft-r"><legend>安排方式<small>选一个适合今天的节奏。</small></legend><label class="rh"><input type="radio" name="rhythm" value="focus"><b>专注推进</b><em>任务紧密衔接</em><span>优先处理高价值任务，减少中途切换。</span></label><label class="rh"><input type="radio" name="rhythm" value="bal" checked><b>均衡节奏</b><em>工作与休息交替</em><span>每项任务之间预留 15 分钟缓冲。</span></label><label class="rh"><input type="radio" name="rhythm" value="easy"><b>轻松安排</b><em>保留更多空白</em><span>先做轻松任务，为高消耗事项留出余量。</span></label><p class="saved">✓ 排期已自动保存，明日失效</p></fieldset>
-    <div class="ft-m">
-      <p class="ft-sum" aria-live="polite"><span class="tag-s">安排建议</span><span data-tl-sum>今天已离线安排 8 项任务，预计需要 7 小时 40 分钟。</span><span class="ot" data-tl-ot></span></p>
-      <div class="ft-axis"><div class="hrs" aria-hidden="true"><span style="left:0.000%">09:00</span><span style="left:8.333%">10:00</span><span style="left:16.667%">11:00</span><span style="left:25.000%">12:00</span><span style="left:33.333%">13:00</span><span style="left:41.667%">14:00</span><span style="left:50.000%">15:00</span><span style="left:58.333%">16:00</span><span style="left:66.667%">17:00</span><span style="left:75.000%">18:00</span><span style="left:83.333%">19:00</span><span style="left:91.667%">20:00</span><span style="left:100.000%">21:00</span></div><div class="track" data-tl-track><span class="off" style="left:75.000%"><em>下班界限</em></span></div></div>
-      <ol class="ft-list" data-tl-list></ol>
-    </div>
-  </div>
-</div><figcaption><span class="fn px">Fig. 02</span><b>一日时间轴</b>按上方三种排序规则实时计算；“均衡”结果与原型截图一致。原型中还可拖动卡片改时间。</figcaption></figure>
-
-    <div class="feat gap-top">
-      <figure class="fig rv phone-fig"><div class="ui-phone foc-ui plan" data-tabs>
-  <div class="fa-bar"><span class="lg" aria-hidden="true"><img src="../assets/img/logo-focenda.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><b>Focenda</b><small>专序</small><span class="sp"></span><span class="today"><small>TODAY</small>24</span></div>
-  <div class="ph-tabs" role="tablist" aria-label="手机端视图"><button type="button" role="tab" id="ph-t0" aria-controls="ph-p0" aria-selected="false" tabindex="-1">任务清单</button><button type="button" role="tab" id="ph-t1" aria-controls="ph-p1" aria-selected="true" tabindex="0">规划视图</button></div>
-  <div class="ph-p" role="tabpanel" id="ph-p0" aria-labelledby="ph-t0" tabindex="0" hidden>
-    <h5>今天要完成什么？</h5><p class="hint">先写下一件事，再慢慢排好今天。</p>
-    <p class="avail">可用时间 <span>8.0h 可用</span></p>
-    <p class="in">写下任务，也可以直接带上时间，例如：整理房间45分钟 / 下午3点到4点开会<span>添加任务</span></p>
-    <p class="lab">今日任务</p><ul class="tl-tasks"><li class="q-do"><span class="ck" aria-hidden="true"></span><div><b><i></i>9点到10点 交互设计课</b><span class="tg"><em>重要度: 66</em><em>精力: 38</em></span></div></li><li class="q-do"><span class="ck" aria-hidden="true"></span><div><b><i></i>回复导师邮件 15分钟</b><span class="tg"><em>重要度: 74</em><em>精力: 22</em></span></div></li><li class="q-focus"><span class="ck" aria-hidden="true"></span><div><b><i></i>阅读论文 45分钟</b><span class="tg"><em>重要度: 58</em><em>精力: 62</em></span></div></li><li class="q-focus"><span class="ck" aria-hidden="true"></span><div><b><i></i>完成作品集排版 2小时</b><span class="tg"><em>重要度: 90</em><em>精力: 66</em></span></div></li></ul>
-  </div>
-  <div class="ph-p" role="tabpanel" id="ph-p1" aria-labelledby="ph-t1" tabindex="0"><div class="pg-g q-do"><p><i></i>优先完成<span>重要 · 轻松 · 2 项</span></p><ul><li><b>9点到10点 交互设计课</b><span>重要 66 · 精力 38</span></li><li><b>回复导师邮件 15分钟</b><span>重要 74 · 精力 22</span></li></ul></div><div class="pg-g q-focus"><p><i></i>专注推进<span>重要 · 费力 · 3 项</span></p><ul><li><b>阅读论文 45分钟</b><span>重要 58 · 精力 62</span></li><li><b>完成作品集排版 2小时</b><span>重要 90 · 精力 66</span></li><li><b>准备周五汇报 90分钟</b><span>重要 84 · 精力 76</span></li></ul></div><div class="pg-g q-easy"><p><i></i>顺手处理<span>不急 · 轻松 · 2 项</span></p><ul><li><b>整理灵感素材库 30分钟</b><span>重要 24 · 精力 16</span></li><li><b>整理课堂笔记 40分钟</b><span>重要 34 · 精力 30</span></li></ul></div><div class="pg-g q-cut"><p><i></i>考虑删减<span>不急 · 费力 · 1 项</span></p><ul><li><b>清理旧版文件夹 60分钟</b><span>重要 18 · 精力 72</span></li></ul></div></div>
-  <nav class="tb" aria-hidden="true"><span class="on">今日</span><span>未来</span><span>设置</span></nav>
-</div><figcaption><span class="fn px">Fig. 03</span><b>手机端</b>320–430px 单列；可切换任务清单 / 规划视图。</figcaption></figure>
-      <div class="rv d1">
-        <p class="eyebrow px">Responsive · 多端</p>
-        <h3 class="h-sm">电脑看全局，<br>手机看下一步。</h3>
-        <ol class="steps">
-          <li><div><b>Desktop · 1280–1920px</b><span>多栏工作面：左侧录入与清单，右侧四象限或时间轴。</span></div></li>
-          <li><div><b>Mobile · 320–430px</b><span>单列工作流：任务清单与规划视图分开，底部三项导航。</span></div></li>
-          <li><div><b>未来七天</b><span>点任意一天添加任务，把任务提前放进某一天。</span></div></li>
-          <li><div><b>本地优先</b><span>无需账号，可导出 JSON 备份；macOS 小组件同步今日。</span></div></li>
-        </ol>
-      </div>
-    </div>
-    <script type="application/json" id="foc-data">[{"n": "9点到10点 交互设计课", "i": 66, "e": 38, "m": 60, "f": "09:00"}, {"n": "回复导师邮件 15分钟", "i": 74, "e": 22, "m": 15, "f": ""}, {"n": "阅读论文 45分钟", "i": 58, "e": 62, "m": 45, "f": ""}, {"n": "完成作品集排版 2小时", "i": 90, "e": 66, "m": 120, "f": ""}, {"n": "准备周五汇报 90分钟", "i": 84, "e": 76, "m": 90, "f": ""}, {"n": "整理灵感素材库 30分钟", "i": 24, "e": 16, "m": 30, "f": ""}, {"n": "整理课堂笔记 40分钟", "i": 34, "e": 30, "m": 40, "f": ""}, {"n": "清理旧版文件夹 60分钟", "i": 18, "e": 72, "m": 60, "f": ""}]</script>
-  </div>
-</div></section>
-
-<section class="block tint-blue" id="test" aria-labelledby="test-h"><div class="wrap split">
-  <div class="lab rv"><span class="no px">05 · Outcome</span><h2 id="test-h">结果</h2></div>
-  <div class="body">
-    <h3 class="rv">内测 10 人 · 2 天。</h3>
+    <h3 class="rv">内测 10 人 · 2 天：<br>9 人用上了规划，80% 接受自动排期。</h3>
     <div class="mcards foc"><div class="mc rv d0"><b data-count>90%</b><span>使用了任务规划</span><small>9 / 10 人</small></div><div class="mc rv d1"><b data-count>84%</b><span>任务完成率</span><small>任务口径</small></div><div class="mc rv d2"><b data-count>80%</b><span>接受自动排期</span><small>排期口径</small></div><div class="mc rv d3"><b data-count>60%</b><span>主动调整优先级</span><small>6 / 10 人</small></div></div>
     <p class="note rv">样本较小，属初步验证。参与者：学生 5 · 职场办公 3 · 自由职业 2。</p>
-    <p class="sub-h rv gap-sm">把反馈变成设计</p>
+    <p class="sub-h rv gap-sm">反馈直接变成了改动</p>
     <div class="fb">
       <div class="rv"><q>第一次进入不知道先看哪里</q><span class="ar" aria-hidden="true">→</span><b>首屏只留输入与今日任务</b></div>
       <div class="rv d1"><q>希望有新手引导</q><span class="ar" aria-hidden="true">→</span><b>三步引导 + 示例任务</b></div>
       <div class="rv d2"><q>希望总结更个性化</q><span class="ar" aria-hidden="true">→</span><b>个性化复盘 · 后续版本</b></div>
     </div>
-    <h3 class="h-sm rv gap-top">从 Focus Flow 到 Focenda：<br>把术语换成人话。</h3>
-    <div class="table-scroll rv" tabindex="0" role="region" aria-label="命名对比表">
+    <div class="proto-cta proto-foc proto-outcome rv"><a class="btn btn-proto" href="../prototypes/focenda/" target="_blank" rel="noopener">体验原型 <span class="arr" aria-hidden="true">↗</span><span class="sr">（新标签页打开）</span></a><p class="proto-note"><span>本地原型</span> · <span>数据仅保存在你的浏览器</span></p></div>
+    <p class="quote rv gap-sm">先把“排好今天”做扎实。</p>
+  </div>
+</div></section>
+
+<section class="block full" id="process" aria-labelledby="process-h"><div class="wrap split">
+  <div class="lab rv"><span class="no px">04 · Process</span><h2 id="process-h">过程</h2></div>
+  <div class="body">
+    <p class="rv">过程细节，按需展开：</p>
+    <div class="rv">
+    <details class="more"><summary><span class="px"><i class="o">+ 展开</i><i class="c">− 收起</i></span>访谈研究：设计师的时间被“非设计”吃掉</summary><div class="more-b"><p>对初创公司设计师做半结构化访谈（14 个问题），归纳出三类关键阻塞。</p>
+    <div class="mcards foc"><div class="mc rv d0"><b data-count>7.4</b><span>项 · 平均负责的工作类型</span></div><div class="mc rv d1"><b data-count>3.7</b><span>次 · 每个页面平均修改</span></div><div class="mc rv d2"><b data-count>70%</b><span>返工源于需求模糊</span></div><div class="mc rv d3"><b data-count>83%</b><span>只能自己上网找资料</span></div></div>
+    <div class="cards gap-sm" style="--c:3">
+      <div class="card"><span class="n px">01</span><h4>琐事太多</h4><p>隐性劳动侵蚀创作时间。</p></div>
+      <div class="card"><span class="n px">02</span><h4>信息没对齐</h4><p>链路断裂导致高频返工。</p></div>
+      <div class="card"><span class="n px">03</span><h4>难拿出结果</h4><p>设计价值难以量化呈现。</p></div>
+    </div></div></details>
+    <details class="more"><summary><span class="px"><i class="o">+ 展开</i><i class="c">− 收起</i></span>从 Focus Flow 到 Focenda：把术语换成人话</summary><div class="more-b"><div class="table-scroll" tabindex="0" role="region" aria-label="命名对比表">
     <table class="compare">
       <thead><tr><th scope="col"><span class="sr">维度</span></th><th scope="col">早期 · Focus Flow</th><th scope="col">现在 · Focenda</th></tr></thead>
       <tbody>
@@ -203,21 +183,19 @@
       </tbody>
     </table>
     </div>
-    <figure class="fig rv gap-sm ref-sm"><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><picture><source srcset="../assets/img/focenda-early.webp" type="image/webp"><img class="zoom" src="../assets/img/focenda-early.jpg" alt="早期方案 Focus Flow 界面（重绘示意）" width="1600" height="724" loading="lazy" decoding="async"></picture></div><figcaption><span class="fn px">Fig. 04</span><b>早期方案 Focus Flow</b>重绘示意，作为对照参考。</figcaption></figure>
-    <div class="proto-cta proto-foc proto-outcome rv"><a class="btn btn-proto" href="../prototypes/focenda/" target="_blank" rel="noopener">体验原型 <span class="arr" aria-hidden="true">↗</span><span class="sr">（新标签页打开）</span></a><p class="proto-note"><span>本地原型</span> · <span>数据仅保存在你的浏览器</span></p></div>
-  </div>
-</div></section>
-
-<section class="block" id="reflect" aria-labelledby="reflect-h"><div class="wrap split">
-  <div class="lab rv"><span class="no px">06 · Reflection</span><h2 id="reflect-h">反思</h2></div>
-  <div class="body">
-    <p class="quote rv">先把“排好今天”做扎实。</p>
-    <div class="cards gap-sm" style="--c:3">
-      <div class="card rv"><h4>跟着证据收窄</h4><p>研究起点是设计师协作空间，内测显示最被需要的是规划；设计库与周报留作后续。</p></div>
-      <div class="card rv d1"><h4>规则要说得出理由</h4><p>评分、归类与排期全部是可读的本地规则，每一条安排都能解释。</p></div>
-      <div class="card rv d2"><h4>术语换成人话</h4><p>“强效排雷”改为“考虑删减”，第一次打开就能看懂。</p></div>
+    <figure class="fig gap-sm ref-sm"><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><picture><source srcset="../assets/img/focenda-early.webp" type="image/webp"><img class="zoom" src="../assets/img/focenda-early.jpg" alt="早期方案 Focus Flow 界面（重绘示意）" loading="lazy" width="1600" height="724" decoding="async"></picture></div><figcaption><b>早期方案 Focus Flow</b>重绘示意，作为对照参考。</figcaption></figure></div></details>
+    <details class="more"><summary><span class="px"><i class="o">+ 展开</i><i class="c">− 收起</i></span>多端适配：电脑看全局，手机看下一步</summary><div class="more-b"><ol class="steps">
+          <li><div><b>Desktop · 1280–1920px</b><span>多栏工作面：左侧录入与清单，右侧四象限或时间轴。</span></div></li>
+          <li><div><b>Mobile · 320–430px</b><span>单列工作流：任务清单与规划视图分开，底部三项导航。</span></div></li>
+          <li><div><b>本地优先</b><span>无需账号，可导出 JSON 备份；macOS 小组件同步今日。</span></div></li>
+        </ol></div></details>
+    <details class="more"><summary><span class="px"><i class="o">+ 展开</i><i class="c">− 收起</i></span>反思与下一步</summary><div class="more-b"><div class="cards" style="--c:3">
+      <div class="card"><h4>跟着证据收窄</h4><p>研究起点是设计师协作空间，内测显示最被需要的是规划。</p></div>
+      <div class="card"><h4>规则要说得出理由</h4><p>评分、归类与排期全部是可读的本地规则。</p></div>
+      <div class="card"><h4>术语换成人话</h4><p>“强效排雷”改为“考虑删减”，第一次打开就能看懂。</p></div>
     </div>
-    <p class="note rv gap-sm">下一步：个性化复盘，以及设计库调用、周报复盘两个概念模块。内测样本较小，结论有待更大样本验证。</p>
+    <p class="note">下一步：个性化复盘，以及设计库调用、周报复盘两个概念模块。内测样本较小，结论有待更大样本验证。</p></div></details>
+    </div>
   </div>
 </div></section>
 
@@ -252,6 +230,6 @@
 </footer>
 <div class="cursor" aria-hidden="true"><span></span></div>
 <p class="toast" role="status" aria-live="polite"></p>
-<script src="../assets/js/main.js?v=10281328" defer></script>
+<script src="../assets/js/main.js?v=10282145" defer></script>
 </body>
 </html>

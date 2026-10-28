@@ -1,4 +1,4 @@
-from build import head, nav, foot, pager, crumb, meta, tldr, toc, sec, metrics
+from build import head, nav, foot, pager, crumb, meta, tldr, toc, sec, metrics, cuts
 
 PATH = 'projects/picto.html'
 B = '../'
@@ -159,123 +159,114 @@ def proto_cta(where):
     return f'''<div class="proto-cta proto-picto proto-{where} rv"><a class="btn btn-proto" href="{B}prototypes/picto/" target="_blank" rel="noopener">体验原型 <span class="arr" aria-hidden="true">↗</span><span class="sr">（新标签页打开）</span></a><p class="proto-note"><span>本地原型</span> · <span>数据仅保存在你的浏览器</span> · <span>同一浏览器内切换双角色</span></p></div>'''
 
 
-def render():
-    s1 = '''
-    <h3 class="rv">情侣想要的是“被想起”，<br>不是“被要求回复”。</h3>
-    <p class="rv">桌面研究里反复出现同一个张力：关系需要持续的在场感，但现有工具把“在场”和“回复义务”绑在一起。</p>
-    <div class="stats rv picto-ink">
-      <div><b data-count>52%</b><span>伴侣没按预期时间回复时会感到焦虑</span></div>
-      <div><b data-count>67.5%</b><span>有过异地恋经历</span></div>
-      <div><b data-count>41.3%</b><span>认为“忽略了联系”是异地恋的阻碍</span></div>
-      <div><b>0</b><span>在线、已读等制造期待的信号，Picto 一个都不显示</span></div>
-    </div>
-    <p class="note rv">来源：Huang &amp; Yao, 2024, JSPR, N=50；中国青年报社会调查中心, 2016, N=2001。为已发表研究数据，非本项目调研。</p>'''
+def more(title, body):
+    return f'<details class="more"><summary><span class="px"><i class="o">+ 展开</i><i class="c">− 收起</i></span>{title}</summary><div class="more-b">{body}</div></details>'
 
-    s2 = '''
-    <h3 class="rv">拆开“表达、看见、回应”，<br>让它们不必同时发生。</h3>
-    <blockquote class="pull rv picto-pull"><p>“我想让你知道我此刻怎样，但不一定想开启一段对话。”</p><cite class="px">Design hypothesis · 设计起点，不把个人经验包装成用户研究结论</cite></blockquote>
-    <div class="spectrum rv" aria-label="沉默、Picto 与即时聊天的位置">
+
+def scr(f, t, n, d=''):
+    return (f'<figure class="rv {d}"><div class="phone"><img class="zoom" src="{I}{f}.jpg" alt="Picto 原型截图：{t[2:]}" loading="lazy"></div>'
+            f'<figcaption><b>{t}</b>{n}</figcaption></figure>')
+
+
+STATS = '''<div class="stats picto-ink">
+      <div><b>52%</b><span>伴侣没按预期时间回复时会感到焦虑</span></div>
+      <div><b>67.5%</b><span>有过异地恋经历</span></div>
+      <div><b>41.3%</b><span>认为“忽略了联系”是异地恋的阻碍</span></div>
+    </div>
+    <p class="note">来源：Huang &amp; Yao, 2024, JSPR, N=50；中国青年报社会调查中心, 2016, N=2001。为已发表研究数据，非本项目调研。</p>'''
+
+INSIGHT = '''<blockquote class="pull picto-pull"><p>“我想让你知道我此刻怎样，但不一定想开启一段对话。”</p><cite class="px">Design hypothesis · 设计起点，不把个人经验包装成用户研究结论</cite></blockquote>
+    <div class="spectrum" aria-label="沉默、Picto 与即时聊天的位置">
       <div><b>沉默</b><span>对方未必感知到</span></div>
       <div class="on"><b>Picto</b><span>让当下先被看见</span></div>
       <div><b>即时聊天</b><span>可能形成回复压力</span></div>
     </div>
-    <p class="sub-h rv gap-sm">前人研究给了三个启示</p>
-    <div class="cards" style="--c:3">
-      <div class="card rv"><span class="n px">CHI 2006 · Kaye</span><h4>极简信号也能承载亲密</h4><p>异地情侣只能互相发送“一比特”点击，却会结合情境读出丰富含义。<b>→ 状态不必写成长消息。</b></p></div>
-      <div class="card rv d1"><span class="n px">CHI 2022 · Read receipts</span><h4>已读回执制造压力</h4><p>接收方感到必须回复，发送方则期待即时回应。<b>→ 不做在线、已读与送达回执。</b></p></div>
-      <div class="card rv d2"><span class="n px">JSPR 2021 · n=647</span><h4>回应仍然重要</h4><p>更频繁、回应性更强的联系与更高的关系满意度相关。<b>→ 回应可以轻到一句“我看见了”。</b></p></div>
+    <div class="cards gap-sm" style="--c:3">
+      <div class="card"><span class="n px">CHI 2006 · Kaye</span><h4>极简信号也能承载亲密</h4><p><b>→ 状态不必写成长消息。</b></p></div>
+      <div class="card"><span class="n px">CHI 2022 · Read receipts</span><h4>已读回执制造压力</h4><p><b>→ 不做在线、已读与送达。</b></p></div>
+      <div class="card"><span class="n px">JSPR 2021 · n=647</span><h4>回应仍然重要</h4><p><b>→ 回应可以轻到一句“我看见了”。</b></p></div>
     </div>'''
 
-    s3 = f'''
-    <h3 class="rv">三个原则，约束所有功能与表达。</h3>
-    <div class="notes">
-      <div class="card rv"><span class="n px">01</span><h4>看见，不等于打扰。</h4><p>状态先于消息，让关心可以停在“我知道了”。</p></div>
-      <div class="card rv d1"><span class="n px">02</span><h4>不回应，也被允许。</h4><p>联系偏好直接可见，不用让沉默承担解释成本。</p></div>
-      <div class="card rv d2"><span class="n px">03</span><h4>温柔，但操作必须清楚。</h4><p>情感留给标题与角色，按钮和反馈直接说明结果。</p></div>
+PRINCIPLES = '''<div class="notes">
+      <div class="card"><span class="n px">01</span><h4>看见，不等于打扰。</h4><p>状态先于消息，关心可以停在“我知道了”。</p></div>
+      <div class="card"><span class="n px">02</span><h4>不回应，也被允许。</h4><p>联系偏好直接可见，沉默不用解释。</p></div>
+      <div class="card"><span class="n px">03</span><h4>温柔，但操作必须清楚。</h4><p>情感留给标题与角色，按钮直接说明结果。</p></div>
+    </div>'''
+
+RISKS = '''<div class="cards" style="--c:3">
+      <div class="card"><span class="n px">Risk 01</span><h4>状态替代了聊天</h4><p><b>→ 首页始终保留“留一句”的入口。</b></p></div>
+      <div class="card"><span class="n px">Risk 02</span><h4>在场变成监视</h4><p><b>→ 不采集定位、步数或在线时间。</b></p></div>
+      <div class="card"><span class="n px">Risk 03</span><h4>又多一个要看的 App</h4><p><b>→ 只做两个人、三件事：状态、短句、片刻。</b></p></div>
+    </div><p class="note">应对为当前设计取舍，尚待真实用户验证。</p>'''
+
+PLAN = '''<p class="aside">招募 3–5 对异地或忙碌的情侣，使用原型 7 天，前后各做一次半结构化访谈。</p>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="验证计划"><table class="compare">
+      <thead><tr><th scope="col">假设</th><th scope="col">方法</th><th scope="col">观测指标</th></tr></thead><tbody>
+        <tr><th scope="row">H1 低打扰表达能降低回复压力</th><td data-label="方法">每日日记 + 前后访谈</td><td data-label="指标">回复压力自评（1–7）</td></tr>
+        <tr><th scope="row">H2 联系偏好比在线状态更有用</th><td data-label="方法">日记 + 使用记录</td><td data-label="指标">偏好设置与查看频次</td></tr>
+        <tr><th scope="row">H3 能区分首页时效与片刻墙</th><td data-label="方法">可用性任务</td><td data-label="指标">任务完成率与误解次数</td></tr>
+      </tbody></table></div>'''
+
+
+def render():
+    chars = f'''<div class="ba keep2">
+        <figure class="fig"><span class="tag">Before · 扁平方脸参考</span><div class="stage tight"><img class="zoom pixel" src="{I}picto-before.jpg" alt="早期角色参考：扁平方脸的像素猫与像素狗"></div></figure>
+        <figure class="fig"><span class="tag">After · 程序像素角色</span><div class="stage tight"><img class="zoom pixel" src="{I}picto-after.jpg" alt="当前角色：程序绘制的像素角色"></div></figure>
+      </div><p class="note">程序像素角色成为唯一基准，应用、头像与封面共用同一套造型。</p>'''
+
+    s1 = f'''
+    <h3 class="rv">一张状态卡，代替一条消息。</h3>
+    <div class="shots swipe phone-row" style="--c:4">
+      {scr('picto-home', '① 首页', '看见对方此刻：表情、场景、状态句')}
+      {scr('picto-status', '② 设置状态', '心情 10 × 正在做 12 × 联系偏好 4', 'd1')}
+      {scr('picto-polaroid', '③ 拍一片刻', '相机不可用时改选本地图片', 'd2')}
+      {scr('picto-wall', '④ 片刻墙', '照片和短句按时间留存', 'd3')}
     </div>
-    <p class="sub-h rv gap-top">功能语言和情感语言分开：每个词都对应真实能力</p>
-    {lang_rows([('配对成功', '本地双人体验已建立', '说明这是同一浏览器里的角色模拟。'), ('在线 · 电量 72%', '刚刚更新 · 看见就好', '只呈现用户主动表达的状态与边界。'), ('消息已送达', '已保存到当前设备', '反馈与真实存储范围完全一致。')])}
-    <p class="sub-h rv gap-top">规则是刻意的选择：为什么现在不用生成式 AI</p>
-    <div class="cards" style="--c:3">
-      <div class="card rv"><span class="n px">01</span><h4>可预测</h4><p>同样的选择，永远得到同样的状态句。</p></div>
-      <div class="card rv d1"><span class="n px">02</span><h4>不代替表达</h4><p>情绪由本人选择，系统不推断、不放大。</p></div>
-      <div class="card rv d2"><span class="n px">03</span><h4>留在本地</h4><p>心情与活动不上传，不需要账号。</p></div>
-    </div>'''
-
-    s4 = f'''
-    <h3 class="rv">“智能”来自可解释的状态映射。</h3>
-    <p class="rv">心情 10 种 × 正在做 12 种 × 联系偏好 4 档。心情决定表情，活动决定场景，偏好把边界直接说出来。试着在左边换一组，看右边伴侣看到什么。</p>
+    <p class="note rv">可运行原型真实截图。同一浏览器内切换琪琪 / 森森两个角色。</p>
+    <h3 class="h-sm rv gap-top">试一试：左边换一组状态，右边是对方看到的。</h3>
     <figure class="fig wide rv"><div class="picto-demo" data-picto>{picker()}{home_phone()}</div>
-      <figcaption><span class="fn px">Fig. 01</span><b>设置状态 → 伴侣首页</b>按原型界面重建，选项与原型一致。状态由本人选择，系统只组合已知输入，不推断情绪。</figcaption></figure>
-
+      <figcaption><span class="fn px">Fig. 01</span><b>设置状态 → 伴侣首页</b>心情决定表情，活动决定场景，偏好把边界直接说出来；系统只组合本人的选择，不推断情绪。</figcaption></figure>
     <div class="feat gap-top">
-      <figure class="fig rv">{note_card()}<figcaption><span class="fn px">Fig. 02</span><b>留一句</b>30 字以内；时长只控制首页显示，到期后留在片刻墙。</figcaption></figure>
+      <figure class="fig rv">{note_card()}<figcaption><span class="fn px">Fig. 02</span><b>留一句</b>30 字以内；时长只控制首页显示，到期后进入片刻墙。</figcaption></figure>
       <div class="rv d1">
-        <p class="eyebrow px">Flow · 六步双角色交接</p>
-        <h3 class="h-sm">从表达，到看见，<br>再到留存。</h3>
+        <p class="eyebrow px">Flow · 六步双角色闭环</p>
+        <h3 class="h-sm">表达 → 看见 → 回应 → 留存</h3>
         <ol class="steps">
           <li><div><b>表达当下</b><span>心情、活动与联系偏好。</span></div></li>
           <li><div><b>状态代理</b><span>像素姿态与状态句同步更新。</span></div></li>
           <li><div><b>切换视角</b><span>同一设备模拟两端。</span></div></li>
           <li><div><b>看见对方</b><span>姿态、状态句与边界。</span></div></li>
-          <li><div><b>轻量回应</b><span>短句时长可选。</span></div></li>
-          <li><div><b>留下片刻</b><span>照片与短句进入片刻墙；相机不可用时改用本地图片，流程不中断。</span></div></li>
+          <li><div><b>轻量回应</b><span>留一句，时长可选。</span></div></li>
+          <li><div><b>留下片刻</b><span>照片与短句进入片刻墙。</span></div></li>
         </ol>
-      </div>
-    </div>
-
-    <div class="refs gap-top rv">
-      <p class="eyebrow px">Original screens · 原型截图</p>
-      <div class="refs-row">
-        <figure class="fig"><div class="phone"><img class="zoom" src="{I}picto-polaroid.jpg" alt="Picto 原型截图：拍一片刻"></div><figcaption><span class="fn px">Fig. 03</span><b>拍一片刻</b></figcaption></figure>
-        <figure class="fig"><div class="phone"><img class="zoom" src="{I}picto-wall.jpg" alt="Picto 原型截图：片刻墙"></div><figcaption><span class="fn px">Fig. 04</span><b>片刻墙</b>短句离开首页，留在这里。</figcaption></figure>
       </div>
     </div>'''
 
-    s5 = f'''
-    <h3 class="rv">四次关键迭代，让作品更诚实。</h3>
-    <div class="iter">
-      <div class="it rv"><span class="px">7/31 初版</span><span class="u old">ONLINE · 100%</span><span class="ar" aria-hidden="true">→</span><span class="u new">刚刚更新</span><p>不再暗示没有实现的在线与电量。</p></div>
-      <div class="it rv d1"><span class="px">7/31 初版</span><span class="u old">打扰状态</span><span class="ar" aria-hidden="true">→</span><span class="u new">四档联系偏好</span><p>两列排布，保存按钮不再遮挡选项。</p></div>
-      <div class="it rv d2"><span class="px">7/31 初版</span><span class="u old">一直显示</span><span class="ar" aria-hidden="true">→</span><span class="u new">不自动消失</span><p>明确时长只控制首页显示。</p></div>
-    </div>
-    <div class="two gap-sm">
-      <div class="ba keep2">
-        <figure class="fig rv"><span class="tag">Before · 扁平方脸参考</span><div class="stage tight"><img class="zoom pixel" src="{I}picto-before.jpg" alt="早期角色参考：扁平方脸的像素猫与像素狗"></div></figure>
-        <figure class="fig rv d1"><span class="tag">After · 程序像素角色</span><div class="stage tight"><img class="zoom pixel" src="{I}picto-after.jpg" alt="当前角色：程序绘制的像素角色，用于应用、头像与封面"></div></figure>
-      </div>
-      <ol class="steps rv">
-        <li><div><b>角色</b><span>程序像素角色成为唯一基准，应用、头像与封面共用同一套造型。</span></div></li>
-        <li><div><b>语言</b><span>能力不再被夸大：“在线、已送达”改为“当前设备、切换角色查看”。</span></div></li>
-        <li><div><b>流程</b><span>分散的页面整合为六步双角色交接，表达、看见、回应、接收形成闭环。</span></div></li>
-        <li><div><b>展示</b><span>冗长的过程说明，换成真实界面和可交互的案例页。</span></div></li>
-      </ol>
-    </div>
-    <p class="sub-h rv gap-top">已完成的工程验收</p>
-    {metrics([('21', '项逻辑测试', '', True), ('23', '项浏览器主流程断言', '', True), ('44', '项案例页断言', '', True), ('3', '种手机宽度', '', True)], 'picto')}
-    <p class="note rv">工程验收说明原型能稳定运行，不等于用户验证；真实使用效果见下一步的日记研究计划。</p>
-    {proto_cta('outcome')}'''
+    s2 = f'''
+    <h3 class="rv">只显示本人主动表达的，<br>不显示任何“该回复了”的信号。</h3>
+    <p class="sub-h rv">为了守住“看见不等于打扰”，我删掉了三件事，留下一件</p>
+    {cuts([('初版', '在线 · 电量 72%', '暗示了没实现、也不该有的监视', '刚刚更新 · 看见就好'),
+           ('设计决定', '已读 · 送达回执', '让接收方觉得必须回复', '已保存到当前设备'),
+           ('设计决定', '生成式 AI 推断情绪', '不可预测，还会替人表达', '本人选择，规则拼成固定状态句'),
+           ('初版 → 终版', '四档联系偏好', '让沉默不必解释', '可以联系 · 晚点回复 · 需要一点空间 · 只想被看见', True)])}'''
 
-    s6 = '''
-    <p class="quote rv">让亲密关系里的“此刻”，先被看见。</p>
-    <p class="sub-h rv gap-sm">低打扰也有代价：三个风险要提前回应</p>
-    <div class="cards" style="--c:3">
-      <div class="card rv"><span class="n px">Risk 01</span><h4>状态替代了聊天</h4><p>看到“一切如常”，就不再主动说话。<b>→ 状态只是开场，首页始终保留“留一句”的入口。</b></p></div>
-      <div class="card rv d1"><span class="n px">Risk 02</span><h4>在场变成监视</h4><p>持续共享位置、步数，会让一方觉得被盯着。<b>→ 只显示本人主动选择的状态，不采集定位、步数或在线时间。</b></p></div>
-      <div class="card rv d2"><span class="n px">Risk 03</span><h4>又多一个要看的 App</h4><p>功能一多，它就成了另一个消息箱。<b>→ 只做两个人、三件事：状态、短句、片刻。</b></p></div>
-    </div>
-    <p class="note rv">应对为当前设计取舍，尚待真实用户验证。</p>
-    <p class="sub-h rv gap-sm">下一步：用一周日记研究验证三个假设</p>
-    <p class="aside rv">招募 3–5 对异地或忙碌的情侣，使用原型 7 天，前后各做一次半结构化访谈。</p>
-    <div class="table-scroll rv" tabindex="0" role="region" aria-label="验证计划">
-    <table class="compare">
-      <thead><tr><th scope="col">假设</th><th scope="col">方法</th><th scope="col">观测指标</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">H1 低打扰表达能降低回复压力</th><td data-label="方法">每日日记 + 前后访谈</td><td data-label="指标">回复压力自评（1–7）</td></tr>
-        <tr><th scope="row">H2 联系偏好比在线状态更有用</th><td data-label="方法">日记 + 使用记录</td><td data-label="指标">偏好设置与查看频次</td></tr>
-        <tr><th scope="row">H3 能区分首页时效与片刻墙</th><td data-label="方法">可用性任务</td><td data-label="指标">任务完成率与误解次数</td></tr>
-      </tbody>
-    </table>
+    s3 = f'''
+    <h3 class="rv">原型完整可跑，<br>真实效果交给下一步的情侣日记研究。</h3>
+    {metrics([('6', '步双角色闭环', '', True), ('21', '项逻辑测试', '', True), ('23', '项主流程断言', '', True), ('3', '种手机宽度', '', True)], 'picto')}
+    <p class="note rv">以上是工程验收，说明原型稳定可用，不等于用户验证。</p>
+    {proto_cta('outcome')}
+    <figure class="end-visual rv"><img class="zoom" src="{I}picto-room.jpg" alt="Picto 主视觉：两个像素角色各在自己的房间，中间由照片和短句连起来" loading="lazy"></figure>
+    <p class="quote rv gap-sm">让亲密关系里的“此刻”，先被看见。</p>'''
+
+    s4 = f'''
+    <p class="rv">过程细节，按需展开：</p>
+    <div class="rv">
+    {more('问题：被看见，被绑成了要回复', STATS)}
+    {more('洞察与前人研究：拆开表达、看见、回应', INSIGHT)}
+    {more('三条设计原则', PRINCIPLES)}
+    {more('角色迭代：从参考图到程序像素', chars)}
+    {more('低打扰的三个风险与应对', RISKS)}
+    {more('下一步：一周日记研究计划', PLAN)}
     </div>'''
 
     return head('片刻 Picto — Leyson', '片刻 Picto：介于沉默与即时聊天之间的低打扰陪伴方式。', B, PATH, 'article') + nav('work', B) + f'''
@@ -285,20 +276,18 @@ def render():
     {crumb('Picto')}
     <p class="case-id px rv"><img src="{I}logo-picto.png" alt="">Picto 片刻 · 02 / 04</p>
     <h1 class="rv cjk">看见彼此，<br>不必一直聊天。</h1>
-    <p class="sub rv d1">介于沉默与即时聊天之间的低打扰陪伴方式：先表达“我现在怎样”，再决定要不要说话。</p>
-    {meta([('Role', '问题定义 · 状态机制 · 语言边界'), ('Team', '独立完成'), ('Timeline', '约 2 个月'), ('Platform', 'Mobile · 可运行原型'), ('Tools', 'AI 协作完成实现、测试与素材')])}
+    <p class="sub rv d1">给情侣用的低打扰陪伴 App：先让对方看见“我现在怎样”，再决定要不要说话。</p>
+    {meta([('Problem · 问题', '聊天把“被看见”绑成了“要回复”，<br>忙碌、异地的情侣更累'), ('Solution · 方案', '一张状态卡代替一条消息：<br>心情 × 正在做 × 联系偏好'), ('My role · 我负责', '独立完成：问题定义、状态机制、<br>语言边界，借助 AI 编程工具实现'), ('Result · 结果', '六步双角色闭环的可运行原型<br>21 项逻辑测试全部通过')])}
+    <p class="meta-line px rv">约 2 个月 · 独立完成 · Mobile 可运行原型 · 数据仅存本地</p>
     {proto_cta('hero')}
 {hero()}
   </div>
 </section>
 
-{tldr([('Problem · 问题', '即时通信把“被看见”绑成了“要回复”，忙碌和异地的情侣因此更累。'), ('My role · 我的角色', '约 2 个月独立完成：问题定义、状态机制、语言边界与最终取舍；AI 协作完成实现与测试。'), ('Key decision · 关键判断', '用一张状态卡代替一条消息：心情 + 正在做 + 联系偏好；用可预测的规则，而非生成式 AI。'), ('Outcome · 结果', '可解释的状态系统、六步双角色闭环与可运行原型；通过 21 项逻辑测试与 23 项主流程断言。')])}
-{toc([('problem', '01', '问题', 'Problem'), ('insight', '02', '洞察', 'Insight'), ('principles', '03', '原则', 'Decision'), ('system', '04', '设计', 'Design'), ('iterate', '05', '迭代与结果', 'Outcome'), ('next-step', '06', '反思', 'Reflection')])}
-{sec('problem', '01', '问题', 'Problem', s1)}
-{sec('insight', '02', '洞察', 'Insight', s2, 'theme-picto')}
-{sec('principles', '03', '原则', 'Decision', s3)}
-{sec('system', '04', '设计', 'Design', s4, 'tint-peach')}
-{sec('iterate', '05', '迭代与结果', 'Outcome', s5)}
-{sec('next-step', '06', '反思', 'Reflection', s6, 'theme-picto')}
+{toc([('design', '01', '设计', 'Design'), ('decision', '02', '关键取舍', 'Decision'), ('outcome', '03', '结果', 'Outcome'), ('process', '04', '过程', 'Process')])}
+{sec('design', '01', '设计', 'Design', s1, 'full')}
+{sec('decision', '02', '关键取舍', 'Decision', s2, 'theme-picto full')}
+{sec('outcome', '03', '结果', 'Outcome', s3, 'full')}
+{sec('process', '04', '过程', 'Process', s4, 'tint-peach full')}
 </main>
 ''' + pager('picto') + foot(B)

@@ -49,7 +49,7 @@ def head(title, desc, base='', path='', kind='website'):
 <link rel="icon" href="{base}assets/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="{base}assets/img/apple-touch-icon.png">
 <link rel="preload" href="{base}assets/fonts/Bricolage.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="{base}assets/css/style.css?v=10281328">
+<link rel="stylesheet" href="{base}assets/css/style.css?v=10282145">
 <script>document.documentElement.className='js';try{{var c=localStorage.getItem('ly-dot');if(c)document.documentElement.style.setProperty('--dot',c)}}catch(e){{}}</script>
 </head>
 <body>
@@ -95,7 +95,7 @@ def foot(base=''):
 </footer>
 <div class="cursor" aria-hidden="true"><span></span></div>
 <p class="toast" role="status" aria-live="polite"></p>
-<script src="{base}assets/js/main.js?v=10281328" defer></script>
+<script src="{base}assets/js/main.js?v=10282145" defer></script>
 </body>
 </html>
 '''

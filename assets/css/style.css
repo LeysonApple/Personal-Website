@@ -1776,3 +1776,15 @@ button.bb[aria-pressed=true] { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--qc), 
 .meta-line { font-size: 11px; letter-spacing: .04em; opacity: .6; margin: var(--s2) 0 0; }
 .case-hero .meta dd { font-size: 15.5px; }
 @media (max-width: 640px) { .case-hero .meta dd br { display: none; } .case-hero .meta dd { font-size: 14.5px; } }
+/* shared: real-screen rows that swipe on phones */
+.swipe figure:nth-child(even) { margin-top: 0; }
+.phone-row .phone { border-radius: 26px; padding: 6px; }
+.phone-row .phone img { border-radius: 20px; }
+.end-visual { margin: var(--s5) 0 0; }
+.end-visual img { width: 100%; border-radius: 18px; display: block; }
+@media (max-width: 640px) {
+  .swipe { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; padding-bottom: 8px; }
+  .swipe figure { flex: 0 0 64%; scroll-snap-align: start; margin-top: 0 !important; }
+}
+.phone-row { max-width: 1040px; }
+.foc-row { align-items: end; }
