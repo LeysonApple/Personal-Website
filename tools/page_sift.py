@@ -190,9 +190,8 @@ PRD = [
 def render():
     s1 = f'''
     <h3 class="rv">一张画布：从 Brief 到方向，<br>每一步都可追溯。</h3>
-    <figure class="fig rv wide cv-shot"><div class="cv-scroll" tabindex="0" role="region" aria-label="SIFT 线上画布截图，可横向滚动"><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><div class="cv-pins"><img class="zoom" src="{I}sift-canvas.jpg" alt="SIFT 线上画布截图：简报、视觉抉择、策略基准、风格主题、灵感检索、画面生成六张卡片连成推演链"><span class="cv-pin" style="left:8.5%"><b>1</b></span><span class="cv-pin" style="left:24.5%"><b>2</b></span><span class="cv-pin" style="left:41%"><b>3</b></span><span class="cv-pin" style="left:57.5%"><b>4</b></span><span class="cv-pin" style="left:74%"><b>5</b></span><span class="cv-pin" style="left:91%"><b>6</b></span></div></div></div>
-      <ol class="cv-legend" aria-label="推演链"><li><b>1</b>简报</li><li><b>2</b>关键提问</li><li><b>3</b>策略基准</li><li><b>4</b>风格主题</li><li><b>5</b>灵感检索</li><li><b>6</b>画面生成</li></ol>
-      <figcaption><span class="fn px">Fig. 01</span><b>线上画布</b>卡片之间的连线即继承关系，每张卡都能回指来源。</figcaption></figure>
+    <figure class="fig rv wide cv-shot"><div class="cv-scroll" tabindex="0" role="region" aria-label="SIFT 线上画布截图，可横向滚动"><div class="cv-labels" aria-hidden="true"><span style="left:8.5%"><b>1</b>简报</span><span style="left:24.5%"><b>2</b>关键提问</span><span style="left:41%"><b>3</b>策略基准</span><span style="left:57.5%"><b>4</b>风格主题</span><span style="left:74%"><b>5</b>灵感检索</span><span style="left:91%"><b>6</b>画面生成</span></div><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><div class="cv-pins"><img class="zoom" src="{I}sift-canvas.jpg" alt="SIFT 线上画布截图：简报、视觉抉择、策略基准、风格主题、灵感检索、画面生成六张卡片连成推演链"><span class="cv-pin" style="left:8.5%"><b>1</b></span><span class="cv-pin" style="left:24.5%"><b>2</b></span><span class="cv-pin" style="left:41%"><b>3</b></span><span class="cv-pin" style="left:57.5%"><b>4</b></span><span class="cv-pin" style="left:74%"><b>5</b></span><span class="cv-pin" style="left:91%"><b>6</b></span></div></div></div>
+      <figcaption><span class="fn px">Fig. 01</span><b>线上画布</b>1 简报 → 6 画面生成，卡片之间的连线即继承关系，每张卡都能回指来源。</figcaption></figure>
     <h3 class="h-sm rv gap-top">四张核心卡片</h3>
     <div class="shots sift-shots" style="--c:4">
       {shot('sift-ask', '关键提问', '每轮 2–3 题，选项对立')}

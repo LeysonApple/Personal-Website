@@ -1769,3 +1769,7 @@ button.bb[aria-pressed=true] { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--qc), 
   .sift-shots { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; padding-bottom: 8px; }
   .sift-shots figure { flex: 0 0 72%; scroll-snap-align: start; margin-top: 0 !important; }
 }
+.cv-labels { position: relative; height: 44px; font-family: var(--cjk); font-size: 15px; font-weight: 700; }
+.cv-labels span { position: absolute; bottom: 10px; transform: translateX(-50%); white-space: nowrap; display: flex; align-items: center; gap: 7px; }
+.cv-labels b { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--dot); color: #fff; font: 700 12px/1 var(--sans, sans-serif); }
+.cv-labels span::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: 10px; background: var(--line, #ccc); }
