@@ -68,7 +68,7 @@ def nav(cur, base=''):
     <span class="open px">Open to internships · 2026</span>
     <ul>
       <li>{a('work.html', '作品', 'work')}</li>
-      <li>{a('index.html#about', '关于', 'about')}</li>
+      <li>{a('about.html#about', '关于', 'about')}</li>
       <li class="hide-xs"><a href="#contact">联系</a></li>
       <li><a class="cta" href="{base}{PDF}" download>PDF <span aria-hidden="true">↓</span></a></li>
     </ul>

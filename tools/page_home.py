@@ -1,6 +1,6 @@
 from build import head, nav, foot, PDF
 
-PATH = 'index.html'
+PATH = 'about.html'  # index.html is the hand-tuned cork-board homepage
 
 MARQ = '<span><b>✦</b> SIFT <em>设计方向收敛 Agent</em> <b>✦</b> PICTO <em>异地情侣低打扰陪伴</em> <b>✦</b> FOCENDA <em>设计师动态日程</em> <b>✦</b> COBUDDY <em>亲子协同牙刷</em></span>'
 
