@@ -5,8 +5,8 @@ PATH = 'work.html'
 LOGO = {'s': 'logo-sift.png', 'p': 'logo-picto.png', 'f': 'logo-focenda.png', 'c': 'logo-cobuddy.png'}
 ITEMS = [
     ('s', '01', 'SIFT', '', '设计前期的 AI 方向收敛 Agent', '每次只问一个会改变设计判断的问题。', ['Web', '3 人小组组长', '已上线', '2026'], 'projects/sift.html', 'sift-hero.jpg'),
-    ('p', '02', 'Picto', '片刻', '异地情侣的低打扰陪伴', '先表达“我现在怎样”，再决定要不要说话。', ['Mobile', '独立完成', '约 2 个月', '2026'], 'projects/picto.html', 'picto-room.jpg'),
-    ('f', '03', 'Focenda', '专序', '设计师的动态日程规划', '按重要度和精力，排好今天。', ['Web + Mobile', '内测 10 人', '2026'], 'projects/focenda.html', 'focenda-priority.jpg'),
+    ('p', '02', 'Picto', '片刻', '情侣的低打扰陪伴 App', '先表达“我现在怎样”，再决定要不要说话。', ['Mobile', '独立完成', '约 2 个月', '2026'], 'projects/picto.html', 'picto-room.jpg'),
+    ('f', '03', 'Focenda', '专序', '每日规划与动态排期', '按重要度和精力，排好今天。', ['Web + Mobile', '内测 10 人', '2026'], 'projects/focenda.html', 'focenda-priority.jpg'),
     ('c', '04', 'CoBuddy', '', '亲子牙刷 · 高露洁 × 广美', '孩子主握，家长从外侧稳定辅助。', ['产品设计', '独立完成', '约 2 个月', '2026'], 'projects/cobuddy.html', ''),
 ]
 

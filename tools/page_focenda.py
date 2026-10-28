@@ -348,10 +348,10 @@ def render():
   <div class="wrap">
     {crumb('Focenda')}
     <p class="case-id px rv"><img src="{I}logo-focenda.png" alt="">Focenda 专序 · 03 / 04</p>
-    <h1 class="rv">Flow Better.<br>Focus Smarter.</h1>
+    <h1 class="rv cjk">把零散任务，<br>排成做得完的一天。</h1>
     <p class="sub rv d1">每日规划工具：一句话写下任务，它按重要度和精力帮你排好今天。</p>
-    {meta([('Problem · 问题', '任务一多，不知道先做哪件，<br>也不知道今天排得下多少'), ('Solution · 方案', '重要度 × 精力分进四象限，<br>选一种节奏生成今日时间轴'), ('My role · 我负责', '研究、产品定义、交互与视觉，<br>借助 AI 编程工具实现'), ('Result · 结果', '10 人 · 2 天内测：任务完成率 84%<br>80% 接受自动排期')])}
-    <p class="meta-line px rv">课程作业 → 课后独立打磨 · 设计师访谈 14 问 · Web + Mobile 响应式 · 本地运行</p>
+    {meta([('问题', '任务一多，不知道先做哪件，<br>也不知道今天排得下多少'), ('方案', '重要度 × 精力分进四象限，<br>选一种节奏生成今日时间轴'), ('我负责', '研究、产品定义、交互与视觉，<br>借助 AI 编程工具实现'), ('结果', '10 人 · 2 天内测：任务完成率 84%，<br>80% 接受自动排期')])}
+    <p class="meta-line px rv">Flow Better. Focus Smarter. · 课程作业 → 课后独立打磨 · 设计师访谈 14 问 · Web + Mobile 响应式 · 本地运行</p>
     {proto_cta('hero')}
 {hero()}
   </div>
