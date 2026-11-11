@@ -94,7 +94,7 @@
   });
   const ava = $('[data-ava]'), say = $('[data-ava-say]');
   if (ava && say) {
-    const LINES = ['嗨，我是 Leyson', '要不要看看作品？', '实习机会欢迎来聊', '排版又改了一版'];
+    const LINES = ['嗨，我是 Leyson', '要不要看看作品？', '实习、校招欢迎来聊', '排版又改了一版'];
     let k = 0, hideT = 0;
     const blink = () => { ava.classList.add('blink'); setTimeout(() => ava.classList.remove('blink'), 140); };
     ava.addEventListener('click', () => {

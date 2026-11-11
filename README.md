@@ -16,8 +16,9 @@
 每个项目页按 **问题 → 判断 → 设计 → 结果** 展开，顶部有项目信息（Role / Team / Timeline / Platform / Tools）和可吸顶的本页目录，底部有上一个 / 下一个项目导航。
 
 ## 作品集文件
-- `files/Leyson-Portfolio-Short.pdf` 投递版（30 页）
+- `files/Leyson-Portfolio-Short.pdf` 投递版（33 页）
 - `files/Leyson-Portfolio-Full.pdf` 完整版（68 页）
+- `files/Leyson-Resume.pdf` 简历（A4 单页，文字可选中）。源文件在 `files/resume/resume.html`，改完运行 `python3 files/resume/build_resume.py` 重新生成（需要 weasyprint 和 Noto Sans SC / 思源黑体）
 
 PPT 源文件不放进仓库（`.gitignore` 已忽略 `*.pptx`）。
 
