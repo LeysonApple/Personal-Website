@@ -1,4 +1,4 @@
-from build import head, nav, foot, pager, crumb, meta, tldr, toc, sec, cuts, tabs as _tabs
+from build import head, nav, foot, case_hero, facts, chapter, fig, cuts, results, next_project, tabs as _tabs
 import re as _re
 
 # Draft case study — NOT yet linked from home / work / other pagers (user reviews first).
@@ -14,7 +14,7 @@ def img(name, alt, cls='', ext='jpg'):
     return f'<img{c} src="{I}cob-{name}.{ext}" alt="{alt}">'
 
 
-def fig(name, alt, title, note='', cls=''):
+def fig_old(name, alt, title, note="", cls=""):
     return f'<figure class="fig cob-fig {cls}"><div class="cob-ph">{img(name, alt, "zoom")}</div><figcaption><b>{title}</b>{(" " + note) if note else ""}</figcaption></figure>'
 
 
@@ -244,67 +244,56 @@ def hold():
 
 # ---------------------------------------------------------------- page
 
-def more(title, body):
-    return f'<details class="more"><summary><span class="px"><i class="o">+ 展开</i><i class="c">− 收起</i></span>{title}</summary><div class="more-b">{body}</div></details>'
+def photo(name, alt, cap, ext='jpg', cls='plate'):
+    return fig(f'<div class="{cls}">{img(name, alt, "zoom", ext)}</div>', cap)
 
 
 def render():
-    s1 = f'''
-    <h3 class="rv">一对牙刷：<br>孩子握得稳，家长扶得准。</h3>
-    <p class="rv">儿童款负责“握得稳”，家长款负责“扶得准”；两支沿用同一套海獭造型，放在一起就是一对母子。</p>
-    {renders()}
-    {hold()}'''
-
-    s2 = f'''
-    <h3 class="rv">不在工具上做加法，<br>把刷柄做成亲子协同的界面。</h3>
-    <p class="sub-h rv">现有产品的三种加法，我都没有沿用</p>
-    {cuts([('旧方向 01', '加粗手柄', '握得住，但入口笨重、不灵活', '环抱式主握区：体积留给掌心，刷头一端保持纤细'),
-           ('旧方向 02', '加防滑材料', '摩擦大了，握持方向仍不清晰', '用海獭造型本身指示握持方向'),
-           ('旧方向 03', '加安全附件', '结构变复杂，工具负担更重', '软硅胶包裹刷头，保护集成进形态')])}
-    {pivot()}
-    <h3 class="h-sm rv gap-top">造型从哪来：海獭妈妈抱着幼崽，<br>就是“孩子主握、家长辅助”。</h3>
-    {otter()}'''
-
-    s3 = f'''
-    <h3 class="rv">孩子握得住牙刷，<br>却<span class="hl">控制不住</span>刷牙。</h3>
-    <p class="rv">观察 3–6 岁儿童日常刷牙：握持方式、手部姿态与控制特点，决定了牙刷的体量、截面与握持区。</p>
-    {strip()}
-    {grip_ab()}
-    <h3 class="h-sm rv gap-top">家长参与时：两只手落在同一根手柄上。</h3>
-    <p class="rv">孩子掌心包握，家长从外侧覆盖孩子手背，形成内外两层控制，现有牙刷从没为这个动作设计过。</p>
-    {parent_obs()}
-    <p class="quote rv gap-top">一刷相伴，呵护成长每一步。</p>'''
-
-    s4 = f'''
-    <p class="rv">过程细节，按需展开：</p>
-    <div class="rv">
-    {more('出发点：儿童牙刷不只是“缩小的成人牙刷”', adult_vs_kid() + essence())}
-    {more('从观察到机会点', chain() + opp())}
-    {more('手绘草图：儿童款', sketch_kid())}
-    {more('手绘草图：家长款', sketch_parent())}
-    </div>'''
-
-    return head('CoBuddy 亲子牙刷 — Leyson', 'CoBuddy 亲子牙刷：广州美术学院 × 高露洁校企合作课程项目。让 3–6 岁孩子握得稳，让家长辅助而不代替。', B, PATH, 'article') + nav('work', B) + f'''
+    info = [('项目性质', '课程项目 · 广美 × 高露洁 校企合作 · 独立完成'),
+            ('我的角色', '握持观察、问题定义、造型设计，从手绘草图到产品渲染'),
+            ('时间', '2026 · 约 2 个月'),
+            ('工具', '手绘草图 · 产品渲染')]
+    tl = ['观察 3–6 岁儿童刷牙：孩子<b>握得住</b>，却控制不稳。',
+          '把需求定为“孩子主握、家长外侧辅助”的亲子协同。',
+          '<b>5</b> 轮造型迭代，做出儿童款 + 家长款 <b>A / B</b> 两套方案。']
+    grips = '<div class="grid3">' + \
+        photo('grip-2', '3–6 岁儿童主动拿起牙刷', '能主动拿起并握住牙刷') + \
+        photo('grip-5', '3–6 岁儿童以掌心包握牙刷', '多为拳握、掌心包握') + \
+        photo('grip-4', '3–6 岁儿童站立刷牙，手腕主导', '靠手腕和前臂带动，精度有限') + '</div>'
+    iters = ''.join(f'<li>{cut(f"iter-{i}", f"海獭造型迭代第 {i} 轮")}<span>第 {i} 轮</span></li>' for i in range(1, 6))
+    judge = photo('pc-grip', '亲子辅助握持示意：儿童握住刷柄前段，家长在后段从外侧稳定辅助', '孩子前段主握，家长后段从外侧扶稳：同一根手柄上的两层控制。', cls='plate plate-sketch') + \
+        '<div class="grid2">' + photo('otter-1', '海獭妈妈仰躺在水面，把幼崽托在腹部', '原型：海獭妈妈把幼崽托在腹部', cls='plate sq') + \
+        fig(f'<div class="plate plate-cut sq">{cut("concept", "造型概念：母体包裹，幼崽置于腹部中央")}</div>', '转译：母体承托成为握柄，掌心落在怀抱的负形里') + '</div>' + \
+        fig(f'<ol class="iters">{iters}</ol>', '五轮造型迭代：从侧身转向正面环抱，轮廓逐步收圆。')
+    hold = '<div class="grid3">' + \
+        fig(f'<div class="plate plate-cut">{cut("hold-family", "妈妈在身后陪女儿刷牙")}</div>', '亲子协同：孩子主握，家长稳定辅助') + \
+        fig(f'<div class="plate plate-cut">{cut("hold-kid", "小手握住 CoBuddy 儿童款，四指落在海獭环抱的负形里")}</div>', '儿童款：贴合小手掌，握得稳') + \
+        fig(f'<div class="plate plate-cut">{cut("hold-adult", "成人手握 CoBuddy 家长款")}</div>', '家长款：延长刷柄，便于从外侧辅助') + '</div>'
+    render_kid = fig(f'<div class="plate plate-render">{cut("rkid-a", "儿童款 A 正面环抱款产品渲染：正面、侧面、背面")}</div>', '儿童款 A · 正面环抱：硅胶包裹刷头，保护口腔。')
+    combo = hold_combo()
+    return head('CoBuddy 亲子牙刷 — Leyson', 'CoBuddy 亲子牙刷：广州美术学院 × 高露洁校企合作课程项目，独立完成。', B, PATH, 'article') + nav('work', B) + f'''
 <main id="main" class="case cob">
-<section class="case-hero theme-cob">
-  <div class="wrap">
-    {crumb('CoBuddy')}
-    <p class="case-id px rv"><img src="{I}logo-cobuddy.png" alt="">CoBuddy 亲子牙刷 · 04 / 04</p>
-    <h1 class="rv cjk">不是把牙刷变可爱，<br>而是让孩子握得稳。</h1>
-    <p class="sub rv d1">给 3–6 岁孩子和家长的一对亲子牙刷：孩子主握，家长从外侧稳定辅助，不再抢过来代刷。</p>
-    {meta([('问题', '孩子握得住牙刷却控制不稳，<br>家长只能抢过来代刷'), ('方案', '一对海獭环抱造型牙刷：<br>孩子主握，家长外侧辅助'), ('我负责', '独立完成：握持观察、问题定义、<br>造型、手绘草图到产品渲染'), ('结果', '儿童款 + 家长款 · A / B 两套方案，<br>收纳时合成“妈妈抱着宝宝”')])}
-    <p class="meta-line px rv">广美 × 高露洁 校企合作 · 约 2 个月 · 2026 · 工业设计</p>
-{hero()}
-  </div>
-</section>
-
-{toc([('design', '01', '设计', 'Design'), ('decision', '02', '关键取舍', 'Decision'), ('evidence', '03', '依据', 'Evidence'), ('process', '04', '过程', 'Process')])}
-{sec('design', '01', '设计', 'Design', s1, 'full')}
-{sec('decision', '02', '关键取舍', 'Decision', s2, 'tint-cob full')}
-{sec('evidence', '03', '依据', 'Evidence', s3, 'full')}
-{sec('process', '04', '过程', 'Process', s4, 'tint-cob full')}
+{case_hero('cobuddy', '亲子牙刷 · 工业设计', '不是把牙刷变可爱，<br>而是让孩子握得稳。', '给 3–6 岁孩子和家长的一对牙刷：孩子主握，家长从外侧稳定辅助。', hero())}
+{facts(info, tl)}
+{chapter('01', '问题', '孩子握得住牙刷，<br>却控制不住刷牙。', '观察 3–6 岁儿童日常刷牙：多数靠掌心包握、手腕带动，控制精度有限；家长一帮忙，就变成抢过来代刷。', grips)}
+{chapter('02', '关键判断', '不在工具上做加法，<br>把刷柄做成亲子协同的界面。', '海獭妈妈怀抱幼崽的姿态，正好对应“孩子主握、家长辅助”，于是成了造型的出发点。', judge)}
+{chapter('03', '设计', '一对牙刷：<br>孩子握得稳，家长扶得准。', '两支沿用同一套海獭造型；收纳时，家长款尾端的海獭宝宝正好嵌进儿童款的环抱里。', render_kid + hold + combo)}
+{cuts([('加粗手柄', '握得住，但入口笨重、不灵活'),
+       ('防滑材料', '摩擦大了，握持方向仍不清晰'),
+       ('安全附件', '结构变复杂，工具负担更重')])}
+{results('04', '儿童款 + 家长款，<br>A / B 两套完整方案。', '',
+         [('5 轮', '造型迭代'), ('2 款', '儿童款 + 家长款'), ('A / B', '两套方案')],
+         '一刷相伴，呵护成长每一步。')}
 </main>
-''' + pager('cobuddy') + foot(B)
+''' + next_project('cobuddy') + foot(B)
+
+
+def hold_combo():
+    """Deck slide 18: the parent brush's otter tail nests into the kid brush's hug."""
+    h = hold()
+    i = h.index('<div class="cob-slide cob-combo2')
+    return fig(h[i:].rstrip().rstrip('"').strip(), '组合展示：收纳时合成“妈妈抱着宝宝”，用时再分开。', 'f-combo')
+
 
 if __name__ == '__main__':
     import sys
