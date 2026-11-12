@@ -1,5 +1,5 @@
 import json
-from build import head, nav, foot, case_hero, facts, chapter, fig, shot, cuts, results, next_project, proto_btn
+from build import head, nav, foot, pager, crumb, meta, tldr, toc, sec, metrics, cuts
 
 PATH = 'projects/focenda.html'
 B = '../'
@@ -212,19 +212,19 @@ def hero():
         <div class="fo-canvas foc-ui" aria-hidden="true">
           <p class="fo-crumb"><span class="lg"></span><b>Focenda</b> / 今日</p>
           <div class="fo-col fo-in">
-            <p class="fo-k">00 · 写下</p>
+            <p class="fo-k px">00 · 写下</p>
             <div class="fo-input"><span class="fo-hint">写下任务，也可以直接带上时间</span><span class="fo-typed">{pick[0]}<i class="fo-caret"></i></span><span class="fo-add">添加任务</span></div>
             <div class="fo-cloud">{cloud}</div>
           </div>
           <svg class="fo-flow f1" viewBox="0 0 56 300" preserveAspectRatio="none"><path d="M0 60 C 30 60, 26 130, 56 130"/><path d="M0 150 C 28 150, 28 150, 56 150"/><path d="M0 240 C 30 240, 26 170, 56 170"/></svg>
           <div class="fo-col fo-mid">
-            <p class="fo-k">01 · 分象限</p>
+            <p class="fo-k px">01 · 分象限</p>
             <div class="fo-quad"><div class="fo-qin">{qlabels}<span class="fo-ax x">精力 →</span><span class="fo-ax y">重要度 →</span>{''.join(bubbles)}</div></div>
             <div class="fo-detail"><span class="tag-s">任务详情</span><b>{pick[0]}</b><span class="fo-sc"><span class="imp">重要程度 {pick[1]}</span><span class="eng">投入程度 {pick[2]}</span></span><p>这项任务重要且需要专注，建议留出完整时间，并先拆成 2–3 个小步骤。</p></div>
           </div>
           <svg class="fo-flow f2" viewBox="0 0 56 300" preserveAspectRatio="none"><path d="M0 110 C 30 110, 26 70, 56 70"/><path d="M0 150 C 28 150, 28 150, 56 150"/><path d="M0 190 C 30 190, 26 230, 56 230"/></svg>
           <div class="fo-col fo-out">
-            <p class="fo-k">02 · 排进今天</p>
+            <p class="fo-k px">02 · 排进今天</p>
             <div class="fo-day">
               <div class="fo-seg"><i class="fo-thumb"></i><span class="s-a">{t1}</span><span class="s-b">{t2}</span></div>
               <p class="fo-cap fo-x"><span class="a"><b>{s1}</b>{d1}</span><span class="b"><b>{s2}</b>{d2}</span></p>
@@ -237,53 +237,130 @@ def hero():
 
 
 
-def pshot(f, t):
-    return fig(f'<div class="phone"><img class="zoom" src="{I}{f}.jpg" alt="Focenda 手机端截图：{t}"></div>', t)
+def proto_cta(where):
+    """体验原型 entry: opens the static local prototype in a new tab."""
+    return f'''<div class="proto-cta proto-foc proto-{where} rv"><a class="btn btn-proto" href="{B}prototypes/focenda/" target="_blank" rel="noopener">体验原型 <span class="arr" aria-hidden="true">↗</span><span class="sr">（新标签页打开）</span></a><p class="proto-note"><span>本地原型</span> · <span>数据仅保存在你的浏览器</span></p></div>'''
 
 
-COVER = f'<img src="{I}cover-focenda.jpg" alt="Focenda 网页端优先级视图与手机端规划视图" fetchpriority="high">'
+def more(title, body):
+    return f'<details class="more"><summary><span class="px"><i class="o">+ 展开</i><i class="c">− 收起</i></span>{title}</summary><div class="more-b">{body}</div></details>'
 
-RESEARCH = '''<ul class="nums nums-sm" style="--n:4">
-      <li><b>7.4</b><span>类工作，平均同时负责</span></li>
-      <li><b>3.7</b><span>次，每个页面平均修改</span></li>
-      <li><b>70%</b><span>的返工源于需求模糊</span></li>
-      <li><b>83%</b><span>只能自己上网找资料</span></li>
-    </ul>'''
 
-LOOP = '''<ol class="spec" aria-label="定位的变化">
-      <li><b>研究起点</b><span>为设计师做 AI 协同工作空间</span></li>
-      <li><b>内测发现</b><span>最被需要的是“排好今天”</span></li>
-      <li class="on"><b>现在的定位</b><span>面向大众的每日规划与排期</span></li>
-    </ol>'''
+def bshot(f, t, n, d=''):
+    return (f'<figure class="rv {d}"><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img class="zoom" src="{I}{f}.jpg" alt="Focenda 原型截图：{t[2:]}" loading="lazy"></div>'
+            f'<figcaption><b>{t}</b>{n}</figcaption></figure>')
+
+
+def pshot(f, t, n, d=''):
+    return (f'<figure class="rv {d}"><div class="phone"><img class="zoom" src="{I}{f}.jpg" alt="Focenda 手机端截图：{t[2:]}" loading="lazy"></div>'
+            f'<figcaption><b>{t}</b>{n}</figcaption></figure>')
 
 
 def render():
     data = json.dumps([{'n': n, 'i': i, 'e': e, 'm': m, 'f': f} for n, i, e, m, f in TASKS], ensure_ascii=False)
-    info = [('项目性质', '课程项目 · 独立完成'),
-            ('我的角色', '访谈研究、产品定义、交互视觉、原型开发'),
-            ('时间', '2026.04 – 06'),
-            ('工具', 'AI 编程工具 · Web + 手机响应式 · 本地规则')]
-    tl = ['<b>14</b> 个问题的设计师访谈，找到三类阻塞：琐事多、信息散、难出结果。',
-          '<b>10</b> 人 · <b>2</b> 天内测：<b>9/10</b> 人用上了任务规划，定位因此收敛。',
-          '任务完成率 <b>84%</b>，<b>80%</b> 的人接受自动排期。']
-    proto = proto_btn(f'{B}prototypes/focenda/', '本地原型 · 数据只存在你的浏览器')
-    design = fig(quad_ui(), '试一试：点任意气泡，看它的两项评分、所在象限和执行建议。', 'f-ui') + \
-        fig(timeline_ui(), '换一种节奏：同一组任务，顺序和空档都不同；超过 18:00 标为超时。', 'f-ui') + \
-        '<div class="grid2 grid-phones">' + pshot('focenda-today', '手机：首屏只留输入与今日任务') + pshot('focenda-plan', '手机：规划视图，单列看下一步') + '</div>' + \
-        f'<script type="application/json" id="foc-data">{data}</script>'
 
-    return head('Focenda 专序 — Leyson', 'Focenda 专序：按重要度与精力排好今天的每日规划工具。课程项目，独立完成。', B, PATH, 'article') + nav('work', B) + f'''
+    research = f'''<p>对初创公司设计师做半结构化访谈（14 个问题），归纳出三类关键阻塞。</p>
+    {metrics([('7.4', '项 · 平均负责的工作类型', '', True), ('3.7', '次 · 每个页面平均修改', '', True), ('70%', '返工源于需求模糊', '', True), ('83%', '只能自己上网找资料', '', True)], 'foc')}
+    <div class="cards gap-sm" style="--c:3">
+      <div class="card"><span class="n px">01</span><h4>琐事太多</h4><p>隐性劳动侵蚀创作时间。</p></div>
+      <div class="card"><span class="n px">02</span><h4>信息没对齐</h4><p>链路断裂导致高频返工。</p></div>
+      <div class="card"><span class="n px">03</span><h4>难拿出结果</h4><p>设计价值难以量化呈现。</p></div>
+    </div>'''
+
+    naming = f'''<div class="table-scroll" tabindex="0" role="region" aria-label="命名对比表">
+    <table class="compare">
+      <thead><tr><th scope="col"><span class="sr">维度</span></th><th scope="col">早期 · Focus Flow</th><th scope="col">现在 · Focenda</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">象限命名</th><td class="old" data-label="早期">极度聚焦 · 核心攻坚 · 摸鱼日常 · 强效排雷</td><td class="new" data-label="现在">优先完成 · 专注推进 · 顺手处理 · 考虑删减</td></tr>
+        <tr><th scope="row">评分维度</th><td class="old" data-label="早期">含金量 · 耗费</td><td class="new" data-label="现在">重要度 · 精力</td></tr>
+        <tr><th scope="row">导航结构</th><td class="old" data-label="早期">任务大厅 · 设计图库 · 周报</td><td class="new" data-label="现在">今日 · 未来 · 设置</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <figure class="fig gap-sm ref-sm"><div class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img class="zoom" src="{I}focenda-early.jpg" alt="早期方案 Focus Flow 界面（重绘示意）" loading="lazy"></div><figcaption><b>早期方案 Focus Flow</b>重绘示意，作为对照参考。</figcaption></figure>'''
+
+    devices = '''<ol class="steps">
+          <li><div><b>Desktop · 1280–1920px</b><span>多栏工作面：左侧录入与清单，右侧四象限或时间轴。</span></div></li>
+          <li><div><b>Mobile · 320–430px</b><span>单列工作流：任务清单与规划视图分开，底部三项导航。</span></div></li>
+          <li><div><b>本地优先</b><span>无需账号，可导出 JSON 备份；macOS 小组件同步今日。</span></div></li>
+        </ol>'''
+
+    reflect = '''<div class="cards" style="--c:3">
+      <div class="card"><h4>跟着证据收窄</h4><p>研究起点是设计师协作空间，内测显示最被需要的是规划。</p></div>
+      <div class="card"><h4>规则要说得出理由</h4><p>评分、归类与排期全部是可读的本地规则。</p></div>
+      <div class="card"><h4>术语换成人话</h4><p>“强效排雷”改为“考虑删减”，第一次打开就能看懂。</p></div>
+    </div>
+    <p class="note">下一步：个性化复盘，以及设计库调用、周报复盘两个概念模块。内测样本较小，结论有待更大样本验证。</p>'''
+
+    s1 = f'''
+    <h3 class="rv">一句话录入，<br>按重要度 × 精力排好今天。</h3>
+    <div class="shots swipe" style="--c:2">
+      {bshot('focenda-priority', '① 优先级视图', '气泡位置 = 重要度 × 精力，落进四个象限')}
+      {bshot('focenda-timeline', '② 一日时间轴', '选一种节奏，自动生成今天的安排', 'd1')}
+    </div>
+    <div class="shots swipe gap-sm" style="--c:2">
+      {bshot('focenda-detail', '③ 任务详情', '两项评分 + 执行建议')}
+      {bshot('focenda-future', '④ 未来 7 天', '提前把任务放进某一天', 'd1')}
+    </div>
+    <div class="shots swipe gap-sm phone-row" style="--c:4">
+      {pshot('focenda-today', '⑤ 手机 · 任务清单', '首屏只留输入与今日任务')}
+      {pshot('focenda-plan', '⑥ 手机 · 规划视图', '单列看下一步', 'd1')}
+    </div>
+    <p class="note rv">可运行原型真实截图，Web + 手机响应式。</p>
+    <h3 class="h-sm rv gap-top">试一试：点任意气泡，看它的评分和建议。</h3>
+    <figure class="fig wide rv">{quad_ui()}<figcaption><span class="fn px">Fig. 01</span><b>优先级视图 + 任务详情</b>按原型界面重建，8 个任务与评分取自原型示例数据。</figcaption></figure>
+    <h3 class="h-sm rv gap-top">再换一种节奏：同一组任务，顺序和空档都不同。</h3>
+    <figure class="fig wide rv">{timeline_ui()}<figcaption><span class="fn px">Fig. 02</span><b>一日时间轴</b>专注把高价值任务排前面，均衡和轻松留出缓冲；超过 18:00 的标红。</figcaption></figure>
+    <script type="application/json" id="foc-data">{data}</script>'''
+
+    s2 = f'''
+    <h3 class="rv">跟着证据收窄：<br>先把“排好今天”做扎实。</h3>
+    <ol class="loop rv" aria-label="定位的变化"><li>研究起点：为设计师做 AI 协同工作空间</li><li>内测发现：最被需要的是“排好今天”</li><li class="on">定位：面向大众的每日规划与动态排期</li></ol>
+    {cuts([('Concept', '设计库调用', '不在“排好今天”的主路径上', '保留为概念设计，留作后续版本'), ('Concept', '周报复盘', '先验证规划与排期，再做汇总', '“个性化复盘”放入后续'), ('Built', '任务管理 + 时间规划', '9/10 位内测者实际用到', '自然语言录入、四象限、三种节奏、未来七天', True)])}
+    <h3 class="h-sm rv gap-top">不用大模型：三步本地规则，每条安排都说得出理由。</h3>
+    {rules()}'''
+
+    s3 = f'''
+    <h3 class="rv">内测 10 人 · 2 天：<br>9 人用上了规划，80% 接受自动排期。</h3>
+    {metrics([('90%', '使用了任务规划', '9 / 10 人', True), ('84%', '任务完成率', '任务口径', True), ('80%', '接受自动排期', '排期口径', True), ('60%', '主动调整优先级', '6 / 10 人', True)], 'foc')}
+    <p class="note rv">样本较小，属初步验证。参与者：学生 5 · 职场办公 3 · 自由职业 2。</p>
+    <p class="sub-h rv gap-sm">反馈直接变成了改动</p>
+    <div class="fb">
+      <div class="rv"><q>第一次进入不知道先看哪里</q><span class="ar" aria-hidden="true">→</span><b>首屏只留输入与今日任务</b></div>
+      <div class="rv d1"><q>希望有新手引导</q><span class="ar" aria-hidden="true">→</span><b>三步引导 + 示例任务</b></div>
+      <div class="rv d2"><q>希望总结更个性化</q><span class="ar" aria-hidden="true">→</span><b>个性化复盘 · 后续版本</b></div>
+    </div>
+    {proto_cta('outcome')}
+    <p class="quote rv gap-sm">先把“排好今天”做扎实。</p>'''
+
+    s4 = f'''
+    <p class="rv">过程细节，按需展开：</p>
+    <div class="rv">
+    {more('访谈研究：设计师的时间被“非设计”吃掉', research)}
+    {more('从 Focus Flow 到 Focenda：把术语换成人话', naming)}
+    {more('多端适配：电脑看全局，手机看下一步', devices)}
+    {more('反思与下一步', reflect)}
+    </div>'''
+
+    return head('Focenda 专序 — Leyson', 'Focenda 专序：按重要度与精力排好今天的动态日程规划。', B, PATH, 'article') + nav('work', B) + f'''
 <main id="main" class="case">
-{case_hero('focenda', '专序 · 每日规划与动态排期', '把零散任务，<br>排成做得完的一天。', '每日规划工具：一句话写下任务，它按重要度和精力帮你排好今天。', COVER)}
-{facts(info, tl, proto)}
-{chapter('01', '问题', '设计师的时间，<br>被“非设计”吃掉了。', '我对初创公司设计师做了半结构化访谈：琐事多、信息没对齐、难拿出结果，是最常见的三类阻塞。', RESEARCH)}
-{chapter('02', '关键判断', '跟着证据收窄：<br>先把“排好今天”做扎实。', '研究起点是给设计师的协同工作空间；内测中 9/10 的人真正用到的是任务规划。于是定位改为面向大众的每日规划。', LOOP)}
-{chapter('03', '设计', '重要度 × 精力分进四象限，<br>再按节奏排进今天。', '一句话录入任务，本地规则给出两项评分并归入四象限；选专注、均衡或轻松，自动生成今天的时间轴。', design)}
-{cuts([('设计库调用', '不在“排好今天”的主路径上，留作概念'),
-       ('周报复盘', '先验证规划与排期，个性化复盘放到后续'),
-       ('大模型排期', '改用可读的本地规则，每条安排都说得出理由')])}
-{results('04', '10 人内测：<br>任务完成率 84%。', '参与者为学生 5 人、职场办公 3 人、自由职业 2 人。样本小，属初步验证；“第一次不知道先看哪里”的反馈，让首屏只留下输入与今日任务。',
-         [('90%', '使用了任务规划'), ('84%', '任务完成率'), ('80%', '接受自动排期'), ('60%', '主动调整优先级')],
-         '先把“排好今天”做扎实。', '', proto)}
+<section class="case-hero theme-foc">
+  <div class="wrap">
+    {crumb('Focenda')}
+    <p class="case-id px rv"><img src="{I}logo-focenda.png" alt="">Focenda 专序 · 03 / 04</p>
+    <h1 class="rv cjk">把零散任务，<br>排成做得完的一天。</h1>
+    <p class="sub rv d1">每日规划工具：一句话写下任务，它按重要度和精力帮你排好今天。</p>
+    {meta([('问题', '任务一多，不知道先做哪件，<br>也不知道今天排得下多少'), ('方案', '重要度 × 精力分进四象限，<br>选一种节奏生成今日时间轴'), ('我负责', '独立完成：研究、产品定义、<br>交互视觉与原型开发'), ('结果', '10 人 · 2 天内测：任务完成率 84%，<br>80% 接受自动排期')])}
+    <p class="meta-line px rv">Flow Better. Focus Smarter. · 课程作业 → 课后独立打磨 · 设计师访谈 14 问 · Web + Mobile 响应式 · 借助 AI 编程工具实现</p>
+    {proto_cta('hero')}
+{hero()}
+  </div>
+</section>
+
+{toc([('design', '01', '设计', 'Design'), ('decision', '02', '关键取舍', 'Decision'), ('outcome', '03', '结果', 'Outcome'), ('process', '04', '过程', 'Process')])}
+{sec('design', '01', '设计', 'Design', s1, 'full')}
+{sec('decision', '02', '关键取舍', 'Decision', s2, 'full')}
+{sec('outcome', '03', '结果', 'Outcome', s3, 'tint-blue full')}
+{sec('process', '04', '过程', 'Process', s4, 'full')}
 </main>
-''' + next_project('focenda') + foot(B)
+''' + pager('focenda') + foot(B)

@@ -7,17 +7,13 @@
 ## 页面
 | 页面 | 文件 |
 | --- | --- |
-| 主页 | `index.html`（`tools/page_home.py`） |
-| 作品 | `work.html`（`tools/page_work.py`） |
-| 关于 | `about.html`（`tools/page_about.py`） |
+| 主页 | `index.html` |
+| 作品选择 | `work.html` |
 | SIFT 详情 | `projects/sift.html` |
 | 片刻 Picto 详情 | `projects/picto.html` |
 | Focenda 专序 详情 | `projects/focenda.html` |
-| CoBuddy 详情 | `projects/cobuddy.html` |
 
-四个案例页共用同一个模板（`tools/build.py` 里的 `case_hero` / `facts` / `chapter` / `cuts` / `results` / `next_project`）：
-标题 + 一句副标题 + 大封面 → 项目性质 / 我的角色 / 时间 / 工具 → 一分钟速览（3 行）→ 01 问题 / 02 关键判断 / 03 设计（每章标题即结论，正文 ≤ 80 字，大图 + 一行图注）→ 我删掉了什么（最多 3 行）→ 04 结果（数字卡 + 一句引语）→ 下一个项目。
-项目封面在 `assets/img/cover-*.jpg/webp`（5:4）。
+每个项目页按 **问题 → 判断 → 设计 → 结果** 展开，顶部有项目信息（Role / Team / Timeline / Platform / Tools）和可吸顶的本页目录，底部有上一个 / 下一个项目导航。
 
 ## 作品集文件
 - `files/Leyson-Portfolio-Short.pdf` 投递版（33 页）
@@ -40,11 +36,10 @@ python3 tools/build.py
 - 生成时会自动给图片补 `width` / `height`、`loading="lazy"`，并在有同名 `.webp` 时包一层 `<picture>`（JPG 兜底）。
 - 新增图片后运行 `python3 tools/optimize_assets.py`（需要 Pillow）：压缩 JPG（宽图最长 1600px，长截图 760px，目标 ≤ 200 KB）并生成 WebP。
 - 样式在 `assets/css/style.css`（顶部是字号、间距、颜色 token），交互在 `assets/js/main.js`（原生 JS，无依赖）。
-- 设计系统：暖白底 `#F6F4EF`、近黑字、唯一强调色是 logo 的粉色点；6 档字号（`--t1`–`--t6`）、3 档字重，正文栏 ≤ 680px、图片最宽 1200px。
-- 字体：中文用系统字体（苹方 / Noto Sans SC / 微软雅黑）；Bricolage Grotesque 只用于名字和项目名；Silkscreen 像素字体只留在 Picto 的产品界面里。
+- 字体为 WOFF2 子集（Bricolage Grotesque 可变字体，Latin；Silkscreen 像素字体）。中文使用系统字体。
 
 ## 个人标志
-“Leyson” 后面的那个粉色点就是我的标志，也是全站唯一的强调色。favicon 为 `assets/img/favicon.svg`。
+“Leyson.” 后面的那个点就是我的标志。主页上点击它可以换颜色，全站同步并记住选择。favicon 为 `assets/img/favicon.svg`。像素小狗只属于 Picto 项目本身。
 
 ## 部署（GitHub Pages）
 仓库根目录即站点根目录，已包含 `.nojekyll`。
