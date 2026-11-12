@@ -169,7 +169,7 @@ p { text-wrap: pretty; }
 .c-kick .pn { color: var(--ink); font-size: 15px; font-weight: var(--w-bold); }
 .c-kick-d::before { content: "·"; margin-right: 10px; }
 .c-hero h1 { font-size: var(--t5); line-height: 1.22; letter-spacing: -.01em; max-width: 16em; }
-.c-sub { margin: 20px 0 0; font-size: var(--t3); color: var(--ink-2); max-width: 34em; line-height: 1.75; }
+.c-sub { margin: 20px 0 0; font-size: var(--t3); color: var(--ink-2); max-width: 40em; line-height: 1.75; }
 
 .c-cover > * { border-radius: var(--r); overflow: hidden; }
 .c-cover > img, .c-cover > picture img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r); }
