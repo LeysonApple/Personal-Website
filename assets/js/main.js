@@ -1,10 +1,9 @@
-// Leyson. — small interactions (vanilla, no dependencies)
+// Leyson — small, quiet interactions (vanilla, no dependencies)
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const root = document.documentElement;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* ---------- toast ---------- */
   const toastEl = $('.toast'); let toastT;
@@ -24,135 +23,6 @@
     es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }) : null;
   $$('.rv').forEach((el) => (io ? io.observe(el) : el.classList.add('in')));
-
-  /* ---------- the dot: Leyson’s mark. Click to recolour, remembered across pages ---------- */
-  const DOTS = [['#F0687F', '珊瑚红'], ['#8FA6FF', '薰衣草'], ['#1466FF', '钴蓝'], ['#22B45E', '薄荷绿'], ['#F5A524', '琥珀黄']];
-  const cur = () => getComputedStyle(root).getPropertyValue('--dot').trim().toUpperCase();
-  $$('[data-dot]').forEach((b) => b.addEventListener('click', () => {
-    const i = DOTS.findIndex(([c]) => c === cur());
-    const [c, name] = DOTS[(i + 1) % DOTS.length];
-    root.style.setProperty('--dot', c);
-    try { localStorage.setItem('ly-dot', c); } catch (e) { /* private mode */ }
-    $$('.mk').forEach((m) => { m.classList.remove('pop'); void m.offsetWidth; m.classList.add('pop'); });
-    toast(`这个点换成了${name} · 全站同步`);
-  }));
-
-  /* hero dot leans toward the pointer, like it’s paying attention */
-  const follow = $('[data-follow]');
-  if (follow && fine && !reduce) {
-    window.addEventListener('pointermove', (e) => {
-      const r = follow.getBoundingClientRect();
-      const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
-      const d = Math.hypot(dx, dy) || 1, k = Math.min(1, d / 600) * 10;
-      follow.style.setProperty('--fx', `${(dx / d) * k}px`);
-      follow.style.setProperty('--fy', `${(dy / d) * k}px`);
-    }, { passive: true });
-  }
-
-  /* ---------- live Guangzhou time in the status card ---------- */
-  const clock = $('[data-clock]');
-  if (clock) {
-    const t = $('time', clock);
-    const fmt = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', hour: '2-digit', minute: '2-digit', hour12: false });
-    const tick = () => {
-      const s = fmt.format(new Date()); const h = parseInt(s, 10);
-      t.innerHTML = s.replace(':', '<span class="cl">:</span>'); t.dateTime = s;
-      const night = h >= 22 || h < 7;
-      clock.classList.toggle('night', night);
-      clock.title = night ? '广州 · 夜间' : '广州 · 白天';
-    };
-    tick(); setInterval(tick, 20000);
-  }
-
-  /* ---------- status card: pixel avatar + cycling rows ---------- */
-  const PXC = { o: '#29231F', y: '#F7C948', p: '#F2A0A8', w: '#FFFFFF', g: '#7CC3A6', s: '#F7C948', b: '#A5643A', r: '#F0687F', u: '#8FB3E8' };
-  const pxSvg = (rows) => `<svg viewBox="0 0 8 8" shape-rendering="crispEdges">${rows.map((row, y) => [...row].map((c, x) => c === '.' ? '' : `<rect x="${x}" y="${y}" width="1" height="1" fill="${PXC[c]}"/>`).join('')).join('')}</svg>`;
-  const ICONS = {
-    excited: ['..oooo..', '.oyyyyo.', 'oyoyyoyo', 'oyyyyyyo', 'opooooPo'.replace('P', 'p'), 'oyorroyo', '.oyyyyo.', '..oooo..'],
-    focus: ['..oooo..', '.oyyyyo.', 'ooyyyooo'.slice(0, 8), 'oyyyyyyo', 'oyyyyyyo', 'oyyooyyo', '.oyyyyo.', '..oooo..'],
-    sleepy: ['..oooo..', '.oyyyyo.', 'oyyyyyyo', 'ooyyyooo'.slice(0, 8), 'opyyyypo', 'oyyooyyo', '.oyyyyo.', '..oooo..'],
-    happy: ['..oooo..', '.oyyyyo.', 'oyoyyoyo', 'opyyyypo', 'ooyyyyoo', 'oyooooyo', '.oyyyyo.', '..oooo..'],
-    folio: ['oooooooo', 'owwwwwwo', 'owswwwwo', 'owwwwgwo', 'owwwgggo', 'owgggggo', 'owwwwwwo', 'oooooooo'],
-    proto: ['......oo', '.....oro', '....oyoo', '...oyyo.', '..oyyo..', '.oyyo...', 'owoo....', 'oo......'],
-    read: ['........', 'oooooooo', 'owwwowwo', 'oowwoowo', 'owwwowwo', 'oowwoowo', 'oooooooo', '........'],
-    coffee: ['..w.w...', '...w.w..', 'oooooo..', 'obbbboo.', 'obbbbo.o', 'obbbboo.', '.oooo...', 'oooooo..'],
-  };
-  const CYC = {
-    mood: [['有点兴奋', 'excited'], ['很专注', 'focus'], ['有点困', 'sleepy'], ['挺开心', 'happy']],
-    doing: [['打磨作品集', 'folio'], ['画交互原型', 'proto'], ['读论文', 'read'], ['续一杯咖啡', 'coffee']],
-  };
-  $$('[data-cyc]').forEach((btn) => {
-    const list = CYC[btn.dataset.cyc], ico = $('.pxi', btn), lab = $('span', btn), dt = btn.closest('dd').previousElementSibling.textContent;
-    let i = 0;
-    const show = (anim) => {
-      ico.innerHTML = pxSvg(ICONS[list[i][1]]); lab.textContent = list[i][0];
-      btn.setAttribute('aria-label', `${dt}：${list[i][0]}（点一下换一个）`);
-      if (anim && !reduce) { btn.classList.remove('pop'); void btn.offsetWidth; btn.classList.add('pop'); }
-    };
-    btn.addEventListener('click', () => { i = (i + 1) % list.length; show(true); });
-    show(false);
-  });
-  const ava = $('[data-ava]'), say = $('[data-ava-say]');
-  if (ava && say) {
-    const LINES = ['嗨，我是 Leyson', '要不要看看作品？', '实习、校招欢迎来聊', '排版又改了一版'];
-    let k = 0, hideT = 0;
-    const blink = () => { ava.classList.add('blink'); setTimeout(() => ava.classList.remove('blink'), 140); };
-    ava.addEventListener('click', () => {
-      say.textContent = LINES[k]; k = (k + 1) % LINES.length;
-      say.classList.add('show'); clearTimeout(hideT); hideT = setTimeout(() => say.classList.remove('show'), 2200);
-      if (!reduce) { ava.classList.remove('hop'); void ava.offsetWidth; ava.classList.add('hop'); blink(); }
-    });
-    ava.addEventListener('animationend', () => ava.classList.remove('hop'));
-    if (!reduce) { const loop = () => { blink(); setTimeout(loop, 2800 + Math.random() * 2600); }; setTimeout(loop, 2000); }
-  }
-
-  /* ---------- tilt + magnetic (fine pointers only) ---------- */
-  if (fine && !reduce) {
-    $$('[data-tilt]').forEach((el) => {
-      el.addEventListener('pointermove', (e) => {
-        const r = el.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-        el.style.setProperty('--ry', `${x * 6}deg`); el.style.setProperty('--rx', `${-y * 6}deg`);
-      });
-      el.addEventListener('pointerleave', () => { el.style.removeProperty('--rx'); el.style.removeProperty('--ry'); });
-    });
-    $$('[data-magnetic]').forEach((el) => {
-      el.addEventListener('pointermove', (e) => {
-        const r = el.getBoundingClientRect();
-        el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.18}px, ${(e.clientY - r.top - r.height / 2) * 0.3}px)`;
-      });
-      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
-    });
-    /* work list: the preview image follows the pointer inside the row */
-    $$('[data-peek]').forEach((a) => a.addEventListener('pointermove', (e) => {
-      const r = a.getBoundingClientRect();
-      a.style.setProperty('--mx', `${Math.min(Math.max(e.clientX - r.left, 200), r.width * 0.42)}px`);
-      a.style.setProperty('--my', `${e.clientY - r.top}px`);
-    }));
-  }
-
-  /* ---------- cursor dot: the mark follows you around ---------- */
-  const cur$ = $('.cursor');
-  if (cur$ && fine && !reduce) {
-    root.classList.add('has-cursor');
-    const dot = $('span', cur$);
-    let x = -100, y = -100, tx = -100, ty = -100, raf = 0;
-    const loop = () => {
-      x += (tx - x) * 0.22; y += (ty - y) * 0.22;
-      cur$.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.1 ? requestAnimationFrame(loop) : 0;
-    };
-    window.addEventListener('pointermove', (e) => {
-      tx = e.clientX; ty = e.clientY; cur$.classList.add('on');
-      if (!raf) raf = requestAnimationFrame(loop);
-      const lab = e.target.closest('[data-cursor], .zoom');
-      const hide = e.target.closest('a, button, input, [data-dot]') && !lab;
-      cur$.classList.toggle('label', !!lab);
-      cur$.classList.toggle('hide', !!hide);
-      dot.textContent = lab ? (lab.dataset.cursor || '放大') : '';
-    }, { passive: true });
-    document.addEventListener('pointerleave', () => cur$.classList.remove('on'));
-  }
 
   /* ---------- lightbox ---------- */
   const lb = document.createElement('div');
@@ -180,49 +50,6 @@
     if (e.key === 'Escape') close();
     if (e.key === 'Tab' && lb.classList.contains('on')) { e.preventDefault(); closeBtn.focus(); }
   });
-
-  /* ---------- case study: active section in the index + reading progress ---------- */
-  const toc = $('.toc');
-  if (toc) {
-    const links = $$('a', toc), list = $('ol', toc);
-    const secs = links.map((a) => document.getElementById(a.hash.slice(1))).filter(Boolean);
-    const main = $('main');
-    const update = () => {
-      const line = window.innerHeight * 0.35;
-      let act = -1;
-      secs.forEach((s, i) => { if (s.getBoundingClientRect().top < line) act = i; });
-      links.forEach((a, i) => {
-        const on = i === act;
-        if (on !== a.classList.contains('on')) {
-          a.classList.toggle('on', on);
-          if (on) { a.setAttribute('aria-current', 'location'); list.scrollTo({ left: a.offsetLeft - list.clientWidth / 2 + a.offsetWidth / 2, behavior: reduce ? 'auto' : 'smooth' }); }
-          else a.removeAttribute('aria-current');
-        }
-      });
-      const r = main.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, -r.top / (r.height - window.innerHeight)));
-      toc.style.setProperty('--p', p.toFixed(3));
-    };
-    window.addEventListener('scroll', update, { passive: true }); update();
-  }
-
-  /* ---------- numbers count up once when they appear ---------- */
-  const counters = $$('[data-count]');
-  if (counters.length && 'IntersectionObserver' in window && !reduce) {
-    const co = new IntersectionObserver((es) => es.forEach((e) => {
-      if (!e.isIntersecting) return; co.unobserve(e.target);
-      const el = e.target, txt = el.textContent, m = txt.match(/([\d.]+)(.*)/);
-      if (!m) return;
-      const end = parseFloat(m[1]), dec = (m[1].split('.')[1] || '').length, t0 = performance.now();
-      const step = (t) => {
-        const k = Math.min(1, (t - t0) / 1100), v = end * (1 - Math.pow(1 - k, 3));
-        el.textContent = v.toFixed(dec) + m[2];
-        if (k < 1) requestAnimationFrame(step); else el.textContent = txt;
-      };
-      requestAnimationFrame(step);
-    }), { threshold: 0.6 });
-    counters.forEach((c) => co.observe(c));
-  }
 
   /* ---------- copy email ---------- */
   $$('[data-copy]').forEach((b) => b.addEventListener('click', async () => {
