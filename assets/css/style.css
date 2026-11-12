@@ -1279,4 +1279,4 @@ button.bb[aria-pressed=true] { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--qc), 
 .grid-phones { max-width: 520px; }
 .h-line span { white-space: nowrap; }
 .info .nw { white-space: nowrap; }
-@media (max-width: 380px) { .info .nw { white-space: normal; } }
+@media (max-width: 720px) { .info .nw { white-space: normal; } }
