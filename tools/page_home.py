@@ -61,7 +61,7 @@ def render():
           <dt>正在做</dt><dd><button type="button" class="cyc" data-cyc="doing" aria-label="正在做：打磨作品集（点一下换一个）"><i class="pxi" aria-hidden="true"></i><span>打磨作品集</span></button></dd>
           <dt>联系偏好</dt><dd>欢迎来聊</dd>
         </dl>
-        <div class="say"><a href="#contact">→ 开放实习机会</a><a class="fmt px" href="work.html">See work ↗</a></div>
+        <div class="say"><a href="#contact">→ 开放实习 / 2027 校招</a><a class="fmt px" href="work.html">See work ↗</a></div>
       </aside>
     </div>
   </div>

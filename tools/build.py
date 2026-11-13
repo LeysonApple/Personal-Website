@@ -65,7 +65,7 @@ def nav(cur, base=''):
     return f'''<header class="nav">
   <div class="wrap">
     <a class="brand" href="{base}index.html" aria-label="Leyson 首页">Leyson<i class="mk" aria-hidden="true"></i></a>
-    <span class="open px">Open to internships · 2026</span>
+    <span class="open px">Open to internships · New grad 2027</span>
     <ul>
       <li>{a('work.html', '作品', 'work')}</li>
       <li>{a('about.html#about', '关于', 'about')}</li>
@@ -81,7 +81,7 @@ def foot(base=''):
   <div class="wrap">
     <p class="eyebrow px">Contact</p>
     <h2 aria-label="Let’s talk.">Let’s talk<button type="button" class="mk mk-big" data-dot aria-label="换一个点的颜色"></button></h2>
-    <p class="l">欢迎聊聊实习机会，或这几个项目的细节。</p>
+    <p class="l">欢迎聊聊实习或校招机会，也可以聊这几个项目的细节。</p>
     <div class="links">
       <span class="mail-group"><a href="mailto:{MAIL}">{MAIL}</a><button type="button" class="copy" data-copy="{MAIL}" aria-label="复制邮箱地址"><span>复制</span></button></span>
       <a href="tel:{TEL}">{TEL_SHOW}</a>
