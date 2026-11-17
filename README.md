@@ -16,7 +16,7 @@
 每个项目页按 **问题 → 判断 → 设计 → 结果** 展开，顶部有项目信息（Role / Team / Timeline / Platform / Tools）和可吸顶的本页目录，底部有上一个 / 下一个项目导航。
 
 ## 作品集文件
-- `files/Leyson-Portfolio-Short.pdf` 投递版（30 页）
+- `files/Leyson-Portfolio-Short.pdf` 投递版（31 页）
 - `files/Leyson-Portfolio-Full.pdf` 完整版（68 页）
 
 PPT 源文件不放进仓库（`.gitignore` 已忽略 `*.pptx`）。
